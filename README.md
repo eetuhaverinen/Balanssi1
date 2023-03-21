@@ -1,5 +1,7 @@
 # README
 
+> This code is meant to illustrate common pitfalls; therefore you are expected to finds bugs, repetitive code etc. We will reflect on all the bad practices
+
 ## Reflection
 
 - Bugs???
