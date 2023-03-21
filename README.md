@@ -72,3 +72,13 @@ res.render('stories/edit', {
 - How to render login error?
 
 ![Alt text](./email.png 'Error-email')
+
+- How to render
+
+- Helper: `formatDate`
+  - [How to display local time](https://stackoverflow.com/questions/32540667/moment-js-utc-to-local-time)
+  - [moment](https://www.npmjs.com/package/moment)
+
+## Users' Roles
+
+- How to?
