@@ -1,13 +1,13 @@
-{{!-- views/auth/login.hbs --}}
+{{!-- views/auth/loginHoitaja.hbs --}}
 
 
  <div class="login-box">
-  <h2>Potilaan kirjautuminen</h2>
+  <h2>Hoitajan kirjautuminen</h2>
 
   <form action="/auth/login" method="POST">
 
-    <label class="labeL"> Email
-      <input type="email" name="email" placeholder="matti@matti.com" />
+    <label class="labeL"> Username
+      <input type="text" name="username" placeholder="Matti" />
     </label>
 
     <label class="labeL">Password
@@ -21,7 +21,6 @@
     {{/if}}
 
     <div id="logbottom">
-    <p class="uusi"><a href="/auth/register">Luo uusi käyttäjä</a></p>
         <p class="message"><a href="#">Unohtuiko salasana?</a></p>
     </div>
   </form>

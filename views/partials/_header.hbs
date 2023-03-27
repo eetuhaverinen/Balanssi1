@@ -1,13 +1,45 @@
-<nav class="grey darken-3">
-    <div class="nav-wrapper container">
+      <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/" class="nav__logo">Balanssi</a> 
 
-        <a href="#!" class="brand-logo center">StoryBooks</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="/stories/add">Add Story</a></li>
-            <li><a href="/stories">Public Stories</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-        </ul>
-    </div>
-</nav>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/stories/add" class="nav__link active-link">
+                            <i class='bx bx-home-alt nav__icon'></i>
+                            <span class="nav__name">Add stories</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav__item">
+                        <a href="/stories" class="nav__link">
+                            <i class='bx bx-briefcase-alt nav__icon'></i>
+                            <span class="nav__name">Stories</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/dashboard" class="nav__link">
+                            <i class='bx bx-book-alt nav__icon'></i>
+                            <span class="nav__name">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/auth/logout" class="nav__link">
+                            <i class='bx bx-message-square-detail nav__icon'></i>
+                            <span class="nav__name">Logout</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/auth/logout" class="nav__link">
+                            <i class='bx bx-user nav__icon'></i>
+                            <span class="nav__name">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+          <a href="/auth/logout" class="nav__link">Kirjaudu ulos</a>
+        </nav>
+    </header>

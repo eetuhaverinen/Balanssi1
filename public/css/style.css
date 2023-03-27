@@ -37,3 +37,22 @@ p {
 .search-form {
   margin: 70px 0;
 }
+
+
+
+html{
+  background-color: rgb(201, 234, 255)
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 1em 1em;
+  width: 80%;
+}
+.col{
+ display: flex;
+}

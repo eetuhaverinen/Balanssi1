@@ -13,7 +13,7 @@ const createToken = (_id) => {
 // @desc    Login page
 // @route   GET /auth/login
 router.get('/login', ensureGuest, (req, res) => {
-  res.render('auth/login', {
+  res.render('auth/login',  {
     layout: 'home',
   });
 });
@@ -70,4 +70,42 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
+//Hoitajan kirjautuminen
+
+// @desc    Login page
+// @route   GET /auth/login
+router.get('/loginHoitaja', ensureGuest, (req, res) => {
+  res.render('auth/loginHoitaja', {
+    layout: 'homeH',
+  });
+});
+
+// @desc    Login page
+// @route   POST /auth/login
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.login(email, password);
+    // create a token
+    const token = createToken(user._id);
+    res.cookie('cookieToken', token, { httpOnly: true });
+    res.redirect('/dashboard');
+  } catch (error) {
+    res.send(
+      `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
+    );
+  }
+});
+
+// @desc    logout user
+// @route   GET /auth/logout
+router.get('/logout', (req, res) => {
+  res.clearCookie('cookieToken');
+  res.redirect('/');
+});
+
+
 module.exports = router;
+
+

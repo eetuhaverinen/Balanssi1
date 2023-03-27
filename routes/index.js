@@ -8,7 +8,7 @@ const Story = require('../models/StoryModel');
 // @desc    Landing page
 // @route   GET /
 router.get('/', ensureGuest, (req, res) => {
-  res.render('home', {
+  res.render('auth/login', {
     layout: 'home',
   });
 });
