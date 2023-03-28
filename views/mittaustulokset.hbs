@@ -1,26 +1,4 @@
 <h2>Mittaustulokset {{name}}</h2>
-{{#if stories}}
-<table class="striped">
-    <tbody>
-        {{#each stories}}
-        <tr>
-            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-            {{!-- <td><span class="dash-status">{{status}}</span></td> --}}
-            <td><a href="/stories/{{_id}}">{{title}} mmol/l</a></td>
-            <td>
-                <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa
-                </a>
 
-                <form action="/stories/{{_id}}" method="POST" id="delete-form">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btnDel">Poista
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-{{else}}
-<p>Mittaustuloksia ei löydy</p>
-{{/if}}
+{{>verensokeriarvot}}
+

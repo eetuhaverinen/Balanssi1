@@ -15,6 +15,23 @@ router.get('/', ensureGuest, (req, res) => {
 
 // @desc    Dashboard
 // @route   GET /dashboard
+router.get('/etusivu', ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const stories = await Story.find({ user: decoded._id }).lean();
+    // const stories = await Story.find({}).lean();
+    res.render('etusivu', {
+      // username: decoded.username,
+      stories,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+// @desc    Dashboard
+// @route   GET /dashboard
 router.get('/mittaustulokset', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
