@@ -102,6 +102,10 @@ form {
 
 .container_body h2{
   margin: 2em;
+  display: block;
+  justify-content: center;
+
+  
 }
 
 
