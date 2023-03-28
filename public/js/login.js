@@ -36,7 +36,7 @@ function handleLogin(event) {
   .then(response => {
     if (response.ok) {
       // Redirect the user to the dashboard page if the login was successful
-      window.location.href = '/dashboard';
+      window.location.href = '/mittaustulokset';
     } else {
       // Display an error message if the login was unsuccessful
       errorMessage.textContent = 'Incorrect username or password. Please try again.';

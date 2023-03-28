@@ -18,7 +18,7 @@ router.post('/', ensureAuth, async (req, res) => {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     req.body.user = decoded._id;
     await Story.create(req.body);
-    res.redirect('/dashboard');
+    res.redirect('/mittaustulokset');
   } catch (err) {
     console.error(err);
     res.render('error/500');
@@ -100,7 +100,7 @@ router.put('/:id', ensureAuth, async (req, res) => {
       runValidators: true,
     });
 
-    res.redirect('/dashboard');
+    res.redirect('/mittaustulokset');
   } catch (err) {
     console.error(err);
     return res.render('error/500');
@@ -117,7 +117,7 @@ router.delete('/:id', ensureAuth, async (req, res) => {
       return res.render('error/404');
     }
     await Story.remove({ _id: req.params.id });
-    res.redirect('/dashboard');
+    res.redirect('/mittaustulokset');
   } catch (err) {
     console.error(err);
     return res.render('error/500');

@@ -15,12 +15,12 @@ router.get('/', ensureGuest, (req, res) => {
 
 // @desc    Dashboard
 // @route   GET /dashboard
-router.get('/dashboard', ensureAuth, async (req, res) => {
+router.get('/mittaustulokset', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     const stories = await Story.find({ user: decoded._id }).lean();
     // const stories = await Story.find({}).lean();
-    res.render('dashboard', {
+    res.render('mittaustulokset', {
       // username: decoded.username,
       stories,
     });

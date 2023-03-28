@@ -22,7 +22,7 @@ module.exports = {
         if (err) {
           next();
         } else {
-          res.redirect('/dashboard');
+          res.redirect('/mittaustulokset');
         }
       }
     );
