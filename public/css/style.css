@@ -15,6 +15,7 @@ p {
 .btn-float {
   float: left;
   margin-right: 10px;
+  height: 10px;
 }
 
 .img-small {
@@ -53,6 +54,27 @@ html{
   margin: 1em 1em;
   width: 80%;
 }
+
 .col{
  display: flex;
+}
+
+.striped{
+  background-color: rgba(199, 199, 199, 0.593);
+  border: 1px solid;
+}
+
+.striped tr{
+  background-color: aliceblue;
+}
+
+.striped tr td{
+  padding: 1em;
+}
+
+#delete-form{
+  background-color: red;
+  height: 10px;
+  width: 10px;
+  margin:0;
 }

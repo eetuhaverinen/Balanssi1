@@ -1,0 +1,5 @@
+# MONGO_URI=mongodb://127.0.0.1:27017/project-v01
+MONGO_URI=mongodb+srv://eetuhaverinen:1oJxEBEtU2mqFMc3@cluster0.y9phssa.mongodb.net/starterWeek2?retryWrites=true&w=majority
+SECRET=mysecretepassword
+PORT=3000
+NODE_ENV=development

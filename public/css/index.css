@@ -95,10 +95,16 @@ form {
   width: 90%;
   margin-top: 5%;
   background-color: azure;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: baseline;
 
 }
+
+.container_body h2{
+  margin: 2em;
+}
+
+
 form {
   display: flex;
   flex-direction: column;
@@ -172,6 +178,7 @@ html {
     width: 100%;
     height: 100%;
     margin-top: 0%;
+    align-items: center
   }
   
 }
