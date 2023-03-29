@@ -47,4 +47,36 @@ router.get('/mittaustulokset', ensureAuth, async (req, res) => {
   }
 });
 
+
+//GET viestit
+router.get('/viestit', ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const stories = await Story.find({ user: decoded._id }).lean();
+    // const stories = await Story.find({}).lean();
+    res.render('message', {
+      // username: decoded.username,
+      stories,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+router.get('/profiili', ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const stories = await Story.find({ user: decoded._id }).lean();
+    // const stories = await Story.find({}).lean();
+    res.render('profile', {
+      // username: decoded.username,
+      stories,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
 module.exports = router;
