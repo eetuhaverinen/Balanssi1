@@ -62,7 +62,7 @@ router.post('/register', async (req, res, next) => {
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/loader');
+    res.redirect('/etusivu');
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
