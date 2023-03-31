@@ -13,5 +13,5 @@ function hideLoading() {
 showLoading();
 
 // Hide the loading page after a custom duration
-const customDuration = 3000; // Duration in milliseconds, e.g., 3000ms = 3 seconds
+const customDuration = 2500; // Duration in milliseconds, e.g., 3000ms = 3 seconds
 setTimeout(hideLoading, customDuration);
