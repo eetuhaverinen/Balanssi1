@@ -13,8 +13,9 @@ const createToken = (_id) => {
 // @desc    Login page
 // @route   GET /auth/login
 router.get('/login', ensureGuest, (req, res) => {
-  res.render('auth/login',  {
+  res.render('auth/login', {
     layout: 'home',
+    isLoginPage: true // set isLoginPage to true when rendering the login page
   });
 });
 
@@ -77,15 +78,19 @@ router.post('/register', async (req, res, next) => {
 router.get('/loginHoitaja', ensureGuest, (req, res) => {
   res.render('auth/loginHoitaja', {
     layout: 'homeH',
+    isLoginPage: false // set isLoginPage to false when rendering the loginHoitaja page
   });
 });
 
 // @desc    Login page
-// @route   POST /auth/login
-router.post('/login', async (req, res) => {
+// @route   POST /auth/loginHoitaja
+router.post('/loginHoitaja', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    // Show the loading page
+    showLoading();
+    
     const user = await User.login(email, password);
     // create a token
     const token = createToken(user._id);
@@ -95,15 +100,15 @@ router.post('/login', async (req, res) => {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
     );
+  } finally {
+    // Hide the loading page after the request is completed
+    hideLoading();
   }
 });
 
 // @desc    logout user
-// @route   GET /auth/logout
-router.get('/logout', (req, res) => {
-  res.clearCookie('cookieToken');
-  res.redirect('/');
-});
+// @route   GET /
+
 
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const usernameInput = document.querySelector('input[name="username"]');
 const passwordInput = document.querySelector('input[name="password"]');
-const loginButton = document.querySelector('a[href="etusivu.html"]');
+const loginButton = document.querySelector('button[type="submit"]');
 const errorMessage = document.querySelector('.error-message');
 
 // Attach event listeners to the form elements
@@ -22,6 +22,10 @@ function validateInputs() {
 
 function handleLogin(event) {
   event.preventDefault(); // Prevent the default form submission behavior
+  
+  // Show the loading page
+  showLoading();
+
   // Get the values of the username and password inputs and send them to the server
   const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
@@ -36,7 +40,7 @@ function handleLogin(event) {
   .then(response => {
     if (response.ok) {
       // Redirect the user to the dashboard page if the login was successful
-      window.location.href = '/etusivu';
+      window.location.href = '/loader';
     } else {
       // Display an error message if the login was unsuccessful
       errorMessage.textContent = 'Incorrect username or password. Please try again.';
@@ -44,5 +48,9 @@ function handleLogin(event) {
   })
   .catch(error => {
     console.log(error);
+  })
+  .finally(() => {
+    // Hide the loading page after the request is completed
+    hideLoading();
   });
 }

@@ -1,7 +1,5 @@
 {{!-- views/auth/login.hbs --}}
-
-
- <div class="login-box">
+<div class="login-box">
   <h2>Potilaan kirjautuminen</h2>
 
   <form action="/auth/login" method="POST">
@@ -24,5 +22,8 @@
     <p class="uusi"><a href="/auth/register">Luo uusi käyttäjä</a></p>
         <p class="message"><a href="#">Unohtuiko salasana?</a></p>
     </div>
+    {{#if isLoginPage}}
+      <script src="/js/loader.js"></script>
+    {{/if}}
   </form>
 </div>
