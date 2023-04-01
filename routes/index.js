@@ -79,19 +79,19 @@ router.get('/profiili', ensureAuth, async (req, res) => {
   }
 });
 
-router.get('/main', ensureAuth, async (req, res) => {
-  try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const stories = await Story.find({ user: decoded._id }).lean();
-    // const stories = await Story.find({}).lean();
-    res.render('loader', {
-      // username: decoded.username,
-      stories,
-    });
-  } catch (err) {
-    console.error(err);
-    res.render('error/500');
-  }
-});
+// router.get('/main', ensureAuth, async (req, res) => {
+//   try {
+//     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+//     const stories = await Story.find({ user: decoded._id }).lean();
+//     // const stories = await Story.find({}).lean();
+//     res.render('loader', {
+//       // username: decoded.username,
+//       stories,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.render('error/500');
+//   }
+// });
 
 module.exports = router;

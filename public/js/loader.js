@@ -9,7 +9,7 @@ function hideLoading() {
   loadingOverlay.style.display = 'none';
 }
 
-// Show the loading page on initial load
+// Show the loading page on initial load  
 showLoading();
 
 // Hide the loading page after a custom duration
