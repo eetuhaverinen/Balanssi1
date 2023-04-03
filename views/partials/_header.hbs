@@ -1,45 +1,64 @@
-      <header class="header" id="header">
-        <nav class="nav container">
-            <a href="/" class="nav__logo">Balanssi</a> 
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="/" class="nav__link active-link">
-                            <i class='bx bx-home-alt nav__icon'></i>
-                            <span class="nav__name">Etusivu</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav__item">
-                        <a href="/stories/add" class="nav__link ">
-                            <i class='bx bx-briefcase-alt nav__icon'></i>
-                            <span class="nav__name">Päiväkirja</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/mittaustulokset" class="nav__link">
-                            <i class='bx bx-book-alt nav__icon'></i>
-                            <span class="nav__name">Mittaustulokset</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/viestit" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon'></i>
-                            <span class="nav__name">Viestit</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/profiili" class="nav__link">
-                            <i class='bx bx-user nav__icon'></i>
-                            <span class="nav__name">Profiili</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-          <a href="/auth/logout" class="nav__link">Kirjaudu ulos</a>
-        </nav>
+  <head>
+    <title>Balanssi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="/" class="nav__logo">Balanssi</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item home">
+              <a href="/" class="nav__link">
+                <i class='bx bx-home-alt nav__icon'></i>
+                <span class="nav__name">Etusivu</span>
+              </a>
+            </li>
+            <li class="nav__item stories">
+              <a href="/stories/add" class="nav__link">
+                <i class='bx bx-briefcase-alt nav__icon'></i>
+                <span class="nav__name">Päiväkirja</span>
+              </a>
+            </li>
+            <li class="nav__item results">
+              <a href="/mittaustulokset" class="nav__link">
+                <i class='bx bx-book-alt nav__icon'></i>
+                <span class="nav__name">Mittaustulokset</span>
+              </a>
+            </li>
+            <li class="nav__item messages">
+              <a href="/viestit" class="nav__link">
+                <i class='bx bx-message-square-detail nav__icon'></i>
+                <span class="nav__name">Viestit</span>
+              </a>
+            </li>
+            <li class="nav__item profile">
+              <a href="/profiili" class="nav__link">
+                <i class='bx bx-user nav__icon'></i>
+                <span class="nav__name">Profiili</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
+      </nav>
     </header>
+
+  
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBETG97WUC2KwUyGUhFnpD"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.js"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+
