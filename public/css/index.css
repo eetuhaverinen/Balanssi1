@@ -96,7 +96,7 @@ form {
   margin-top: 5%;
   background-color: azure;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
 
 }
 
@@ -104,6 +104,7 @@ form {
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
 
 }
 

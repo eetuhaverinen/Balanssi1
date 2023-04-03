@@ -53,6 +53,7 @@ html{
   align-items: stretch;
   margin: 1em 1em;
   width: 80%;
+  background-color: bisque;
 }
 
 .col{
