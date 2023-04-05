@@ -75,8 +75,8 @@ router.post('/register', async (req, res, next) => {
 
 // @desc    Login page
 // @route   GET /auth/login
-router.get('/loginH', ensureGuest, (req, res) => {
-  res.render('auth/loginH', {
+router.get('/loginHoitaja', ensureGuest, (req, res) => {
+  res.render('auth/loginHoitaja', {
     layout: 'homeH',
     isLoginPage: false // set isLoginPage to false when rendering the loginHoitaja page
   });
