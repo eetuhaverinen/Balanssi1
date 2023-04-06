@@ -8,13 +8,20 @@ const workoutSchema = new Schema(
       type: String,
       required: true,
     },
-    comment: {
+    duration: {
       type: Number,
       required: true,
     },
-    load: {
-      type: Number,
-      required: true,
+    comment: {
+      type: String,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'UserModel',
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   { timestamps: true }
