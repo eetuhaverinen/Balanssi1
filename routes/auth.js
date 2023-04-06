@@ -84,7 +84,7 @@ router.get('/loginHoitaja', ensureGuest, (req, res) => {
 
 // @desc    Login page
 // @route   POST /auth/loginHoitaja
-router.post('/loginHoitaja', async (req, res) => {
+router.post('/loginH', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -95,7 +95,7 @@ router.post('/loginHoitaja', async (req, res) => {
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/mittaustulokset');
+    res.redirect('/etusivuH');
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
