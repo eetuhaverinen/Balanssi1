@@ -15,7 +15,7 @@ const createToken = (_id) => {
 router.get('/login', ensureGuest, (req, res) => {
   res.render('auth/login', {
     layout: 'home',
-    isLoginPage: true // set isLoginPage to true when rendering the login page
+    // isLoginPage: true // set isLoginPage to true when rendering the login page
   });
 });
 
@@ -78,7 +78,7 @@ router.post('/register', async (req, res, next) => {
 router.get('/loginHoitaja', ensureGuest, (req, res) => {
   res.render('auth/loginHoitaja', {
     layout: 'homeH',
-    isLoginPage: false // set isLoginPage to false when rendering the loginHoitaja page
+    // isLoginPage: false // set isLoginPage to false when rendering the loginHoitaja page
   });
 });
 
@@ -89,7 +89,7 @@ router.post('/loginH', async (req, res) => {
 
   try {
     // Show the loading page
-    showLoading();
+    // showLoading();
     
     const user = await User.login(email, password);
     // create a token
@@ -102,7 +102,7 @@ router.post('/loginH', async (req, res) => {
     );
   } finally {
     // Hide the loading page after the request is completed
-    hideLoading();
+    // hideLoading();
   }
 });
 
