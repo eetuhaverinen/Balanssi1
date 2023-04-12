@@ -8,7 +8,6 @@ const StorySchema = new mongoose.Schema({
   },
   body: {
     type: String,
-    required: true,
   },
   status: {
     type: String,
