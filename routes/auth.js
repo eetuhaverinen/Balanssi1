@@ -55,7 +55,7 @@ router.get('/register', ensureGuest, (req, res) => {
 // @desc    Register page
 // @route   POST /auth/register
 router.post('/register', async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const {email, password} = req.body;
 
   try {
     const user = await User.signup(email, password);
