@@ -1,6 +1,55 @@
   <body>
     <div class="row">
-    <form class="col s12">
+
+      <form id="profileForm" class="form-group" action="/profiili" method="POST">
+  <label>
+    Nimi:
+    <input type="text" name="nimi" value="{{user.nimi}}" />
+  </label>
+  <label>
+    Pituus:
+    <input type="number" min="50" step="any" max="230" name="pituus" value="{{user.pituus}}" />
+  </label>
+  <label>
+    Paino:
+    <input type="number" min="30" step="any" max="230" name="paino" value="{{user.paino}}" />
+  </label>
+  <label>
+    Leposyke:
+    <input type="number" min="30" step="any" max="100" name="leposyke" value="{{user.leposyke}}" />
+  </label>
+  <label>
+    Maksimisyke:
+    <input type="number" min="120" step="any" max="220" name="maksimisyke" value="{{user.maksimisyke}}" />
+  </label>
+  <label>
+    B-HbA1c -arvo:
+    <input type="number" min="20" step="any" max="100" name="BHbA1c" value="{{user.BHbA1c}}" />
+  </label>
+
+  <button type="submit" id="submitButton">Tallenna muokatut tiedot</button>
+</form>
+
+{{!-- <div id="loader" class="loader">Päivitetään tietoja...</div>
+<div id="message" style="display: none;">Tiedot päivitetty.</div> --}}
+
+
+
+
+{{!-- <form >
+    <p>Nimi: {{user.nimi}} <button id="editProfile"></p>
+    <p>Syntymäaika: {{user.syntymaAika}} <button id="editProfile"></p>
+    <p>Pituus: {{user.Pituus}} <button id="editProfile"></p>
+    <p>Paino: {{user.paino}} <button id="editProfile"></p>
+    <p>Sukupuoli: {{user.sukupuoli}} <button id="editProfile"></p>
+    <p>Leposyke: {{user.leposyke}} <button id="editProfile"></p>
+    <p>Maksimisyke: {{user.maksimisyke}} <button id="editProfile"></p>
+    <p>B-HbA1c -arvo: {{user.BHbA1c}} <button id="editProfile"></p>
+    <button type="button">Muokkaa tietoja</button>
+</form> --}}
+
+
+    {{!-- <form >
       <label for="username">Käyttäjänimi:</label>
       <input type="text" id="username" name="username" placeholder="Anna uusi käyttäjänimi" required>
       
@@ -15,6 +64,6 @@
     <label for="bio">Bio:</label>
       <textarea id="bio" name="bio" rows="4"></textarea>
         <button type="submit">Tallenna muutokset</button>
-    </form>
+    </form> --}}
     </div>
   </body>
