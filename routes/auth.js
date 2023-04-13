@@ -55,10 +55,10 @@ router.get('/register', ensureGuest, (req, res) => {
 // @desc    Register page
 // @route   POST /auth/register
 router.post('/register', async (req, res, next) => {
-  const {email, password} = req.body;
+  const {email, password, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c} = req.body;
 
   try {
-    const user = await User.signup(email, password);
+    const user = await User.signup(email, password, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c);
 
     // create a token
     const token = createToken(user._id);
