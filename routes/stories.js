@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { ensureAuth } = require('../middleware/auth');
 
+const User = require('../models/userModel');
 const Story = require('../models/StoryModel');
 
 // @desc    Show add page
@@ -27,20 +28,40 @@ router.post('/', ensureAuth, async (req, res) => {
 
 // @desc    Show all stories
 // @route   GET /stories
+// router.get('/', ensureAuth, async (req, res) => {
+//   try {
+//     const stories = await Story.find({ status: 'private' })
+//       .sort({ createdAt: 'desc' })
+//       .lean();
+
+
+//     res.render('stories/index', {
+//       stories,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.render('error/500');
+//   }
+// });
+// @desc    Show all stories
+// @route   GET /stories
 router.get('/', ensureAuth, async (req, res) => {
   try {
-    const stories = await Story.find({ status: 'public' })
-      .sort({ createdAt: 'desc' })
-      .lean();
+    const verensokerit = await Story.find({ user: req.user.id }).sort({ createdAt: 'asc' }).lean();
+
+    const labels = verensokerit.map(sokeri => moment(sokeri.createdAt).format('MMM D, YYYY, h:mm:ss a'));
+    const data = verensokerit.map(sokeri => sokeri.arvo);
 
     res.render('stories/index', {
-      stories,
+      labels,
+      data
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
 
 // @desc    Show single story
 // @route   GET /stories/:id

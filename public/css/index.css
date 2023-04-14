@@ -132,7 +132,7 @@ header a img {
   justify-content: flex-start;
   align-items: center;
   height: 110%;
-  padding-top: 6%;
+  padding-top: 5%;
 
 }
 
@@ -148,7 +148,6 @@ header a img {
   font-weight: bold;
   color: #333;
   text-shadow: 1px 1px 1px #ccc;
-  box-shadow: 0 0 10px rgb(255, 255, 255);
   padding: 0.5rem;
   border-radius: 7px;
   margin: 1.2em;
@@ -234,6 +233,7 @@ html {
     width: 100%;
     height: 150%;
     margin-top: 0%;
+    padding-top: 2%;
     align-items: center
   }
   .containerE{
