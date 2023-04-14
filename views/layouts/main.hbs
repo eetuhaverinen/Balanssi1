@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="manifest" href="\manifest.webmanifest">
+    <script>
+    if ('serviceWorker' in navigator) {
+     navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(error => console.log('Error registering Service Worker:', error));
+  }
+    </script>
     {{#if showLoader}}
         <link rel="stylesheet" href="/css/loader.css">
     {{/if}}
