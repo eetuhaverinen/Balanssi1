@@ -20,6 +20,7 @@ router.get('/etusivu', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     const stories = await Story.find({ user: decoded._id }).lean();
+    const user = await User.findById(decoded._id).lean();
     // const stories = await Story.find({}).lean();
     res.render('etusivu', {
       // username: decoded.username,

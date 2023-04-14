@@ -3,9 +3,16 @@ p {
 }
 
 .login-container {
-  width: 400px;
-  margin-top: 50px;
-  text-align: center;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: azure;
+  justify-content: flex-start;
+  align-items: center;
+  height: 110%;
+  padding-top: 6%;
 }
 
 .fa-small {
