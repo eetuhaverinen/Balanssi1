@@ -25,14 +25,6 @@ header a img {
   margin-top: -31px;
   margin-bottom: 26px;
 }
-form {
-  display: float;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 50px;
-}
 
 .form {
   position: relative;
@@ -45,6 +37,35 @@ form {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
     0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+#profileForm{
+  align-content: center;
+  flex-wrap: wrap;
+
+}
+
+/* input field container */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* label */
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* input field */
+.input-group input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  }
+  
+
 
 .loader {
   border: 4px solid #f3f3f3; /* Grey */
@@ -103,15 +124,15 @@ form {
 
 .container_body {
   z-index: 1;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  height: 90%;
-  width: 90%;
-  margin-top: 5%;
+  width: 100%;
   background-color: azure;
   justify-content: flex-start;
   align-items: center;
+  height: 110%;
+  padding-top: 6%;
 
 }
 
@@ -124,9 +145,16 @@ form {
 }
 
 .container_body h2{
-  margin: 2em;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 1px #ccc;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  padding: 0.5rem;
+  border-radius: 7px;
+  margin: 1.2em;
   display: block;
   justify-content: center;
+
 
   
 }
@@ -139,7 +167,7 @@ form {
   align-items: center;
   text-align: center;
   align-items: stretch;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 form button {
@@ -152,7 +180,6 @@ form button {
   flex-direction: row;
 }
 
-input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
@@ -211,6 +238,13 @@ html {
   }
   .containerE{
     flex-direction: column;
+  }
+  .container_body h2{
+    margin: 1em;
+  }
+  .row{
+    width: 98%;
+    margin:0.4em;
   }
   
 }

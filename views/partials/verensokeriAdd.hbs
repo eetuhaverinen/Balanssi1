@@ -1,32 +1,20 @@
 <div class="row">
     <h3>Lisää verensokeri</h3>
     <form action="/stories" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field">
+       
+            <div class="input-group">
                 <input type="number" id="title" name="title" min="0" step="any">
                 <label for="title">mmol/l</label>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field">
-                <select id="status" name="status">
-                    <option value="public" selected>Public</option>
-                    <option value="private">Private</option>
-                </select>
-                <label for="status">Status</label>
+        
+            <div class="input-group">
+                <h5> Lisää kommentti:</h5>
+                <label>
+                <input type="text" id="body" name="body"></input>
+                </label>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="input-field">
-                <h5>Kirjoita kommentti</h5>
-                <textarea id="body" name="body"></textarea>
-                
-            </div>
-        </div>
-
-        <div class="row">
+        <div>
             <input type="submit" value="Save" class="btn">
             <a href="/mittaustulokset" class="btn orange">Cancel</a>
         </div>

@@ -2,30 +2,40 @@
     <div class="row">
 
       <form id="profileForm" class="form-group" action="/profiili" method="POST">
-  <label>
-    Nimi:
-    <input type="text" name="nimi" value="{{user.nimi}}" />
-  </label>
-  <label>
+        <h3>{{user.nimi}}</h3>
+  <div class="input-group">
+  <label class="labelP">
     Pituus:
     <input type="number" min="50" step="any" max="230" name="pituus" value="{{user.pituus}}" />
   </label>
-  <label>
+  </div>
+  <div class="input-group">
+  <label class="labelP">
     Paino:
     <input type="number" min="30" step="any" max="230" name="paino" value="{{user.paino}}" />
   </label>
-  <label>
+  </div>
+  <div class="input-group">
+  <label class="labelP">
     Leposyke:
     <input type="number" min="30" step="any" max="100" name="leposyke" value="{{user.leposyke}}" />
+    <span class="tooltip" tooltip-data="Saat leposykkeesi selville esimerkiksi sykemittarin avulla."><img src="/kuvat/question.png" alt="kysymysmerkki"></span>
   </label>
-  <label>
+  </div>
+  <div class="input-group">
+  <label class="labelP">
     Maksimisyke:
     <input type="number" min="120" step="any" max="220" name="maksimisyke" value="{{user.maksimisyke}}" />
+    <span class="tooltip" tooltip-data="Saat leposykkeesi selville esimerkiksi sykemittarin avulla."><img src="/kuvat/question.png" alt="kysymysmerkki"></span>
   </label>
-  <label>
+  </div>
+  <div class="input-group">
+  <label class="labelP">
     B-HbA1c -arvo:
     <input type="number" min="20" step="any" max="100" name="BHbA1c" value="{{user.BHbA1c}}" />
+   <span class="tooltip" tooltip-data="Saat leposykkeesi selville esimerkiksi sykemittarin avulla."><img src="/kuvat/question.png" alt="kysymysmerkki"></span>
   </label>
+  </div>
 
   <button type="submit" id="submitButton">Tallenna muokatut tiedot</button>
 </form>

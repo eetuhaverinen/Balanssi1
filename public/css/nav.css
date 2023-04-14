@@ -53,7 +53,6 @@
 
 /*=============== BASE ===============*/
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
   text-decoration: unset;
@@ -162,6 +161,7 @@ nav.container {
 .nav__list, 
 .nav__link {
   display: flex;
+  box-sizing: border-box;
 }
 
 .nav__link {
