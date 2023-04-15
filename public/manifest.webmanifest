@@ -10,20 +10,17 @@
       {
         "src": "kuvat/blood-drop64.png",
         "type": "image/png",
-        "sizes": "64x64",
-        "purpose": "maskable"
+        "sizes": "64x64"
       },
       {
         "src": "kuvat/blood-drop128.png",
         "type": "image/png",
-        "sizes": "128x128",
-        "purpose": "maskable"
+        "sizes": "128x128"
       },
       {
         "src": "kuvat/blood-drop512.png",
         "type": "image/png",
-        "sizes": "512x512",
-        "purpose": "maskable"
+        "sizes": "512x512"
       }
     ]
   }
