@@ -12,7 +12,20 @@
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/Login.css">
-    <script type="text/javascript" src="/sw.js"></script>
+    <script type="text/javascript" src="/js/sw.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/js/sw.js')
+            .then(registration => {
+              console.log('Service worker registered successfully:', registration);
+            })
+            .catch(error => {
+              console.log('Service worker registration failed:', error);
+            });
+        });
+      };
+    </script>
     <title>Balanssi Login</title>
 </head>
 
