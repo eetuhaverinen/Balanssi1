@@ -3,24 +3,27 @@
     "short_name": "Balanssi",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "background_color": "transparent",
     "theme_color": "#ffffff",
     "description": "Sovellus diabeetikon hoitotasapainon diagnosointiin.",
     "icons": [
       {
         "src": "kuvat/blood-drop64.png",
         "type": "image/png",
-        "sizes": "64x64"
+        "sizes": "64x64",
+        "purpose": "maskable"
       },
       {
         "src": "kuvat/blood-drop128.png",
         "type": "image/png",
-        "sizes": "128x128"
+        "sizes": "128x128",
+        "purpose": "maskable"
       },
       {
         "src": "kuvat/blood-drop512.png",
         "type": "image/png",
-        "sizes": "512x512"
+        "sizes": "512x512",
+        "purpose": "maskable"
       }
     ]
   }
