@@ -13,20 +13,7 @@
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="manifest" href="\manifest.webmanifest">
-    <script type="text/javascript" src="/js/sw.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/js/sw.js')
-            .then(registration => {
-              console.log('Service worker registered successfully:', registration);
-            })
-            .catch(error => {
-              console.log('Service worker registration failed:', error);
-            });
-        });
-      };
-    </script>
+    <script type="text/javascript" src="sw.js"></script>
     {{#if showLoader}}
         <link rel="stylesheet" href="/css/loader.css">
     {{/if}}
@@ -53,10 +40,11 @@
         M.FormSelect.init(document.querySelector('#status'))
         --}}
     </script>
-     <script>
-     navigator.serviceWorker.ready.then(registration => {
-  console.log('Service worker is ready:', registration.active);
-});
+    <script>
+       if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker.register("sw.js");
+}
     </script>
      <script src="/js/nav.js"></script>
      <script src="/js/chart.js"></script>

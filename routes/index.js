@@ -86,7 +86,7 @@ router.post('/profiili', ensureAuth, async (req, res) => {
 
   try {
     // Validointi?
-    if ( !nimi || !pituus || !paino || !leposyke || !maksimisyke ) {
+    if ( !pituus || !paino || !leposyke || !maksimisyke ) {
       throw Error('Täytä pakolliset tiedot');
     }
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
