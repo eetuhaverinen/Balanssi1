@@ -7,12 +7,6 @@
                 <label for="title">mmol/l</label>
             </div>
         
-            <div class="input-group">
-                <h5> Lisää kommentti:</h5>
-                <label>
-                <input type="text" id="body" name="body"></input>
-                </label>
-            </div>
 
             <div class="input-group">
                 <h5>Tuntemus:</h5>
@@ -33,14 +27,35 @@
             <div class="input-group">
                 <h5>Päivän ravinto:</h5>
                 <label>
-                    <input type="text" id="nutrition" name="nutrition">
-                </label>
+                    <input type="number" id="title" name="title" min="0" step="any">
+                <label for="title">G HH</label>
             </div>
+            
 
             <div class="input-group">
                 <h5>Päivän liikuntasuoritus:</h5>
                 <label>
-                    <input type="text" id="exercise" name="exercise">
+                    <input type="radio" name="sport" value="Suuri">
+                    <span>Suuri</span>
+                </label>
+                <label>
+                    <input type="radio" name="sport" value="Keskisuuri">
+                    <span>Keskisuuri</span>
+                </label>
+                <label>
+                    <input type="radio" name="sport" value=":Pieni">
+                    <span>Pieni</span>
+                </label>
+                <label>
+                    <input type="number" id="title" name="title" min="0" step="any">
+                <label for="title">Minuuttia</label>
+            </div>
+
+
+            <div class="input-group">
+                <h5> Lisää kommentti:</h5>
+                <label>
+                <input type="text" id="body" name="body"></input>
                 </label>
             </div>
 
