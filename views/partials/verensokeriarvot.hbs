@@ -16,10 +16,10 @@
             {{#each stories}}
             <tr>
                 <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-                <td>{{mmolPerL}} mmol/l</td>
+                <td>{{mmolPerL}} </td>
                 <td>{{feeling}}</td>
                 <td>{{GHH}}</td>
-                <td>{{sport}} {{title}} min</td>
+                <td>{{sport}} {{sportDuration}} min</td>
                 <td>{{body}}</td>
                 <td>
                     <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa

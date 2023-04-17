@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const moment = require('moment');
 const { ensureAuth } = require('../middleware/auth');
 
 const User = require('../models/userModel');
@@ -20,7 +21,7 @@ router.post('/', ensureAuth, async (req, res) => {
     req.body.user = decoded._id;
     req.body.mmolPerL = parseFloat(req.body.mmolPerL);
     req.body.GHH = parseFloat(req.body.GHH);
-    req.body.title = parseFloat(req.body.title);
+    req.body.sportDuration = parseFloat(req.body.sportDuration);
 
     await Story.create(req.body);
     res.redirect('/mittaustulokset');
@@ -41,36 +42,14 @@ router.get('/', ensureAuth, async (req, res) => {
 
     res.render('stories/index', {
       labels,
-      data
+      data,
+      stories: verensokerit
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
-
-// ... (the rest of the file remains the same)
-
-
-// @desc    Show all stories
-// @route   GET /stories
-// router.get('/', ensureAuth, async (req, res) => {
-//   try {
-//     const stories = await Story.find({ status: 'private' })
-//       .sort({ createdAt: 'desc' })
-//       .lean();
-
-
-//     res.render('stories/index', {
-//       stories,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.render('error/500');
-//   }
-// });
-
-
 
 // @desc    Show single story
 // @route   GET /stories/:id
