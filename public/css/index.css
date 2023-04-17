@@ -171,8 +171,30 @@ form {
 
 form button {
   width: 20%;
+  color: black;
+  background-color: white;
+  font-weight: 100;
+  border: none;
+  width: 100px;
+  height: 30px;
+  padding: 5px; 
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s linear;
   
 }
+
+form button:hover {                 
+    background-color: #3498db;
+    color:white;
+}
+form button:active {                
+    background-color: #3498db;
+    transform: translateY(4px);
+    color: white; 
+}    
 
 #loginform{
   display: flex;
@@ -214,7 +236,7 @@ html {
 }
 
 .labeL{
-  color: #fff;
+  color: black;
 }
 
 @media (max-width: 387px) {

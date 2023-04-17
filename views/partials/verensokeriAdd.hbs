@@ -5,48 +5,51 @@
     <form action="/stories" method="POST" class="col s12">
        
          <div class="input-group">
+            <H5><span style='font-size:40px;'>&#128680;</span>LISÄÄ VERENSOKERIARVO</H5>
+            <label>
          <input type="number" id="mmolPerL" name="mmolPerL" min="0" step="any">
-         <label for="mmolPerL">mmol/l</label>
+         <label for="mmolPerL">mmol/L</label>
+         </label>
         </div>
 
 
         <div class="input-group">
-            <h5>Tuntemus:</h5>
+            <h5>PÄIVÄN FIILIS</h5>
             <label>
                 <input type="radio" name="feeling" value=":(">
-                <span>:( (huono)</span>
+                <span style='font-size:50px;'>&#128542;</span>
             </label>
             <label>
                 <input type="radio" name="feeling" value=":/">
-                <span>:/ (keskinkertainen)</span>
+                <span style='font-size:50px;'>&#128524;</span>
             </label>
             <label>
                 <input type="radio" name="feeling" value=":)">
-                <span>:) (hyvä)</span>
+                <span style='font-size:50px;'>&#128512;</span>
             </label>
         </div>
 
         <div class="input-group">
-            <h5>Päivän ravinto:</h5>
+            <h5> <span style='font-size:40px;'>&#127821;</span>LISÄÄ PÄIVÄN HIILIHYDRAATTI MÄÄRÄT:</h5>
             <label>
                 <input type="number" id="GHH" name="GHH" min="0" step="any">
-                <label for="title">G HH</label>
+                <label for="title">g HH</label>
             </label>
         </div>
 
         <div class="input-group">
-            <h5>Päivän liikuntasuoritus:</h5>
+            <h5> <span style="font-size: 40PX;">&#128692;</span>LISÄÄ PÄIVÄN LIIKUNTASUORITUS:</h5>
             <label>
-                <input type="radio" name="sport" value="Suuri">
-                <span>Suuri</span>
-            </label>
-            <label>
-                <input type="radio" name="sport" value="Keskisuuri">
-                <span>Keskisuuri</span>
-            </label>
-            <label>
-                <input type="radio" name="sport" value=":Pieni">
+                <input type="radio" name="sport" value="Pieni">
                 <span>Pieni</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value="Kohtalainen">
+                <span>Kohtalainen</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value=":Suuri">
+                <span>Suuri</span>
             </label>
             <label>
                  <input type="number" id="sportDuration" name="sportDuration" min="0" step="any">
