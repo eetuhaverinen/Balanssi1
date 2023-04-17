@@ -1,4 +1,4 @@
-
+// importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 // const CACHE_NAME = 'pwa-cache';
 
 // const cacheContent = [
@@ -11,22 +11,59 @@
 
 //   // JavaScript
 //   '/js/chart.js',
-//   '/js/diary.js',
 //   '/js/login.js',
 //   '/js/nav.js',
-//   '/js/signup.js',
 
 // ];
+// self.addEventListener("message", (event) => {
+//   if (event.data && event.data.type === "SKIP_WAITING") {
+//     self.skipWaiting();
+//   }
+// });
 
-//                self.addEventListener("install", (e) => {
-//                 e.waitUntil(
-//                   (async () => {
-//                     const cache = await caches.open(CACHE_NAME);
-//                     console.log("[Service Worker] Caching all: app shell and content");
-//                     await cache.addAll(cacheContent);
-//                   })()
-//                 );
-//               });
+// self.addEventListener('install', async (event) => {
+//   event.waitUntil(
+//     caches.open(CACHE_NAME)
+//       .then((cache) => cache.addAll(cacheContent))
+//   );
+// });
+
+// if (workbox.navigationPreload.isSupported()) {
+//   workbox.navigationPreload.enable();
+// }
+
+// workbox.routing.registerRoute(
+//   new RegExp('/*'),
+//   new workbox.strategies.StaleWhileRevalidate({
+//     cacheName: CACHE_NAME
+//   })
+// );
+
+// self.addEventListener('fetch', (event) => {
+//   if (event.request.mode === 'navigate') {
+//     event.respondWith((async () => {
+//       try {
+//         const preloadResp = await event.preloadResponse;
+
+//         if (preloadResp) {
+//           return preloadResp;
+//         }
+
+//         const networkResp = await fetch(event.request);
+//         return networkResp;
+//       } catch (error) {
+
+//         const cache = await caches.open(CACHE_NAME);
+//         const cachedResp = await cache.match(offlineFallbackPage);
+//         return cachedResp;
+//       }
+//     })());
+//   }
+// });
+
+
+
+
 
 //               self.addEventListener("activate", (e) => {
 //                 e.waitUntil(
