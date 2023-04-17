@@ -1,31 +1,66 @@
-<h3>Edit Story</h3>
+<h3>Muokkaa merkintää</h3>
 <div class="row">
     <form action="/stories/{{story._id}}" method="POST" class="col s12">
         <input type="hidden" name="_method" value="PUT">
-        <div class="row">
-            <div class="input-field">
-                <input type="text" id="title" name="title" value="{{story.title}}">
-                <label for="title">Title</label>
-            </div>
+
+        <div class="input-group">
+            <input type="number" id="mmolPerL" name="mmolPerL" value="{{story.mmolPerL}}" min="0" step="any">
+            <label for="mmolPerL">mmol/l</label>
         </div>
 
-        <div class="row">
-            <div class="input-field">
-                <select id="status" name="status">
-                    {{#select story.status}}
-                    <option value="public" selected>Public</option>
-                    <option value="private">Private</option>
-                    {{/select}}
-                </select>
-                <label for="status">Status</label>
-            </div>
+        <div class="input-group">
+            <h5>Tuntemus:</h5>
+            {{#radioCheck story.feeling}}
+            <label>
+                <input type="radio" name="feeling" value=":(" {{#if @checked}}checked{{/if}}>
+                <span>:( (huono)</span>
+            </label>
+            <label>
+                <input type="radio" name="feeling" value=":/" {{#if @checked}}checked{{/if}}>
+                <span>:/ (keskinkertainen)</span>
+            </label>
+            <label>
+                <input type="radio" name="feeling" value=":)" {{#if @checked}}checked{{/if}}>
+                <span>:) (hyvä)</span>
+            </label>
+            {{/radioCheck}}
         </div>
 
-        <div class="row">
-            <div class="input-field">
-                <h5>Tell Us Your Story:</h5>
-                <textarea id="body" name="body">{{story.body}}</textarea>
-            </div>
+        <div class="input-group">
+            <h5>Päivän ravinto:</h5>
+            <label>
+                <input type="number" id="GHH" name="GHH" value="{{story.GHH}}" min="0" step="any">
+                <label for="title">G HH</label>
+            </label>
+        </div>
+
+        <div class="input-group">
+            <h5>Päivän liikuntasuoritus:</h5>
+            {{#radioCheck story.sport}}
+            <label>
+                <input type="radio" name="sport" value="Suuri" {{#if @checked}}checked{{/if}}>
+                <span>Suuri</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value="Keskisuuri" {{#if @checked}}checked{{/if}}>
+                <span>Keskisuuri</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value="Pieni" {{#if @checked}}checked{{/if}}>
+                <span>Pieni</span>
+            </label>
+            {{/radioCheck}}
+            <label>
+                <input type="number" id="title" name="title" value="{{story.title}}" min="0" step="any">
+                <label for="title">Minuuttia</label>
+            </label>
+        </div>
+
+        <div class="input-group">
+            <h5>Lisää kommentti:</h5>
+            <label>
+                <input type="text" id="body" name="body" value="{{story.body}}">
+            </label>
         </div>
 
         <div class="row">

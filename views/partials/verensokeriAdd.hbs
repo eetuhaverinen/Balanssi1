@@ -1,63 +1,64 @@
+{{!-- views/mittaustulokset.handlebars --}}
+
 <div class="row">
-    <h3>Lisää verensokeri</h3>
+    <h3>Lisää MERKINNÄT</h3>
     <form action="/stories" method="POST" class="col s12">
        
-            <div class="input-group">
-                <input type="number" id="title" name="title" min="0" step="any">
-                <label for="title">mmol/l</label>
-            </div>
-        
+        <div class="input-group">
+            <input type="number" id="title" name="title" min="0" step="any">
+            <label for="title">mmol/l</label>
+        </div>
 
-            <div class="input-group">
-                <h5>Tuntemus:</h5>
-                <label>
-                    <input type="radio" name="feeling" value=":(">
-                    <span>:( (huono)</span>
-                </label>
-                <label>
-                    <input type="radio" name="feeling" value=":/">
-                    <span>:/ (keskinkertainen)</span>
-                </label>
-                <label>
-                    <input type="radio" name="feeling" value=":)">
-                    <span>:) (hyvä)</span>
-                </label>
-            </div>
+        <div class="input-group">
+            <h5>Tuntemus:</h5>
+            <label>
+                <input type="radio" name="feeling" value=":(">
+                <span>:( (huono)</span>
+            </label>
+            <label>
+                <input type="radio" name="feeling" value=":/">
+                <span>:/ (keskinkertainen)</span>
+            </label>
+            <label>
+                <input type="radio" name="feeling" value=":)">
+                <span>:) (hyvä)</span>
+            </label>
+        </div>
 
-            <div class="input-group">
-                <h5>Päivän ravinto:</h5>
-                <label>
-                    <input type="number" id="title" name="title" min="0" step="any">
+        <div class="input-group">
+            <h5>Päivän ravinto:</h5>
+            <label>
+                <input type="number" id="GHH" name="GHH" min="0" step="any">
                 <label for="title">G HH</label>
-            </div>
-            
+            </label>
+        </div>
 
-            <div class="input-group">
-                <h5>Päivän liikuntasuoritus:</h5>
-                <label>
-                    <input type="radio" name="sport" value="Suuri">
-                    <span>Suuri</span>
-                </label>
-                <label>
-                    <input type="radio" name="sport" value="Keskisuuri">
-                    <span>Keskisuuri</span>
-                </label>
-                <label>
-                    <input type="radio" name="sport" value=":Pieni">
-                    <span>Pieni</span>
-                </label>
-                <label>
-                    <input type="number" id="title" name="title" min="0" step="any">
+        <div class="input-group">
+            <h5>Päivän liikuntasuoritus:</h5>
+            <label>
+                <input type="radio" name="sport" value="Suuri">
+                <span>Suuri</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value="Keskisuuri">
+                <span>Keskisuuri</span>
+            </label>
+            <label>
+                <input type="radio" name="sport" value=":Pieni">
+                <span>Pieni</span>
+            </label>
+            <label>
+                <input type="number" id="title" name="title" min="0" step="any">
                 <label for="title">Minuuttia</label>
-            </div>
+            </label>
+        </div>
 
-
-            <div class="input-group">
-                <h5> Lisää kommentti:</h5>
-                <label>
-                <input type="text" id="body" name="body"></input>
-                </label>
-            </div>
+        <div class="input-group">
+            <h5>Lisää kommentti:</h5>
+            <label>
+                <input type="text" id="body" name="body">
+            </label>
+        </div>
 
         <div>
             <input type="submit" value="Save" class="btn">
@@ -66,21 +67,18 @@
     </form>
 </div>
 
-
+{{#if stories}}
 <div class="row">
-<table class="striped">
-    <tbody>
-        {{#each stories}}
-        <tr>
-            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-            {{!-- <td><span class="dash-status">{{status}}</span></td> --}}
-            <td><a href="/stories/{{_id}}">{{title}} mmol/l</a></td>
-            <td>
-                <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa
-                </a>
-
-                <form action="/stories/{{_id}}" method="POST" id="delete-form">
-                    <input type="hidden" name="_method" value="DELETE">
+    <table class="striped">
+        <tbody>
+            {{#each stories}}
+            <tr>
+                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+                <td><a href="/stories/{{_id}}">{{title}} mmol/l</a></td>
+                <td>
+                    <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa</a>
+                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btnDel">Poista
                     </button>
                 </form>
@@ -89,3 +87,7 @@
         {{/each}}
     </tbody>
 </table>
+{{else}}
+<p>Mittaustuloksia ei löydy</p>
+{{/if}}
+</div>

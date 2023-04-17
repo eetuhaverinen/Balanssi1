@@ -9,17 +9,33 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    validate: {
+      validator: validator.isEmail,
+      message: 'Invalid email',
+    },
   },
   password: {
     type: String,
     required: true,
+    validate: {
+      validator: function (value) {
+        return validator.isStrongPassword(value, {
+          minLength: 8,
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+        });
+      },
+      message: 'Password not strong enough',
+    },
   },
   role: {
     type: String,
     enum: ['patient', 'nurse'],
     default: 'patient',
-   },
-  nimi:{
+  },
+  nimi: {
     type: String,
     required: true,
   },
@@ -50,26 +66,28 @@ const userSchema = new Schema({
   },
   BHbA1c: {
     type: Number,
-  }
-
+  },
 });
- 
 
 // static signup method
-userSchema.statics.signup = async function (email, password, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c) {
+userSchema.statics.signup = async function (
+  email,
+  password,
+  nimi,
+  syntymaAika,
+  pituus,
+  paino,
+  sukupuoli,
+  leposyke,
+  maksimisyke,
+  BHbA1c
+) {
   // validation
   if (!email || !password || !nimi || !syntymaAika || !pituus || !paino || !sukupuoli || !leposyke || !maksimisyke || !BHbA1c) {
     throw Error('All fields must be filled');
   }
-  if (!validator.isEmail(email)) {
-    throw Error('Email not valid');
-  }
-  if (!validator.isStrongPassword(password)) {
-    throw Error('Password not strong enough');
-  }
 
   const exists = await this.findOne({ email });
-
   if (exists) {
     throw Error('Email already in use');
   }
@@ -77,7 +95,18 @@ userSchema.statics.signup = async function (email, password, nimi, syntymaAika, 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
-  const user = await this.create({ email, password: hash, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c});
+  const user = await this.create({
+    email,
+    password: hash,
+    nimi,
+    syntymaAika,
+    pituus,
+    paino,
+    sukupuoli,
+    leposyke,
+    maksimisyke,
+    BHbA1c,
+  });
 
   return user;
 };

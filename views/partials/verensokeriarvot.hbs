@@ -1,31 +1,40 @@
 {{#if stories}}
-{{!-- <div class="row">
-    <canvas id="sugarChart"></canvas>
-
-</div> --}}
-
 <div class="row">
-<table class="striped">
-    <tbody>
-        {{#each stories}}
-        <tr>
-            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-            {{!-- <td><span class="dash-status">{{status}}</span></td> --}}
-            <td><a href="/stories/{{_id}}">{{title}} mmol/l</a></td>
-            <td>
-                <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa
-                </a>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Aika</th>
+                <th>mmol/l</th>
+                <th>Tuntemus</th>
+                <th>G HH</th>
+                <th>Liikunta</th>
+                <th>Kommentti</th>
+                <th>Toiminnot</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stories}}
+            <tr>
+                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+                <td>{{mmolPerL}} mmol/l</td>
+                <td>{{feeling}}</td>
+                <td>{{GHH}}</td>
+                <td>{{sport}} {{title}} min</td>
+                <td>{{body}}</td>
+                <td>
+                    <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa
+                    </a>
 
-                <form action="/stories/{{_id}}" method="POST" id="delete-form">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btnDel">Poista
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btnDel">Poista
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 {{else}}
 <p>Mittaustuloksia ei löydy</p>
 {{/if}}
