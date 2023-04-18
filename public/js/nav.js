@@ -62,13 +62,4 @@ for (let i = 0; i < menuLength; i++) {
   }
 }
 
-.dark-mode-btn {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #000000;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 20px;
-  border-radius: 4px;
-}
+

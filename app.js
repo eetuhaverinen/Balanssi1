@@ -55,6 +55,8 @@ app.engine('.hbs', engine(options));
 app.set('view engine', '.hbs');
 app.set('views', './views');
 
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/python', cb);
@@ -72,12 +74,7 @@ app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 
-app.use((req, res, next) => {
-  if (req.url.endsWith('.js')) {
-    res.set('Content-Type', 'text/javascript');
-  }
-  next();
-});
+
 
 mongoose
   .connect(process.env.MONGO_URI)
