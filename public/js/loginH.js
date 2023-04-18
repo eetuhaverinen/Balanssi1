@@ -21,13 +21,14 @@ async function handleLogin(event) {
     });
 
     const data = await response.json();
+    console.log(data)
 
-    if (data.success) {
+    if (data.token) {
       // Redirect the user to the dashboard page if the login was successful
       window.location.assign('/etusivuH');
     } else {
       // Display an error message if the login was unsuccessful
-      errorMessage.textContent = data.message;
+      errorMessage.textContent = data.error;
     }
   } catch (error) {
     console.log(error);

@@ -84,30 +84,27 @@ router.get('/loginHoitaja', ensureGuest, (req, res) => {
 
 // @desc    Login page
 // @route   POST /auth/loginHoitaja
+
 router.post('/loginH', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Show the loading page
-    // showLoading();
-    
-    const user = await User.findOne({ email });
-    if (!user) throw Error('Email not found');
-    
-    const isMatch = await User.login(email, password);
-    // create a token
-    const token = createToken(user._id);
-    res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/etusivuH');
+    // check if the provided username and password match the hardcoded values
+    if (email === 'test@example.com' && password === 'password') {
+      // create a token
+      const token = createToken('testnurseid');
+      res.cookie('cookieToken', token, { httpOnly: true });
+      res.redirect('/etusivuH');
+    } else {
+      throw Error('Invalid credentials');
+    }
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
     );
-  } finally {
-    // Hide the loading page after the request is completed
-    // hideLoading();
   }
 });
+
 
 // @desc    logout user
 // @route   GET /
