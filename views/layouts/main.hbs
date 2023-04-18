@@ -2,56 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
-    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" --}}
-        {{!-- integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" /> --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="manifest" href="\manifest.webmanifest">
-    <script type="text/javascript" src="sw.js"></script>
-    {{#if showLoader}}
-        <link rel="stylesheet" href="/css/loader.css">
-    {{/if}}
-    <title>Balanssi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="manifest" href="\manifest.webmanifest">
+  <script type="text/javascript" src="sw.js"></script>
+
+  {{#if showLoader}}
+  <link rel="stylesheet" href="/css/loader.css">
+  {{/if}}
+
+  <title>Balanssi</title>
 </head>
 
 <body>
-    
-    <div class="container_body">
-        {{>_header}}
-        {{{body}}}
-        {{#if showLoader}}
-            {{> loading}}
-        {{/if}}
-       
+  <div class="container_body">
+    {{>_header}}
+    {{{body}}}
 
-    </div>
+    {{#if showLoader}}
+    {{> loading}}
+    {{/if}}
+  </div>
 
-    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
- 
+  <script>
+    if ("serviceWorker" in navigator) {
+      // register service worker
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/chart.js"></script>
+  <script src="/js/signup.js"></script>
 
-    <script>
-        {{!-- M.Sidenav.init(document.querySelector('.sidenav'))
-        M.FormSelect.init(document.querySelector('#status'))
-        --}}
-    </script>
-    <script>
-       if ("serviceWorker" in navigator) {
-  // register service worker
-  navigator.serviceWorker.register("sw.js");
-}
-    </script>
-     <script src="/js/nav.js"></script>
-     <script src="/js/chart.js"></script>
-     <script src="/js/signup.js"></script>
-     {{#if showLoader}}
-        <script src="/js/loader.js"></script>
-     {{/if}}
+  {{#if showLoader}}
+  <script src="/js/loader.js"></script>
+  {{/if}}
 </body>
 
 </html>

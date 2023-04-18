@@ -10,9 +10,10 @@
   --sat: 63%;
   --first-color: hsl(var(--hue), var(--sat), 40%);
   --first-color-alt: hsl(var(--hue), var(--sat), 36%);
-  --title-color: hsl(var(--hue), 12%, 15%);
-  --text-color: hsl(var(--hue), 8%, 35%);
-  --container-color: #FFF;
+  --title-color: hsl(var(--hue), 12%, 85%);
+  --text-color: hsl(var(--hue), 8%, 70%);
+  --container-color: #1e1e1e;
+  --body-color: #252525;
 
   /*========== Font and typography ==========*/
   --body-font: 'Open Sans', sans-serif;
@@ -24,6 +25,7 @@
   --z-tooltip: 10;
   --z-fixed: 100;
 }
+
 .button_logout {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -39,10 +41,13 @@
     background-color: #008CBA; 
     border-radius: 10px;
 }
+
 .button_logout:hover {
     background-color: #04475d;
     color: white;
   }
+
+
 
 @media screen and (min-width: 968px) {
   :root {
