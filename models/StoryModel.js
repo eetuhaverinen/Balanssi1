@@ -1,18 +1,28 @@
 const mongoose = require('mongoose');
 
 const StorySchema = new mongoose.Schema({
-  title: {
+  mmolPerL: {
+    type: Number,
+    required: true,
+  },
+  feeling: {
     type: String,
     required: true,
-    trim: true,
+  },
+  GHH: {
+    type: Number,
+    required: true,
+  },
+  sport: {
+    type: String,
+    required: true,
+  },
+  sportDuration: {
+    type: Number,
+    required: true,
   },
   body: {
     type: String,
-  },
-  status: {
-    type: String,
-    default: 'private',
-    enum: ['public', 'private'],
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -25,3 +35,4 @@ const StorySchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Story', StorySchema);
+
