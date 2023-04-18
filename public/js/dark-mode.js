@@ -1,45 +1,46 @@
-const darkButton = document.getElementById('dark')
-const lightButton = document.getElementById('light')
-const solarButton = document.getElementById('solar')
-const body = document.body
-const styleSheet = document.getElementById('main-stylesheet')
-const solarStyleSheet = document.getElementById('solarmode-stylesheet')
+const darkButton = document.getElementById('darkButton');
+const lightButton = document.getElementById('lightButton');
+const solarButton = document.getElementById('solarButton');
+const body = document.body;
+const mainStyleSheet = document.getElementById('main-stylesheet');
+const darkModeStyleSheet = document.getElementById('darkmode-stylesheet');
+const solarModeStyleSheet = document.getElementById('solarmode-stylesheet');
 
-const theme = localStorage.getItem('theme');
+// Check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
 
-if (theme === 'dark') {
-  body.classList.add('dark-mode');
-  styleSheet.setAttribute('href', '/css/dark-mode.css');
-} else if (theme === 'solar') {
-  body.classList.add('solar');
-  solarButton.innerText = 'Normalize';
-  styleSheet.setAttribute('href', '/css/solar-mode.css');
-} else {
-  body.classList.add('light-mode');
+if (savedTheme) {
+  if (savedTheme === 'dark') {
+    enableDarkMode();
+  } else if (savedTheme === 'solar') {
+    enableSolarMode();
+  }
 }
 
-darkButton.addEventListener('click', () => {
-  body.classList.replace('light-mode', 'dark-mode');
-  styleSheet.setAttribute('href', '/css/dark-mode.css');
+darkButton.addEventListener('click', enableDarkMode);
+lightButton.addEventListener('click', enableLightMode);
+solarButton.addEventListener('click', enableSolarMode);
+
+function enableDarkMode() {
+  body.classList.replace('light', 'dark');
+  mainStyleSheet.setAttribute('href', '');
+  darkModeStyleSheet.setAttribute('href', '/css/dark-mode.css?v=123456');
+  solarModeStyleSheet.setAttribute('href', '');
   localStorage.setItem('theme', 'dark');
-})
+}
 
-lightButton.addEventListener('click', () => {
-  body.classList.replace('dark-mode', 'light-mode');
-  styleSheet.setAttribute('href', '/css/index.css');
+function enableLightMode() {
+  body.classList.replace('dark', 'light');
+  mainStyleSheet.setAttribute('href', '/css/index.css');
+  darkModeStyleSheet.setAttribute('href', '');
+  solarModeStyleSheet.setAttribute('href', '');
   localStorage.setItem('theme', 'light');
-})
+}
 
-solarButton.addEventListener('click', () => {
-  if (body.classList.contains('solar')) {
-    body.classList.remove('solar');
-    solarButton.innerText = 'Solarize';
-    styleSheet.setAttribute('href', '/css/index.css');
-    localStorage.setItem('theme', 'light');
-  } else {
-    body.classList.add('solar');
-    solarButton.innerText = 'Normalize';
-    styleSheet.setAttribute('href', '/css/solar-mode.css');
-    localStorage.setItem('theme', 'solar');
-  }
-})
+function enableSolarMode() {
+  body.classList.replace('light', 'solar');
+  mainStyleSheet.setAttribute('href', '');
+  darkModeStyleSheet.setAttribute('href', '');
+  solarModeStyleSheet.setAttribute('href', '/css/solar-mode.css');
+  localStorage.setItem('theme', 'solar');
+}
