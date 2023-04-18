@@ -1,6 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
+const spawn = require('child_process').spawn; //Samin koodin pätkä 18.4.
+
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { engine } = require('express-handlebars');
@@ -62,6 +65,16 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
+
+app.get('/python', cb);
+function cb(req, res) {
+  const process = spawn('python', ['./scripts/python_test.py']);
+
+  process.stdout.on('data', function (data) {
+    res.send(data.toString());
+    // res.send(data.toJSON());
+  });
+} //Samin koodin pätkä 18.4.2023
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/stories', require('./routes/stories'));
