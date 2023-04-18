@@ -1,100 +1,77 @@
 {{#if stories}}
 <div class="row">
-    {{#each stories}}
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Aika</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>mmol/l</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{mmolPerL}} </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Tuntemus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{feeling}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>G HH</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{GHH}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Liikunta</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{sport}} {{sportDuration}} min</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Kommentti</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{body}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Toiminnot</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa</a>
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Aika</th>
+                        <th>mmol/l</th>
+                        <th>Tuntemus</th>
+                        <th>G HH</th>
+                        <th>Liikunta</th>
+                        <th>Kommentti</th>
+                        <th>Toiminnot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each stories}}
+                    <tr>
+                        <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+                        <td>{{mmolPerL}} </td>
+                        <td>{{feeling}}</td>
+                        <td>{{GHH}}</td>
+                        <td>{{sport}} {{sportDuration}} min</td>
+                        <td>{{body}}</td>
+                        <td>
+                            <a href="/stories/edit/{{_id}}" class="btn btn-primary btn-sm btn-edit" data-story-id="{{_id}}">muokkaa</a>
 
-                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btnDel">Poista</button>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{/each}}
+                            <button type="button" class="btn btn-danger btn-sm btnDel" data-story-id="{{_id}}">Poista</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {{else}}
 <p>Mittaustuloksia ei löydy</p>
 {{/if}}
 
+<script>
+    // Add event listeners to edit and delete buttons
+    const editButtons = document.querySelectorAll('.btn-edit');
+    const deleteButtons = document.querySelectorAll('.btnDel');
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const storyId = button.dataset.storyId;
+            window.location.href = `/stories/edit/${storyId}`;
+        });
+    });
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const storyId = button.dataset.storyId;
+            if (confirm('Haluatko varmasti poistaa tämän mittauksen?')) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/stories/${storyId}`;
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '_csrf';
+                csrfInput.value = csrfToken;
+                form.appendChild(csrfInput);
+                const methodInput = document.createElement('input');
+                methodInput.type = 'hidden';
+                methodInput.name = '_method';
+                methodInput.value = 'DELETE';
+                form.appendChild(methodInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    });
+</script>
