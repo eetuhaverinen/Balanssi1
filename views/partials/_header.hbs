@@ -1,83 +1,81 @@
 
   <head>
     <title>Balanssi</title>
-    <link
-      rel="stylesheet"
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
+    <link id="darkmode-stylesheet" rel="stylesheet" href="/css/dark-mode.css?v=123456">
+</head>
 
-    />
-   <link rel="stylesheet" href="/css/nav.css">
-<link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
-<link id="darkmode-stylesheet" rel="stylesheet" href="/css/dark-mode.css?v=123456">
-
-     
-  </head>
-  <body class="dark-mode">
+  <body>
 
     <header class="header" id="header">
-      <nav class="nav container">
-        <a href="/" class="nav__logo">Balanssi</a>
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item home">
-              <a href="/" class="nav__link">
-                <i class='bx bx-home-alt nav__icon'></i>
-                <span class="nav__name">Etusivu</span>
-              </a>
+  <nav class="nav container">
+  <a href="/" class="nav__logo">Balanssi</a>
+  <div class="nav__menu" id="nav-menu">
+    <ul class="nav__list">
+      <li class="nav__item home">
+        <a href="/" class="nav__link">
+          <i class='bx bx-home-alt nav__icon'></i>
+          <span class="nav__name">Etusivu</span>
+        </a>
+      </li>
+      <li class="nav__item stories">
+        <a href="/stories/add" class="nav__link">
+          <i class='bx bx-briefcase-alt nav__icon'></i>
+          <span class="nav__name">Päiväkirja</span>
+        </a>
+      </li>
+      <li class="nav__item results">
+        <a href="/mittaustulokset" class="nav__link">
+          <i class='bx bx-book-alt nav__icon'></i>
+          <span class="nav__name">Mittaustulokset</span>
+        </a>
+      </li>
+      <li class="nav__item messages">
+        <a href="/viestit" class="nav__link">
+          <i class='bx bx-message-square-detail nav__icon'></i>
+          <span class="nav__name">Viestit</span>
+        </a>
+      </li>
+      <li class="nav__item profile">
+        <a href="/profiili" class="nav__link">
+          <i class='bx bx-user nav__icon'></i>
+          <span class="nav__name">Profiili</span>
+        </a>
+      </li>
+      <li class="nav__item">
+        <a href="/faq" class="nav__link">
+          <span class="question-icon">?</span>
+          <span class="nav__name">FAQ</span>
+        </a>
+      </li>
+      <li class="nav__item has-dropdown">
+        <a href="#">Theme</a>
+        <ul class="dropdown">
+          <li class="dropdown-item">
+            <a id="light" href="#">light</a>
+          </li>
+          <li class="dropdown-item">
+            <a id="dark" href="#">dark</a>
+          </li>
+            <li class="dropdown-item">
+              <a id="solar" href="#">solarize</a>
             </li>
-            <li class="nav__item stories">
-              <a href="/stories/add" class="nav__link">
-                <i class='bx bx-briefcase-alt nav__icon'></i>
-                <span class="nav__name">Päiväkirja</span>
-              </a>
-            </li>
-            <li class="nav__item results">
-              <a href="/mittaustulokset" class="nav__link">
-                <i class='bx bx-book-alt nav__icon'></i>
-                <span class="nav__name">Mittaustulokset</span>
-              </a>
-            </li>
-            <li class="nav__item messages">
-              <a href="/viestit" class="nav__link">
-                <i class='bx bx-message-square-detail nav__icon'></i>
-                <span class="nav__name">Viestit</span>
-              </a>
-            </li>
-            <li class="nav__item profile">
-              <a href="/profiili" class="nav__link">
-                <i class='bx bx-user nav__icon'></i>
-                <span class="nav__name">Profiili</span>
-              </a>
-            </li>
-            <li class="nav__item">
-                        <a href="/faq" class="nav__link">
-                    <span class="question-icon">?</span>
-                 <span class="nav__name">FAQ</span>
-                </a>
-                    </li>
-
-                     
-
-
           </ul>
-        </div>
-        <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
-         <!-- Light/Dark Toggle -->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="toggleDarkMode">
-                        </div>
-                        <!-- /Light Dark Toggle -->
+        </li>
+      </ul>
+    </div>
+    <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
+  </nav>
+</header>
 
-
-      </nav>
-    </header>
 
   
 
-    <script
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5en5YPeu4lr0K/7W3sJzjw+UVij/iKrL8XudKc" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5en5YPeu4lr0K/7W3sJzjw+UVij/iKrL8XudKc" crossorigin="anonymous"></script>
       
-    ></script>
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.js"
     ></script>

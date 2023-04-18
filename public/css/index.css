@@ -96,8 +96,7 @@ header a img {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: linear-gradient(#141e30, #243b55);
-  background-image: linear-gradient(45deg, #328f8a, #08ac4b);
+  background: linear-gradient(45deg, #328f8a, #08ac4b);
   width: 100%;
   border: 0;
   padding: 15px;
@@ -115,7 +114,7 @@ header a img {
 }
 
 .form .message a {
-  color: #4.CAF50;
+  color: #4CAF50;
   text-decoration: none;
   }
   
@@ -301,3 +300,45 @@ header a img {
   width: 50%;
   margin: 0;
   }
+
+  .light {
+    --bg: var(--gray0);
+    --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
+    --bg-dropdown: var(--gray0);
+    --text: var(--gray6);
+    --border-color: var(--blue);
+    --bg-solar: var(--yellow);
+}
+  
+
+.dark {
+    --bg: var(--gray5);
+    --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
+    --bg-dropdown: var(--gray6);
+    --text: var(--gray0);
+    --border-color: var(--purple);
+    --bg-solar: var(--blue);
+}
+
+.solar {
+    --gray0: #fbffd4;
+    --gray1: #f7f8d0;
+    --gray2: #b6f880;
+    --gray3: #5ec72d;
+    --gray4: #3ea565;
+    --gray5: #005368;
+    --gray6: #003d4c;
+}
+
+
+#dark::before {
+    background: #2a2e35;
+}
+
+#light::before {
+    background: #ffffff;
+}
+
+#solar::before {
+    background: var(--bg-solar);
+}

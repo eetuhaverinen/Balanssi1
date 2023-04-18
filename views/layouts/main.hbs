@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="/css/nav.css">
-    <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
+  <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
   <link id="darkmode-stylesheet" rel="stylesheet" href="/css/dark-mode.css?v=123456">
+  <link id="solarmode-stylesheet" rel="stylesheet" href="/public/css/solar-mode.css">
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
@@ -19,14 +20,10 @@
   <title>Balanssi</title>
 </head>
 
-
-    
-
+<body>
   <div class="container_body">
     {{>_header}}
     {{{body}}}
-
-    
   </div>
 
   <script>
@@ -35,11 +32,10 @@
       navigator.serviceWorker.register("sw.js");
     }
   </script>
- <script src="/js/nav.js"></script>
-<script src="/js/chart.js"></script>
-<script src="/js/signup.js"></script>
-<script src="/js/dark-mode.js"></script>
-
+  <script src="/js/nav.js"></script>
+  <script src="/js/chart.js"></script>
+  <script src="/js/signup.js"></script>
+  <script src="/js/dark-mode.js"></script>
 </body>
 
 </html>
