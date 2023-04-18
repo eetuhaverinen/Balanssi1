@@ -85,25 +85,35 @@ router.get('/loginHoitaja', ensureGuest, (req, res) => {
 // @desc    Login page
 // @route   POST /auth/loginHoitaja
 
+// @desc    Login page
+// @route   POST /auth/loginHoitaja
+
 router.post('/loginH', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // check if the provided username and password match the hardcoded values
-    if (email === 'test@example.com' && password === 'password') {
-      // create a token
-      const token = createToken('testnurseid');
-      res.cookie('cookieToken', token, { httpOnly: true });
-      res.redirect('/etusivuH');
-    } else {
+    const user = await User.findOne({ email });
+
+    if (!user) {
       throw Error('Invalid credentials');
     }
+
+    const isMatch = await bcryptjs.compare(password, user.password);
+
+    if (!isMatch) {
+      throw Error('Invalid credentials');
+    }
+
+    const token = createToken(user._id);
+    res.cookie('cookieToken', token, { httpOnly: true });
+    res.redirect('/etusivuH');
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
     );
   }
 });
+
 
 
 // @desc    logout user
