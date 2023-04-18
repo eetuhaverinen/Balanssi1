@@ -1,43 +1,100 @@
 {{#if stories}}
 <div class="row">
+    {{#each stories}}
     <table class="striped">
         <thead>
             <tr>
                 <th>Aika</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>mmol/l</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{mmolPerL}} </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>Tuntemus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{feeling}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>G HH</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{GHH}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>Liikunta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{sport}} {{sportDuration}} min</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>Kommentti</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{body}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped">
+        <thead>
+            <tr>
                 <th>Toiminnot</th>
             </tr>
         </thead>
         <tbody>
-            {{#each stories}}
             <tr>
-                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
-                <td>{{mmolPerL}} </td>
-                <td>{{feeling}}</td>
-                <td>{{GHH}}</td>
-                <td>{{sport}} {{sportDuration}} min</td>
-                <td>{{body}}</td>
                 <td>
-                    <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa
-                    </a>
+                    <a href="/stories/edit/{{_id}}" class="btn btn-float">muokkaa</a>
 
                     <form action="/stories/{{_id}}" method="POST" id="delete-form">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btnDel">Poista
-                        </button>
+                        <button type="submit" class="btnDel">Poista</button>
                     </form>
                 </td>
             </tr>
-            {{/each}}
         </tbody>
     </table>
+    {{/each}}
+</div>
 {{else}}
 <p>Mittaustuloksia ei löydy</p>
 {{/if}}
-</div>
-
 

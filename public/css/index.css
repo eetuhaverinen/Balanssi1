@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-
 header .header {
   display: flex;
   justify-content: center;
@@ -29,7 +28,7 @@ header a img {
 .form {
   position: relative;
   z-index: 1;
-  background: #fff;
+  background: #f6f6f6;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -38,10 +37,9 @@ header a img {
     0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-#profileForm{
+#profileForm {
   align-content: center;
   flex-wrap: wrap;
-
 }
 
 /* input field container */
@@ -63,9 +61,7 @@ header a img {
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
-  }
-  
-
+}
 
 .loader {
   border: 4px solid #f3f3f3; /* Grey */
@@ -78,14 +74,18 @@ header a img {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: #fff;
   width: 100%;
   border: 0;
   margin: 15px;
