@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="/css/nav.css">
-  <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/dark-mode.css">
+    <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
+  
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
@@ -19,8 +19,9 @@
   <title>Balanssi</title>
 </head>
 
-<body>
-    <button id="dark-mode-switch">Toggle Dark Mode</button>
+<body class="dark-mode">
+    
+
   <div class="container_body">
     {{>_header}}
     {{{body}}}
@@ -39,7 +40,7 @@
   <script src="/js/nav.js"></script>
   <script src="/js/chart.js"></script>
   <script src="/js/signup.js"></script>
-<script src="/js/dark-mode.js"></script>
+<script src="/public/js/dark-mode.js"></script>
 
 
   {{#if showLoader}}
