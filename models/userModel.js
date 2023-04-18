@@ -83,7 +83,7 @@ userSchema.statics.signup = async function (
   BHbA1c
 ) {
   // validation
-  if (!email || !password || !nimi || !syntymaAika || !pituus || !paino || !sukupuoli || !leposyke || !maksimisyke || !BHbA1c) {
+  if (!email || !password || !nimi || !syntymaAika || !pituus || !paino || !sukupuoli || !leposyke || !maksimisyke) {
     throw Error('All fields must be filled');
   }
 

@@ -91,7 +91,10 @@ router.post('/loginH', async (req, res) => {
     // Show the loading page
     // showLoading();
     
-    const user = await User.login(email, password);
+    const user = await User.findOne({ email });
+    if (!user) throw Error('Email not found');
+    
+    const isMatch = await User.login(email, password);
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });

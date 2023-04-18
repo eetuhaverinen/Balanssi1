@@ -17,7 +17,6 @@ mongoose.set('strictQuery', true);
 const app = express();
 
 // middleware
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -63,12 +62,12 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
+
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
@@ -82,29 +81,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-
-
-  // if ('serviceWorker' in navigator) {
-  //   window.addEventListener('load', () => {
-  //     navigator.serviceWorker.register('/sw.js')
-  //       .then(registration => {
-  //         console.log('Service worker registered successfully:', registration);
-  //       })
-  //       .catch(error => {
-  //         console.log('Service worker registration failed:', error);
-  //       });
-  //   });
-  // };
-
-  // if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
-  //   window.addEventListener('load', () => {
-  //     navigator.serviceWorker.register('/sw.js')
-  //       .then(registration => {
-  //         console.log('Service worker registered successfully:', registration);
-  //       })
-  //       .catch(error => {
-  //         console.log('Service worker registration failed:', error);
-  //       });
-  //   });
-  // };

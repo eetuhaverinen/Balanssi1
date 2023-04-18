@@ -110,3 +110,27 @@
     border
     
   }
+
+  /* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+th,
+td {
+  padding: 0.5em;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
