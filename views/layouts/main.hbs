@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="/css/nav.css">
     <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
-  
+  <link id="darkmode-stylesheet" rel="stylesheet" href="/css/dark-mode.css?v=123456">
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
@@ -19,16 +19,14 @@
   <title>Balanssi</title>
 </head>
 
-<body class="dark-mode">
+
     
 
   <div class="container_body">
     {{>_header}}
     {{{body}}}
 
-    {{#if showLoader}}
-    {{> loading}}
-    {{/if}}
+    
   </div>
 
   <script>
@@ -40,12 +38,12 @@
   <script src="/js/nav.js"></script>
   <script src="/js/chart.js"></script>
   <script src="/js/signup.js"></script>
-<script src="/public/js/dark-mode.js"></script>
 
 
-  {{#if showLoader}}
-  <script src="/js/loader.js"></script>
-  {{/if}}
+
+ 
+  <script src="/js/dark-mode.js"></script>
+
 </body>
 
 </html>

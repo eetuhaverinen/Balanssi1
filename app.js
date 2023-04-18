@@ -1,9 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const spawn = require('child_process').spawn; //Samin koodin pätkä 18.4.
-
-
+const spawn = require('child_process').spawn;
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { engine } = require('express-handlebars');
@@ -16,10 +14,9 @@ const workoutRoutes = require('./routes/api/workouts');
 const userRoutes = require('./routes/user');
 
 mongoose.set('strictQuery', true);
-// express app
+
 const app = express();
 
-// middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -32,11 +29,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Method override
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
       let method = req.body._method;
       delete req.body._method;
       return method;
@@ -44,7 +39,6 @@ app.use(
   })
 );
 
-// Logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
@@ -61,10 +55,7 @@ app.engine('.hbs', engine(options));
 app.set('view engine', '.hbs');
 app.set('views', './views');
 
-// Static folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-// routes
 
 app.get('/python', cb);
 function cb(req, res) {
@@ -72,21 +63,27 @@ function cb(req, res) {
 
   process.stdout.on('data', function (data) {
     res.send(data.toString());
-    // res.send(data.toJSON());
   });
-} //Samin koodin pätkä 18.4.2023
+}
+
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 
-// connect to db
+app.use((req, res, next) => {
+  if (req.url.endsWith('.js')) {
+    res.set('Content-Type', 'text/javascript');
+  }
+  next();
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('connected to database');
-    // listen to port
+
     app.listen(process.env.PORT, () => {
       console.log('listening for requests on port', process.env.PORT || 3000);
     });
@@ -94,5 +91,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-

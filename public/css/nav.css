@@ -321,3 +321,52 @@ nav.container {
   line-height: 15px;
   cursor: pointer;
 }
+
+.nav__toggle {
+  margin-left: auto;
+}
+
+.nav__toggle-label {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 34px;
+}
+
+.nav__toggle-input {
+  display: none;
+}
+
+.nav__toggle-text {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #888;
+}
+
+.nav__toggle-input:checked + .nav__toggle-label:before {
+  transform: translateX(26px);
+}
+
+.nav__toggle-label:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #ddd;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav__toggle-input:checked + .nav__toggle-label:before {
+  background-color: #333;
+}
+
+.nav__toggle-label:active:before {
+  transform: scale(0.98);
+}

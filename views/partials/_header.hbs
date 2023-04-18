@@ -5,10 +5,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.css"
     />
-    <link rel="stylesheet" href="style.css">
+   
      <link rel="stylesheet" href="/css/nav.css">
   <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
-  
+  <link id="darkmode-stylesheet" rel=stylesheet href="/css/dark-mode.css">
   </head>
   <body class="dark-mode">
 
@@ -60,7 +60,11 @@
           </ul>
         </div>
         <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
-        <button id="dark-mode-toggle">Tumma tila</button>
+         <!-- Light/Dark Toggle -->
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="toggleDarkMode">
+                        </div>
+                        <!-- /Light Dark Toggle -->
 
 
       </nav>
