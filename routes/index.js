@@ -110,6 +110,19 @@ router.post('/profiili', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc    FAQ
+// @route   GET /faq
+// GET FAQ page
+router.get('/faq', (req, res) => {
+  try {
+    res.render('partials/faq');
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+
 // router.get('/main', ensureAuth, async (req, res) => {
 //   try {
 //     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
