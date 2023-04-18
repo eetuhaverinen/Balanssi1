@@ -302,3 +302,16 @@ nav.container {
   color: rgba(0, 0, 255, 0.5); /* transparent blue */
   box-shadow: 0 0 10px rgba(0, 0, 255, 1); /* blue glow */
 }
+
+.question-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  line-height: 15px;
+  cursor: pointer;
+}
