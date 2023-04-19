@@ -123,12 +123,13 @@ header a img {
   margin: 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 40%;
   background-color: azure;
   justify-content: flex-start;
   align-items: center;
   height: 110%;
   padding-top: 5%;
+  padding-bottom: 20%;
   }
   
   .containerE{
@@ -263,7 +264,7 @@ header a img {
   justify-content: flex-start;
   align-items: stretch;
   margin: 1em 1em;
-  width: 40%;
+  width: 100%;
   background-color: rgb(224, 236, 244);
   border: 1px solid black;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -341,4 +342,39 @@ header a img {
 
 #solar::before {
     background: var(--bg-solar);
+}
+
+.table-responsive {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .table-responsive .table thead,
+  .table-responsive .table tfoot {
+      display: none;
+  }
+
+  .table-responsive .table tr,
+  .table-responsive .table td {
+      display: block;
+      width: 100%;
+  }
+
+  .table-responsive .table td {
+      border-top: none;
+      padding: 8px;
+      text-align: right;
+  }
+
+  .table-responsive .table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+  .container_body{
+    width: 97%;
+  }
 }

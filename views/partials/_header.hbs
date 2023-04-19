@@ -21,12 +21,12 @@
           <span class="nav__name">Etusivu</span>
         </a>
       </li>
-      <li class="nav__item stories">
+      {{!-- <li class="nav__item stories">
         <a href="/stories/add" class="nav__link">
           <i class='bx bx-briefcase-alt nav__icon'></i>
           <span class="nav__name">Päiväkirja</span>
         </a>
-      </li>
+      </li> --}}
       <li class="nav__item results">
         <a href="/mittaustulokset" class="nav__link">
           <i class='bx bx-book-alt nav__icon'></i>
@@ -51,7 +51,9 @@
           <span class="nav__name">FAQ</span>
         </a>
       </li>
-      <li class="nav__item has-dropdown">
+      </ul>
+    </div>
+  <div class="nav__item has-dropdown">
         <a href="#">Theme</a>
         <ul class="dropdown">
           <li class="dropdown-item">
@@ -64,9 +66,7 @@
               <a id="solarButton" href="#">solarize</a>
             </li>
           </ul>
-        </li>
-      </ul>
-    </div>
+        </div>
     <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
   </nav>
 </header>

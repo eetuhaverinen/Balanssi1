@@ -43,14 +43,12 @@
     // Add event listeners to edit and delete buttons
     const editButtons = document.querySelectorAll('.btn-edit');
     const deleteButtons = document.querySelectorAll('.btnDel');
-
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const storyId = button.dataset.storyId;
             window.location.href = `/stories/edit/${storyId}`;
         });
     });
-
     deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const storyId = button.dataset.storyId;
