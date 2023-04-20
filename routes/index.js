@@ -124,8 +124,6 @@ router.get('/faq', (req, res) => {
 
 // @desc    Hoitaja dashboard
 // @route   GET /etusivuH
-// @desc    Hoitaja dashboard
-// @route   GET /etusivuH
 router.get('/etusivuH', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
@@ -133,7 +131,7 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
     // const hoitajaData = await SomeModel.find({ user: decoded._id }).lean();
 
     res.render('etusivuH', {
-      layout: 'homeH',
+      layout: 'mainH',
       // hoitajaData,
     });
   } catch (err) {
@@ -141,6 +139,7 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+
 
 // router.get('/main', ensureAuth, async (req, res) => {
 //   try {

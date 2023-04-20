@@ -2,14 +2,24 @@
 <h2>Tervetuloa Hoitaja</h2>
 
 <div class="containerE">
-{{>verensokeriAdd}}
 
-<div class="row">
-<form class="col 12">HRV Graafi</form>
-</div>
 
 <div class="row">
 <form class="col 12">Potilaan merkinnät</form>
 </div>
 
 </div>
+<style>
+
+
+  /* stack elements vertically on screens smaller than 768px */
+  @media (max-width: 768px) {
+    .containerE {
+      flex-direction: column;
+    }
+    
+    .row {
+      flex-direction: column;
+    }
+  }
+</style>

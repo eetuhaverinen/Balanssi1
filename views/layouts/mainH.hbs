@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/nav.css?v=1.11">
+  <link id="stylesheet" rel="stylesheet" href="/css/index.css?v=1.11">
+
+  <link rel="manifest" href="\manifest.webmanifest">
+  <script type="text/javascript" src="sw.js"></script>
+
+  {{#if showLoader}}
+  <link rel="stylesheet" href="/css/loader.css">
+  {{/if}}
+
+  <title>Balanssi</title>
+</head>
+
+<body id="theme">
+  <div class="container_body">
+    {{>headerH}}
+
+    {{{body}}}
+  </div>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      // register service worker
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/chart.js"></script>
+  <script src="/js/signup.js"></script>
+  <script src="/js/dark-mode.js"></script>
+</body>
+
+</html>
