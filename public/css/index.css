@@ -655,13 +655,21 @@ h3 {
   margin: 5 10%;
 }
 
-.msg {  
-  display: flex;
-  flex-wrap: nowrap; 
-  margin-right: 15px;
-  margin-left: 15px;
-  width: 76%; 
-  overflow-x: auto; /
-  align-items: center;
-  justify-content: center;
+.msg {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.messages-box {
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  overflow-y: auto;
 }
