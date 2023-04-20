@@ -225,8 +225,8 @@ header a img {
 }
 
 .container {
-  width: 100%; /* Add this line */
-  max-width: 968px;
+  max-width: 100%;
+  overflow-x: auto;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -316,11 +316,19 @@ header a img {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
+.table-container {
+  overflow-x: auto;
+}
 
-.row {  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+.row {  
+  display: flex;
+  flex-wrap: nowrap; 
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 100%; 
+  overflow-x: auto; /
+  align-items: center;
+  justify-content: center;
 }
 .dark .row {
   display: flex;
@@ -530,36 +538,68 @@ h3 {
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (th: 576px) {
   .container {
     max-width: 100%;
     padding-left: 15px;
     padding-right: 15px;
   }
+  .login-page {
+    width: 100%;
+    padding: 5% 0 0;
+  }
+  .element {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  body {
+    padding-bottom: 60px;
+  }
+  .row {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
 }
 
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -10px;
+  margin: 0 -20px;
+  width: 100%; 
+  justify-content: space-between;
+  align-items: center;
 }
-
-/* ... other styles ... */
 
 .element {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1 0 calc(50% - 20px); /* Add this line */
-  padding: 0 10px;
+  align-items: center;
+  flex: 1; /* changed */
+  padding: 0 20px;
   box-sizing: border-box;
+  max-width: 400px;
 }
+
+
 
 
 .element-heading {
   align-items: center;
+  width: 100%;
 }
+
 
 .welcome-heading {
   font-size: 24px;
@@ -578,3 +618,35 @@ h3 {
     padding: 10px;
   }
 }
+
+
+.verensokeriAdd, .chart {
+  width: 80%;
+  box-sizing: border-box;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.custom-col {
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.containerE {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 5 10%;
+}
+
+.msg {  
+  display: flex;
+  flex-wrap: nowrap; 
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 76%; 
+  overflow-x: auto; /
+  align-items: center;
+  justify-content: center;

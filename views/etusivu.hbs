@@ -1,10 +1,13 @@
-<div class="wrapper">
-  <div class="element element-heading">
-    <h2 class="welcome-heading">Tervetuloa Balanssiin {{user.nimi}}</h2>
-    {{>verensokeriAdd}}
-  </div>
-  <div class="element">
-    {{>chart}}
-    {{!-- {{>verensokeriarvot}} --}}
-  </div>
+<h2>Tervetuloa Balanssiin {{user.nimi}}</h2>
+
+<div class="containerE">
+{{>verensokeriAdd}}
+
+<div class="row">
+
+{{>chart}}
+</div>
+
+
+
 </div>
