@@ -559,7 +559,20 @@ h3 {
     max-width: 100%;
     overflow-x: auto;
   }
+  .containerE {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .containerE {
+      flex-direction: column;
+    }
+  }
 }
+
 
 
 
@@ -636,6 +649,7 @@ h3 {
 
 .containerE {
   display: flex;
+  flex-direction: row;
   width: 100%;
   align-items: center;
   margin: 5 10%;
@@ -650,3 +664,4 @@ h3 {
   overflow-x: auto; /
   align-items: center;
   justify-content: center;
+}
