@@ -25,14 +25,14 @@
   --z-tooltip: 10;
   --z-fixed: 100;
 }
-.button_logout a {
+.button_logout {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
   padding: 7px 10px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+
   font-size: 16px;
   margin: 4px 2px;
   transition-duration: 0.4s;
@@ -40,13 +40,12 @@
   background-color: #008CBA; 
   border-radius: 10px;
   margin-right: 1rem;
+  
 }
-
-.button_logout a:hover {
+.button_logout:hover {
   background-color: #04475d;
   color: white;
 }
-
 
 @media screen and (min-width: 968px) {
   :root {
@@ -191,8 +190,11 @@ img {
 
 
 .nav__list {
+  display: flex;
   justify-content: space-around;
 }
+
+
 
 .nav__name {
   font-size: var(--tiny-font-size);
@@ -252,8 +254,10 @@ img {
 
   @media screen and (min-width: 767px) {
    
-    .button_logout {
+    .nav__item.button_logout {
       margin-left: auto;
+      display: flex;
+    align-items: center;
     }
   
   
