@@ -132,6 +132,11 @@ img {
   width: 100%;
 }
 
+.has-dropdown {
+  display: flex;
+  align-items: center;
+}
+
 
 .nav__img {
   width: 32px;
@@ -244,7 +249,14 @@ img {
   }
 }
 
-@media screen and (min-width: 767px) {
+
+  @media screen and (min-width: 767px) {
+   
+    .button_logout {
+      margin-left: auto;
+    }
+  
+  
   body {
     margin: 0;
   }
