@@ -235,7 +235,7 @@ header a img {
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent;
-  border-collapse: collapse;
+  
 }
 
 .table th, .table td {
@@ -464,5 +464,46 @@ h3 {
     max-width: 100%;
     padding-left: 15px;
     padding-right: 15px;
+  }
+}
+
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+/* ... other styles ... */
+
+.element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 calc(50% - 20px); /* Add this line */
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+
+.element-heading {
+  align-items: center;
+}
+
+.welcome-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  
+  .element {
+    padding: 10px;
   }
 }
