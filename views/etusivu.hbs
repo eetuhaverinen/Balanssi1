@@ -1,6 +1,6 @@
 <div class="wrapper">
-  <div class="element">
-    <h2>Tervetuloa Balanssiin {{user.nimi}}</h2>
+  <div class="element element-heading">
+    <h2 class="welcome-heading">Tervetuloa Balanssiin {{user.nimi}}</h2>
     {{>verensokeriAdd}}
   </div>
   <div class="element">
@@ -8,15 +8,3 @@
     {{!-- {{>verensokeriarvot}} --}}
   </div>
 </div>
-
-<style>
-  .wrapper {
-    display: flex;
-  }
-
-  .element {
-    display: inline-block;
-    width: 50%;
-    padding: 0 10px;
-  }
-</style>

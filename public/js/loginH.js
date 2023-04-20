@@ -8,8 +8,8 @@ async function handleLogin(event) {
   showLoading();
 
   // Get the values of the email and password inputs and send them to the server
-  const email = 'test@example.com';
-  const password = 'password';
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
   try {
     const response = await fetch('/auth/loginH', {

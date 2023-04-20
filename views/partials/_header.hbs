@@ -1,83 +1,75 @@
-
-  <head>
-    <title>Balanssi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link id="stylesheet" rel="stylesheet" href="/css/index.css">
+<head>
+  <title>Balanssi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link id="stylesheet" rel="stylesheet" href="/css/index.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 
-  <body>
+<body>
 
-    <header class="header" id="header">
-  <nav class="nav container">
-  <a href="/" class="nav__logo">Balanssi</a>
-  <div class="nav__menu" id="nav-menu">
-    <ul class="nav__list">
-      <li class="nav__item home">
-        <a href="/" class="nav__link">
-          <i class='bx bx-home-alt nav__icon'></i>
-          <span class="nav__name">Etusivu</span>
+  <header class="header" id="header">
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <iconify-icon icon="mdi:home-outline"></iconify-icon>
         </a>
-      </li>
-      {{!-- <li class="nav__item stories">
-        <a href="/stories/add" class="nav__link">
-          <i class='bx bx-briefcase-alt nav__icon'></i>
-          <span class="nav__name">Päiväkirja</span>
-        </a>
-      </li> --}}
-      <li class="nav__item results">
-        <a href="/mittaustulokset" class="nav__link">
-          <i class='bx bx-book-alt nav__icon'></i>
-          <span class="nav__name">Mittaustulokset</span>
-        </a>
-      </li>
-      <li class="nav__item messages">
-        <a href="/viestit" class="nav__link">
-          <i class='bx bx-message-square-detail nav__icon'></i>
-          <span class="nav__name">Viestit</span>
-        </a>
-      </li>
-      <li class="nav__item profile">
-        <a href="/profiili" class="nav__link">
-          <i class='bx bx-user nav__icon'></i>
-          <span class="nav__name">Profiili</span>
-        </a>
-      </li>
-      <li class="nav__item">
-        <a href="/faq" class="nav__link">
-          <span class="question-icon">?</span>
-          <span class="nav__name">FAQ</span>
-        </a>
-      </li>
-      </ul>
-    </div>
-  <div class="nav__item has-dropdown">
-        <a href="#">Theme</a>
-        <ul class="dropdown">
-          <li class="dropdown-item">
-            <a id="lightButton" href="#">light</a>
-          </li>
-          <li class="dropdown-item">
-            <a id="darkButton" href="#">dark</a>
-          </li>
-            <li class="dropdown-item">
-              <a id="solarButton" href="#">solarize</a>
+        <button class="navbar-toggler" type="button">
+          <iconify-icon icon="tabler:menu-2"></iconify-icon>
+        </button>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <iconify-icon icon="mdi:home-outline"></iconify-icon> Etusivu
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mittaustulokset">
+                <iconify-icon icon="mdi:chart-line"></iconify-icon> Mittaustulokset
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/viestit">
+                <iconify-icon icon="tabler:messages"></iconify-icon> Viestit
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profiili">
+                <iconify-icon icon="iconoir:profile-circle"></iconify-icon> Profiili
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/faq">
+                <iconify-icon icon="streamline:interface-help-question-circle-circle-faq-frame-help-info-mark-more-query-question"></iconify-icon> FAQ
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#">
+                <iconify-icon icon="line-md:light-dark-loop"></iconify-icon> Teemat
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item theme-toggler" data-theme="light" href="#">Vaalea</a>
+                <a class="dropdown-item theme-toggler" data-theme="dark" href="#">Tumma</a>
+                <a class="dropdown-item theme-toggler" data-theme="solar" href="#">Solar</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">
+                <iconify-icon icon="iconoir:logout"></iconify-icon> Kirjaudu ulos
+              </a>
             </li>
           </ul>
         </div>
-    <a href="/auth/logout" class="nav__link button_logout">Kirjaudu ulos</a>
-  </nav>
-</header>
+      </div>
+    </nav>
+  </header>
 
-
-  
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5en5YPeu4lr0K/7W3sJzjw+UVij/iKrL8XudKc" crossorigin="anonymous"></script>
-      
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.js"
-    ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5en5YPeu4lr0K/7W3sJzjw+UVij/iKr </script>
+    <script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.15/dist/jquery.bxslider.min.js" </script>
    <script src="/js/dark-mode.js"></script>
+   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </body>
 
