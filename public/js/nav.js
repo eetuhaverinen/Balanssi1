@@ -1,6 +1,3 @@
-import * as iconify from '@iconify/iconify';
-
-
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
 

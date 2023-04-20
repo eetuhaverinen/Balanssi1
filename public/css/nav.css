@@ -124,6 +124,7 @@ img {
 .nav {
   height: var(--header-height);
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -356,4 +357,4 @@ img {
    box-shadow: 0 0 10px rgba(0, 0, 255, 1); /* blue glow */
  }
 
- /
+ 
