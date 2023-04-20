@@ -9,15 +9,6 @@
   <link rel="stylesheet" href="/css/nav.css">
   <link id="stylesheet" rel="stylesheet" href="/css/index.css">
 
-  <style>
-    .side-by-side-container {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-  </style>
-
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
@@ -31,15 +22,6 @@
 <body id="theme">
   <div class="container_body">
     {{>_header}}
-
-    <h2>Tervetuloa Balanssiin {{user.nimi}}</h2>
-
-    <div class="side-by-side-container">
-      {{>verensokeriAdd}}
-
-      {{>chart}}
-    </div>
-
     {{{body}}}
   </div>
 

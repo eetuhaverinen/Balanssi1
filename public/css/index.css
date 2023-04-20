@@ -373,21 +373,19 @@ header a img {
 }
 
 .light {
-  --bg: #ffffff;
+  --bg: var(--gray0);
   --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
   --bg-dropdown: var(--gray0);
   --text: var(--gray6);
-  --text-secondary: var(--gray5);
   --border-color: var(--blue);
   --bg-solar: var(--yellow);
 }
 
 .dark {
-  --bg: var(--gray5);
+  --bg: #000;
   --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
   --bg-dropdown: var(--gray6);
-  --text: var(--gray0);
-  --text-secondary: var(--gray1);
+  --text: #fff;
   --border-color: var(--purple);
   --bg-solar: var(--blue);
 }
@@ -397,22 +395,11 @@ header a img {
   --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
   --bg-dropdown: var(--gray0);
   --text: var(--gray6);
-  --text-secondary: var(--gray5);
   --border-color: var(--blue);
   --bg-solar: var(--yellow);
 }
 
 /* Add the following styles inside the corresponding mode classes */
-
-body.light-mode {
-  --bg: #ffffff;
-  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
-  --bg-dropdown: var(--gray0);
-  --text: var(--gray6);
-  --text-secondary: var(--gray5);
-  --border-color: var(--blue);
-  --bg-solar: var(--yellow);
-}
 
 body.light-mode .container_body,
 body.light-mode .login-container,
@@ -421,10 +408,12 @@ body.light-mode .striped,
 body.light-mode .striped th,
 body.light-mode .striped tr,
 body.light-mode .striped tr td {
-  --bg: #ffffff;
+  --bg: #fff;
+  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
+  --bg-dropdown: var(--gray0);
   --text: var(--gray6);
-  --text-secondary: var(--gray5);
   --border-color: var(--blue);
+  --bg-solar: var(--yellow);
 }
 
 body.dark-mode .container_body,
@@ -434,8 +423,12 @@ body.dark-mode .striped,
 body.dark-mode .striped th,
 body.dark-mode .striped tr,
 body.dark-mode .striped tr td {
-  --text: var(--gray0);
-  --text-secondary: var(--gray1);
+  --bg: #000;
+  --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
+  --bg-dropdown: var(--gray6);
+  --text: #fff;
+  --border-color: var(--purple);
+  --bg-solar: var(--blue);
 }
 
 body.solar-mode .container_body,
@@ -445,10 +438,13 @@ body.solar-mode .striped,
 body.solar-mode .striped th,
 body.solar-mode .striped tr,
 body.solar-mode .striped tr td {
+  --bg: var(--yellow);
+  --bg-nav: linear-gradient(to right, var(--yellow), var(--blue));
+  --bg-dropdown: var(--yellow);
   --text: var(--gray6);
-  --text-secondary: var(--gray5);
+  --border-color: var(--blue);
+  --bg-solar: var(--yellow);
 }
-
 
 
 
