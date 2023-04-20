@@ -373,8 +373,8 @@ header a img {
 }
 
 .light {
-  --bg: var(--gray0);
-  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
+  --bg: #ffffff;
+  --bg-nav: linear-gradient(to right, #f7f8d0, #5ec72d);
   --bg-dropdown: var(--gray0);
   --text: var(--gray6);
   --border-color: var(--blue);
@@ -383,7 +383,7 @@ header a img {
 
 .dark {
   --bg: #000;
-  --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
+  --bg-nav: linear-gradient(to right, #5ec72d, #003d4c);
   --bg-dropdown: var(--gray6);
   --text: #fff;
   --border-color: var(--purple);
@@ -391,9 +391,9 @@ header a img {
 }
 
 .solar {
-  --bg: var(--gray0);
-  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
-  --bg-dropdown: var(--gray0);
+  --bg: #ffcc00;
+  --bg-nav: linear-gradient(to right, #fbffd4, #b6f880);
+  --bg-dropdown: var(--yellow);
   --text: var(--gray6);
   --border-color: var(--blue);
   --bg-solar: var(--yellow);
@@ -408,12 +408,10 @@ body.light-mode .striped,
 body.light-mode .striped th,
 body.light-mode .striped tr,
 body.light-mode .striped tr td {
-  --bg: #fff;
-  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
-  --bg-dropdown: var(--gray0);
+  --bg: #ffffff;
   --text: var(--gray6);
+  --text-secondary: var(--gray5);
   --border-color: var(--blue);
-  --bg-solar: var(--yellow);
 }
 
 body.dark-mode .container_body,
@@ -424,7 +422,7 @@ body.dark-mode .striped th,
 body.dark-mode .striped tr,
 body.dark-mode .striped tr td {
   --bg: #000;
-  --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
+  --bg-nav: linear-gradient(to right, #5ec72d, #003d4c);
   --bg-dropdown: var(--gray6);
   --text: #fff;
   --border-color: var(--purple);
@@ -438,18 +436,12 @@ body.solar-mode .striped,
 body.solar-mode .striped th,
 body.solar-mode .striped tr,
 body.solar-mode .striped tr td {
-  --bg: var(--yellow);
-  --bg-nav: linear-gradient(to right, var(--yellow), var(--blue));
+  --bg: #ffcc00;
+  --bg-nav: linear-gradient(to right, #fbffd4, #b6f880);
   --bg-dropdown: var(--yellow);
   --text: var(--gray6);
   --border-color: var(--blue);
   --bg-solar: var(--yellow);
 }
 
-
-
-
-
 /* Keep any other existing styles below */
-
-
