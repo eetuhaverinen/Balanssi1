@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="/css/nav.css">
-  <link id="main-stylesheet" rel="stylesheet" href="/css/index.css">
-  <link id="darkmode-stylesheet" rel="stylesheet" href="/css/dark-mode.css?v=123456">
-  <link id="solarmode-stylesheet" rel="stylesheet" href="/public/css/solar-mode.css">
+  <link id="stylesheet" rel="stylesheet" href="/css/index.css">
+
+  <style>
+    .side-by-side-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+  </style>
+
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
@@ -20,9 +28,18 @@
   <title>Balanssi</title>
 </head>
 
-<body>
+<body id="theme">
   <div class="container_body">
     {{>_header}}
+
+    <h2>Tervetuloa Balanssiin {{user.nimi}}</h2>
+
+    <div class="side-by-side-container">
+      {{>verensokeriAdd}}
+
+      {{>chart}}
+    </div>
+
     {{{body}}}
   </div>
 

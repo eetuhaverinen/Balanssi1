@@ -1,46 +1,46 @@
-const darkButton = document.getElementById('darkButton');
-const lightButton = document.getElementById('lightButton');
-const solarButton = document.getElementById('solarButton');
-const body = document.body;
-const mainStyleSheet = document.getElementById('main-stylesheet');
-const darkModeStyleSheet = document.getElementById('darkmode-stylesheet');
-const solarModeStyleSheet = document.getElementById('solarmode-stylesheet');
 
-// Check for saved theme in localStorage
-const savedTheme = localStorage.getItem('theme');
+document.addEventListener('DOMContentLoaded', function() {
+  const darkButton = document.getElementById('darkButton');
+  const lightButton = document.getElementById('lightButton');
+  const solarButton = document.getElementById('solarButton');
+  const body = document.body;
 
-if (savedTheme) {
-  if (savedTheme === 'dark') {
-    enableDarkMode();
-  } else if (savedTheme === 'solar') {
-    enableSolarMode();
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme) {
+    body.classList.add(savedTheme);
   }
-}
 
-darkButton.addEventListener('click', enableDarkMode);
-lightButton.addEventListener('click', enableLightMode);
-solarButton.addEventListener('click', enableSolarMode);
+  darkButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    enableDarkMode();
+  });
 
-function enableDarkMode() {
-  body.classList.replace('light', 'dark');
-  mainStyleSheet.setAttribute('href', '');
-  darkModeStyleSheet.setAttribute('href', '/css/dark-mode.css?v=123456');
-  solarModeStyleSheet.setAttribute('href', '');
-  localStorage.setItem('theme', 'dark');
-}
+  lightButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    enableLightMode();
+  });
 
-function enableLightMode() {
-  body.classList.replace('dark', 'light');
-  mainStyleSheet.setAttribute('href', '/css/index.css');
-  darkModeStyleSheet.setAttribute('href', '');
-  solarModeStyleSheet.setAttribute('href', '');
-  localStorage.setItem('theme', 'light');
-}
+  solarButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    enableSolarMode();
+  });
 
-function enableSolarMode() {
-  body.classList.replace('light', 'solar');
-  mainStyleSheet.setAttribute('href', '');
-  darkModeStyleSheet.setAttribute('href', '');
-  solarModeStyleSheet.setAttribute('href', '/css/solar-mode.css');
-  localStorage.setItem('theme', 'solar');
-}
+  function enableDarkMode() {
+    body.classList.remove('light', 'solar');
+    body.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+
+  function enableLightMode() {
+    body.classList.remove('dark', 'solar');
+    body.classList.add('light');
+    localStorage.setItem('theme', 'light');
+  }
+
+  function enableSolarMode() {
+    body.classList.remove('light', 'dark');
+    body.classList.add('solar');
+    localStorage.setItem('theme', 'solar');
+  }
+});
