@@ -94,18 +94,27 @@ router.post('/loginH', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      throw Error('Invalid credentials');
+      throw Error('Invalid email');
     }
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
-      throw Error('Invalid credentials');
+      throw Error('Invalid password');
     }
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
     res.redirect('/etusivuH');
   } catch (error) {
-    res.send(`<p>Error. <a href="/">Go back home.</a></p>`);
+    res.send(`<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`);
   }
+});
+
+
+// @desc    Hoitaja dashboard
+// @route   GET /etusivuH
+router.get('/etusivuH', (req, res) => {
+  res.render('etusivuH', {
+    layout: 'homeH',
+  });
 });
 
 

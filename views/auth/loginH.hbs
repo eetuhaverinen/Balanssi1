@@ -1,27 +1,19 @@
-{{!-- views/auth/loginHoitaja.hbs --}}
-
-
- <div class="login-box">
+{{!-- views/auth/loginH.hbs --}}
+<div class="login-box">
   <h2>Hoitajan kirjautuminen</h2>
-
   <form action="/auth/loginH" method="POST">
-
-    <label class="labeL"> Username
-      <input type="text" name="username" placeholder="Matti" />
+    <label class="labeL">Email
+      <input type="email" name="email" placeholder="example@example.com" required />
     </label>
-
     <label class="labeL">Password
-      <input type="password" name="password" placeholder="********" />
+      <input type="password" name="password" placeholder="********" required />
     </label>
-
     <button type="submit">Login</button>
-
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
-
     <div id="logbottom">
-        <p class="message"><a href="#">Unohtuiko salasana?</a></p>
+      <p class="message"><a href="#">Unohtuiko salasana?</a></p>
     </div>
   </form>
 </div>
