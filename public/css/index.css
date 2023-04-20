@@ -11,39 +11,62 @@
   --blue: #007bff;
   --purple: #6c757d;
   --yellow: #ffcc00;
+  --solar1: #d9ed92;
+  --solar2: #34a0a4;
+  --solar3: #b5e48c;
+  --solar4: #168aad;
+  --solar5: #99d98c;
+  --solar6: #1a759f;
+  --solar7: #76c893;
+  --solar8: #1e6091;
+  --solar9: #52b69a;
+  --dark1: #404e5c;
 }
-
-.light {
+  
+  .light {
   --bg: #ffffff;
   --bg-nav: linear-gradient(to right, #f7f8d0, #5ec72d);
   --bg-dropdown: var(--gray0);
   --text: var(--gray6);
   --border-color: var(--blue);
-  --bg-solar: var(--yellow);
-}
-
-.dark {
-  --bg: #000;
-  --bg-nav: linear-gradient(to right, #5ec72d, #003d4c);
-  --bg-dropdown: var(--gray6);
-  --text: #fff;
-  --border-color: var(--purple);
-  --bg-solar: var(--blue);
-}
-
-.solar {
-  --bg: #ffcc00;
-  --bg-nav: linear-gradient(to right, #fbffd4, #b6f880);
-  --bg-dropdown: var(--yellow);
-  --text: var(--gray6);
-  --border-color: var(--blue);
-  --bg-solar: var(--yellow);
-}
-
-body {
+  --bg-solar: var(--solar-green);
+  }
+  
+  .dark {
+    --bg: #000;
+    --bg-nav: linear-gradient(to right, #5ec72d, #003d4c);
+    --bg-dropdown: var(--gray6);
+    --text: #fff;
+    --border-color: var(--purple);
+    --bg-solar: var(--blue);
+    --table-color: #0A0D0F; 
+  }
+  
+  .solar {
+    --bg: var(--solar1);
+    --bg-nav: linear-gradient(to right, var(--solar3), var(--solar8));
+    --bg-dropdown: var(--solar2);
+    --text: var(--solar6);
+    --border-color: var(--solar9);
+    --bg-solar: var(--solar4);
+  }
+  
+  body {
   background-color: var(--bg);
   font-family: "Roboto", sans-serif;
-}
+  }
+  
+  .light header .header {
+  background: var(--bg-nav);
+  }
+  
+  .dark header .header {
+  background: var(--bg-nav);
+  }
+  
+  .solar header .header {
+  background: var(--bg-nav);
+  }
 
 header .header {
   display: flex;
@@ -53,6 +76,47 @@ header .header {
   text-align: center;
   height: 100vh;
 }
+.light .form,
+.dark .form,
+.solar .form {
+color: var(--text);
+}
+
+.dark .input-group input,
+.dark .input-group select,
+.dark .input-group textarea,
+.solar .input-group input,
+.solar .input-group select,
+.solar .input-group textarea {
+color: #fff;
+}
+
+/* Updated solar color */
+.solar .login-box button {
+background-color: var(--bg-solar);
+}
+
+.light .form button:hover,
+.light .form button:active,
+.dark .form button:hover,
+.dark .form button:active,
+.solar .form button:hover,
+.solar .form button:active {
+background-color: var(--bg-solar);
+color: #fff;
+}
+
+.dark h2,
+.solar h2 {
+color: #fff;
+}
+
+.dark .input-group label,
+.solar .input-group label {
+color: #fff;
+}
+
+
 
 header a img {
   width: 134px;
@@ -253,11 +317,18 @@ header a img {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.row {
+.row {  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.dark .row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  background-color: var(--table-color);
+  color: #fff;
 }
 
 .col {
