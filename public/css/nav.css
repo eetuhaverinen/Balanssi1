@@ -105,7 +105,7 @@ img {
 
 /*=============== LAYOUT ===============*/
 .container {
-  max-width: 968px;
+  width: 100%;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -118,7 +118,7 @@ img {
   width: 100%;
   background-color: var(--container-color);
   z-index: var(--z-fixed);
-  transition: .4s;
+  transition: background-color 0.5s ease;
 }
 
 /*=============== NAV ===============*/
@@ -126,7 +126,7 @@ img {
   height: var(--header-height);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
 }
@@ -146,6 +146,10 @@ img {
   color: var(--title-color);
   font-weight: 600;
   padding-left: 1rem;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @media screen and (max-width: 767px) {
@@ -173,7 +177,7 @@ img {
   }
 }
 
-.nav__list, 
+
 .nav__link {
   display: flex;
   justify-content: space-between;
@@ -192,7 +196,8 @@ img {
 
 .nav__list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 
@@ -262,6 +267,7 @@ img {
       margin-left: auto;
       display: flex;
     align-items: center;
+    
     }
   
   

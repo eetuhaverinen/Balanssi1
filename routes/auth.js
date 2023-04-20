@@ -76,44 +76,38 @@ router.post('/register', async (req, res, next) => {
 
 // @desc    Login page
 // @route   GET /auth/login
-router.get('/loginHoitaja', ensureGuest, (req, res) => {
-  res.render('auth/loginHoitaja', {
+router.get('/loginH', ensureGuest, (req, res) => {
+  res.render('auth/loginH', {
     layout: 'homeH',
-    // isLoginPage: false // set isLoginPage to false when rendering the loginHoitaja page
+    // isLoginPage: false // set isLoginPage to false when rendering the loginH page
   });
 });
 
 // @desc    Login page
-// @route   POST /auth/loginHoitaja
+// @route   POST /auth/loginH
 
 // @desc    Login page
-// @route   POST /auth/loginHoitaja
+// @route   POST /auth/loginH
 
 router.post('/loginH', async (req, res) => {
-  const { email, password } = req.body;
-
   try {
+    const { email, password } = req.body;
     const user = await User.findOne({ email });
-
     if (!user) {
       throw Error('Invalid credentials');
     }
-
-    const isMatch = await bcryptjs.compare(password, user.password);
-
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       throw Error('Invalid credentials');
     }
-
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
     res.redirect('/etusivuH');
   } catch (error) {
-    res.send(
-      `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
-    );
+    res.send(`<p>Error. <a href="/">Go back home.</a></p>`);
   }
 });
+
 
 
 
