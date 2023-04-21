@@ -7,12 +7,10 @@
     {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
     {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" --}}
         {{!-- integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" /> --}}
-    <link rel="manifest" href="\manifest.webmanifest">
-    <link rel="stylesheet" href="/css/style.css">
+    
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/Login.css">
-    <script type="text/javascript" src="sw.js"></script>
     <title>Balanssi Login</title>
 </head>
 
@@ -22,18 +20,11 @@
 
         <div class="card">
             {{{body}}}
-             {{> loading}}
+            
             </div>
         </div>
     </div>
-    <script src="/js/loader.js"></script>
-        <script>
-       if ("serviceWorker" in navigator) {
-  // register service worker
-  navigator.serviceWorker.register("sw.js");
-}
-    </script>
-    {{!-- <script src="/js/signup.js"></script> --}}
+   
     {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
 </body>
 

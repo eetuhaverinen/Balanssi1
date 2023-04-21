@@ -1,10 +1,31 @@
 {{!-- views/auth/signup.hbs --}}
+</head>
+<body>
+  {{!-- Role selection pop-up --}}
+<!-- Role selection pop-up -->
+<div id="role-popup" class="popup">
+  <div class="popup-content">
+    <h2>Select your role:</h2>
+    <label>
+      <input type="radio" name="role-popup" value="patient" checked>
+      Patient
+    </label>
+    <label>
+      <input type="radio" name="role-popup" value="nurse">
+      Nurse
+    </label>
+    <button id="role-popup-submit" type="button">Submit</button>
+<input type="hidden" name="hoitajanKoodi" id="hoitajanKoodi" value="" />
+  </div>
+</div>
 
+
+  {{!-- Signup form --}}
  <div class="login-box">
 <div id="form">
   <h2>Signup</h2>
   <form action="/auth/register" method="POST">
-
+  {{!-- Patient fields --}}
    <label> Nimi
       <input type="text" name="nimi" placeholder="Matti Kohonen" />
     </label>
@@ -12,23 +33,32 @@
      <label> Syntymäaika
       <input type="date" name="syntymaAika" placeholder="12.10.1995" />
     </label>
-
+    <div id="patient-fields">
+  <div class="patient-field">
    <label> pituus (cm)
       <input type="number" name="pituus" min="50" step="any" max="230" placeholder="172" />
     </label>
-
+    
+    
     <label> paino (kg)
       <input type="number" name="paino" min="30" step="any" max="230" placeholder="65" />
     </label>
 
-    <label> sukupuoli
-      <input type="radio" id="mies" name="sukupuoli" value="mies" required>
-      Mies
-      <input type="radio" id="nainen" name="sukupuoli" value="nainen">
-      Nainen
-      <input type="radio" id="muu" name="sukupuoli" value="muu">
-      Muu
-    </label>
+    <fieldset name="sukupuoli" required>
+  <legend>sukupuoli</legend>
+  <label>
+    <input type="radio" id="mies" name="sukupuoli" value="mies">
+    Mies
+  </label>
+  <label>
+    <input type="radio" id="nainen" name="sukupuoli" value="nainen">
+    Nainen
+  </label>
+  <label>
+    <input type="radio" id="muu" name="sukupuoli" value="muu">
+    Muu
+  </label>
+</fieldset>
 
       <label> leposyke
       <input type="number" name="leposyke" min="30" step="any" max="100" placeholder="55" />
@@ -44,7 +74,7 @@
       <input type="number" name="BHbA1c" min="20" step="any" max="100" placeholder="35" /> 
       <img src="/kuvat/question.png" alt="kysymysmerkki">
     </label> 
-
+ </div>
     <label> Email
       <input type="email" name="email" placeholder="matti@matti.com" />
     </label>
@@ -53,12 +83,7 @@
       <input type="password" name="password" placeholder="********" />
     </label>
 
-       <label for="role">Choose a role:
-    <select name="role" id="role">
-      <option value="patient" selected>Patient</option>
-      <option value="nurse">Nurse</option>
-    </select>
-  </label>
+       <input type="hidden" name="role" id="role">
 
 
 
@@ -72,3 +97,54 @@
   </form>
   </div>
 </div>
+
+<script>
+const rolePopup = document.getElementById('role-popup');
+document.addEventListener('DOMContentLoaded', function () {
+  const rolePopupSubmit = document.getElementById('role-popup-submit');
+  const roleInput = document.getElementById('role');
+  const patientFields = document.querySelectorAll('.patient-field');
+  const form = document.querySelector('form');
+  const hoitajanKoodiInput = document.getElementById('hoitajanKoodi');
+
+  // Show the role pop-up on page load
+  rolePopup.style.display = 'block';
+
+  rolePopupSubmit.addEventListener('click', function () {
+    const selectedRole = document.querySelector('input[name="role-popup"]:checked').value;
+    roleInput.value = selectedRole;
+
+    if (selectedRole === 'nurse') {
+      const hoitajanKoodi = prompt('Please enter the hoitajan koodi:');
+      hoitajanKoodiInput.value = hoitajanKoodi;
+    } else {
+      hoitajanKoodiInput.value = '';
+    }
+
+    patientFields.forEach(field => {
+      field.style.display = selectedRole === 'patient' ? 'block' : 'none';
+    });
+
+    rolePopup.style.display = 'none';
+
+    // Call the function to set the required fields correctly based on the selected role
+    toggleRequiredFields();
+  });
+
+  function toggleRequiredFields() {
+    patientFields.forEach(patientField => {
+      const inputFields = patientField.querySelectorAll('input');
+      inputFields.forEach(field => {
+        if (roleInput.value === 'patient') {
+          field.setAttribute('required', '');
+          field.removeAttribute('disabled');
+        } else {
+          field.removeAttribute('required');
+          field.setAttribute('disabled', '');
+        }
+      });
+    });
+  }
+});
+</script>
+

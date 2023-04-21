@@ -56,21 +56,41 @@ router.get('/register', ensureGuest, (req, res) => {
 // @desc    Register page
 // @route   POST /auth/register
 router.post('/register', async (req, res, next) => {
-  const {email, password, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c} = req.body;
+  console.log('Register route called');
+  console.log(req.body);
+  
+  // Add 'hoitajanKoodi' to the destructured request body
+  const { email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c, hoitajanKoodi } = req.body;
+
+  // Check if the user is signing up as a nurse and validate the 'hoitajan koodi'
+  if (role === 'nurse' && hoitajanKoodi !== 'abc123') {
+    res.send(
+      `<p>Invalid hoitajan koodi.</p><p>Error. <a href="/">Go back home.</a></p>`
+    );
+    return;
+  }
 
   try {
-    const user = await User.signup(email, password, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c);
+    const user = await User.signup(email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c);
 
     // create a token
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
-    res.redirect('/etusivu');
+    if (user.role === 'patient') {
+      res.redirect('/etusivu');
+    } else if (user.role === 'nurse') {
+      res.redirect('/etusivuH');
+    } else {
+      // Fallback to a default route or display an error message
+      res.redirect('/');
+    }
   } catch (error) {
     res.send(
       `<p>${error.message}</p><p>Error. <a href="/">Go back home.</a></p>`
     );
   }
 });
+
 
 //Hoitajan kirjautuminen
 
@@ -109,13 +129,7 @@ router.post('/loginH', async (req, res) => {
 });
 
 
-// @desc    Hoitaja dashboard
-// @route   GET /etusivuH
-router.get('/etusivuH', (req, res) => {
-  res.render('etusivuH', {
-    layout: 'homeH',
-  });
-});
+
 
 
 

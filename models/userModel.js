@@ -45,24 +45,34 @@ const userSchema = new Schema({
   },
   pituus: {
     type: Number,
-    required: true,
+    required: function () {
+      return this.role === 'patient';
+    },
   },
   paino: {
     type: Number,
-    required: true,
+    required: function () {
+      return this.role === 'patient';
+    },
   },
   sukupuoli: {
     type: String,
     enum: ['mies', 'nainen', 'muu'],
-    required: true,
+    required: function () {
+      return this.role === 'patient';
+    },
   },
   leposyke: {
     type: Number,
-    required: true,
+    required: function () {
+      return this.role === 'patient';
+    },
   },
   maksimisyke: {
     type: Number,
-    required: true,
+    required: function () {
+      return this.role === 'patient';
+    },
   },
   BHbA1c: {
     type: Number,
@@ -73,6 +83,7 @@ const userSchema = new Schema({
 userSchema.statics.signup = async function (
   email,
   password,
+  role,
   nimi,
   syntymaAika,
   pituus,
@@ -83,7 +94,7 @@ userSchema.statics.signup = async function (
   BHbA1c
 ) {
   // validation
-  if (!email || !password || !nimi || !syntymaAika || !pituus || !paino || !sukupuoli || !leposyke || !maksimisyke) {
+  if (!email || !password || !role || !nimi) {
     throw Error('All fields must be filled');
   }
 
@@ -92,12 +103,17 @@ userSchema.statics.signup = async function (
     throw Error('Email already in use');
   }
 
+  if (role === 'patient' && (!syntymaAika || !pituus || !paino || !sukupuoli || !leposyke || !maksimisyke)) {
+    throw Error('All patient fields must be filled');
+  }
+
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
   const user = await this.create({
     email,
     password: hash,
+    role,
     nimi,
     syntymaAika,
     pituus,
@@ -110,6 +126,8 @@ userSchema.statics.signup = async function (
 
   return user;
 };
+
+
 
 // static login method
 userSchema.statics.login = async function (email, password) {
