@@ -1,5 +1,7 @@
 {{!-- views/auth/signup.hbs --}}
 </head>
+<title>Signup</title>
+
 <body>
   {{!-- Role selection pop-up --}}
 <!-- Role selection pop-up -->
@@ -62,18 +64,22 @@
 
       <label> leposyke
       <input type="number" name="leposyke" min="30" step="any" max="100" placeholder="55" />
-      <img src="/kuvat/question.png" alt="kysymysmerkki">
+      <img src="/kuvat/question.png" alt="kysymysmerkki" title="Leposyke on sydämesi lyöntien määrä minuutissa, kun olet täysin levossa.">
+
     </label>
 
     <label> maksimisyke
       <input type="number" name="maksimisyke" min="120" step="any" max="220" placeholder="195" />
-      <img src="/kuvat/question.png" alt="kysymysmerkki">
+      <img src="/kuvat/question.png" alt="kysymysmerkki" title="Maksimisyke on korkein sydämen lyöntien määrä minuutissa, jonka voit saavuttaa fyysisen rasituksen aikana.">
+
     </label>
 
-    <label> B-HbA1c
-      <input type="number" name="BHbA1c" min="20" step="any" max="100" placeholder="35" /> 
-      <img src="/kuvat/question.png" alt="kysymysmerkki">
-    </label> 
+       <label>
+            B-HbA1c:
+            <input type="number" name="BHbA1c" min="20" step="any" max="100" placeholder="35">
+            <img src="/kuvat/question.png" alt="kysymysmerkki" title="B-HbA1c (glykoitunut hemoglobiini) on verikoe, joka kertoo verensokerin keskiarvon viimeisten 2-3 kuukauden ajalta.">
+
+          </label> 
  </div>
     <label> Email
       <input type="email" name="email" placeholder="matti@matti.com" />

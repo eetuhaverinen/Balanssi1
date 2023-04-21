@@ -210,3 +210,92 @@ body {
   border-radius: 5px;
   text-align: center;
 }
+
+/* Styles for patient-field */
+.patient-field {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Styles for radio buttons */
+.patient-field fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-field label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.patient-field input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+/* Styles for question mark images */
+.patient-field img {
+  width: 16px;
+  height: 16px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Styles for the submit button */
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the icon */
+  left: 50%;
+  margin-left: -100px; /* Use half of the tooltip width to center it */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show tooltip text when hovering */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
