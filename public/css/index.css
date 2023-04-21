@@ -82,14 +82,7 @@ header .header {
 color: var(--text);
 }
 
-.dark .input-group input,
-.dark .input-group select,
-.dark .input-group textarea,
-.solar .input-group input,
-.solar .input-group select,
-.solar .input-group textarea {
-color: #fff;
-}
+
 
 /* Updated solar color */
 .solar .login-box button {
@@ -673,3 +666,79 @@ h3 {
   border-radius: 5px;
   overflow-y: auto;
 }
+
+.profile-form {
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  }
+  
+  .profile-form h3 {
+  margin: 0 0 20px;
+  font-size: 28px;
+  text-align: center;
+  }
+  
+  .profile-form .input-group {
+  margin: 20px 0;
+  text-align: left;
+  }
+  
+  .profile-form .input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  }
+  
+  .profile-form .input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  }
+  
+  .profile-form .input-group input:focus {
+  outline: none;
+  border-color: #03e9f4;
+  }
+  
+  .profile-form .tooltip {
+  margin-left: 10px;
+  display: inline-block;
+  position: relative;
+  }
+  
+  .profile-form .tooltip img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  }
+  
+  .profile-form .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #03e9f4;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -125px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  }
+  
+  .profile-form .tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  }
