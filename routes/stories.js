@@ -33,9 +33,19 @@ router.post('/', ensureAuth, async (req, res) => {
 
 // @desc    Show all stories
 // @route   GET /stories
+// @desc    Show all stories
+// @route   GET /stories
 router.get('/', ensureAuth, async (req, res) => {
   try {
-    const verensokerit = await Story.find({ user: req.user.id }).sort({ createdAt: 'asc' }).lean();
+    let verensokerit;
+
+    // If the logged-in user is a nurse, show all stories
+    if (req.user.role === 'nurse') {
+      verensokerit = await Story.find().sort({ createdAt: 'asc' }).lean();
+    } else {
+      // Show only the current user's stories
+      verensokerit = await Story.find({ user: req.user.id }).sort({ createdAt: 'asc' }).lean();
+    }
 
     const labels = verensokerit.map(sokeri => moment(sokeri.createdAt).format('MMM D, YYYY, h:mm:ss a'));
     const data = verensokerit.map(sokeri => sokeri.mmolPerL);
@@ -50,6 +60,7 @@ router.get('/', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+
 
 // @desc    Show single story
 // @route   GET /stories/:id
