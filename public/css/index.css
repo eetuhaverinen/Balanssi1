@@ -743,7 +743,7 @@ h3 {
   opacity: 1;
   }
   
-  footer {
+  .footer {
     background-color: var(--bg-nav);
     color: var(--text);
     text-align: center;
