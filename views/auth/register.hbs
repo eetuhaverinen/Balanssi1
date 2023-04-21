@@ -106,6 +106,8 @@
 
 <script>
 const rolePopup = document.getElementById('role-popup');
+const mainContent = document.getElementById('form'); // Add an ID to the main content container
+
 document.addEventListener('DOMContentLoaded', function () {
   const rolePopupSubmit = document.getElementById('role-popup-submit');
   const roleInput = document.getElementById('role');
@@ -115,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Show the role pop-up on page load
   rolePopup.style.display = 'block';
+  mainContent.classList.add('blur'); // Add the blur class to the main content container
 
   rolePopupSubmit.addEventListener('click', function () {
     const selectedRole = document.querySelector('input[name="role-popup"]:checked').value;
@@ -132,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     rolePopup.style.display = 'none';
+    mainContent.classList.remove('blur'); // Remove the blur class from the main content container
 
     // Call the function to set the required fields correctly based on the selected role
     toggleRequiredFields();
@@ -152,5 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+
 </script>
 
