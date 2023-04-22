@@ -53,4 +53,7 @@ module.exports = {
       return `${minutes} min`;
     }
   },
+  json: function (context) {
+    return JSON.stringify(context);
+  },
 };

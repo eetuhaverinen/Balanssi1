@@ -7,6 +7,7 @@ const { ensureAuth } = require('../middleware/auth');
 const User = require('../models/userModel');
 const Story = require('../models/StoryModel');
 
+
 // @desc    Show add page
 // @route   GET /stories/add
 router.get('/add', ensureAuth, (req, res) => {
@@ -185,5 +186,52 @@ router.get('/search/:query', ensureAuth, async (req, res) => {
     res.render('error/404');
   }
 });
+
+
+// @desc    Show patient list
+// @route   GET /potilaslista
+// @desc    Show patient list
+// @route   GET /potilaslista
+router.get('/potilaslista', ensureAuth, async (req, res) => {
+  try {
+    if (req.user.role !== 'nurse') {
+      return res.redirect('/stories');
+    }
+
+    const patients = await User.find({ role: 'patient' }).lean();
+    const stories = await Story.find().populate('user').lean();
+
+    router.get('/potilaslista', ensureAuth, async (req, res) => {
+      try {
+        if (req.user.role !== 'nurse') {
+          return res.redirect('/stories');
+        }
+        
+        const patients = await User.find({ role: 'patient' }).lean(); // Fetch patients
+        const stories = await Story.find().populate('user').lean(); // Fetch stories
+    
+        res.render('patients/index', {
+          patients,
+          stories,
+        });
+      } catch (err) {
+        console.error(err);
+        res.render('error/500');
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+const hbs = require('handlebars');
+module.exports = {
+  // ... other helpers
+
+  json: function (context) {
+    return JSON.stringify(context);
+  },
+};
+
 
 module.exports = router;

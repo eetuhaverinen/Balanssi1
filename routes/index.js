@@ -139,10 +139,22 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+router.get('/potilaslista', ensureAuth, async (req, res) => {
+  try {
+    // Fetch all patients from the database
+    const patients = await User.find({}).lean();
 
-router.get('/messageH', (req, res) => {
-  res.render('messageH');
+    // Render the potilaslista view with the patients data
+    res.render('potilaslista', {
+      layout: 'mainH',
+      patients, // Pass the patients data to the view
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
 });
+
 
 
 router.get('/kayttoehdot', (req, res) => {

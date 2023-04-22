@@ -824,3 +824,7 @@ color: #888;
 footer-logo {
   max-width: 150px; 
 }
+
+.text-center {
+  text-align: center;
+}
