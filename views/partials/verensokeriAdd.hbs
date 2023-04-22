@@ -4,33 +4,33 @@
     <h3>Lisää merkinnät</h3>
     <form action="/stories" method="POST" class="col s12">
        
-         <div class="input-group">
-            <H5><span style='font-size:40px;'>&#128680;</span>LISÄÄ VERENSOKERIARVO</H5>
+          <div class="input-group">
+            <h5>Lisää verensokeriarvo:</h5>
             <label>
-         <input type="number" id="mmolPerL" name="mmolPerL" min="0" step="any">
-         <label for="mmolPerL">mmol/L</label>
-         </label>
+                <input type="number" id="mmolPerL" name="mmolPerL" min="0" step="any">
+                <label for="mmolPerL">mmol/L</label>
+            </label>
         </div>
 
 
         <div class="input-group">
-            <h5>PÄIVÄN FIILIS</h5>
+            <h5>Päivän fiilis:</h5>
             <label>
-                <input type="radio" name="feeling" value=":(">
-                <span style='font-size:50px;'>&#128542;</span>
+                <input type="radio" name="feeling" value="Huono">
+                <span>Huono</span>
             </label>
             <label>
-                <input type="radio" name="feeling" value=":/">
-                <span style='font-size:50px;'>&#128524;</span>
+                <input type="radio" name="feeling" value="Keskiverto">
+                <span>Keskiverto</span>
             </label>
             <label>
-                <input type="radio" name="feeling" value=":)">
-                <span style='font-size:50px;'>&#128512;</span>
+                <input type="radio" name="feeling" value="Hyvä">
+                <span>Hyvä</span>
             </label>
         </div>
 
         <div class="input-group">
-            <h5> <span style='font-size:40px;'>&#127821;</span>LISÄÄ PÄIVÄN HIILIHYDRAATTI MÄÄRÄT:</h5>
+            <h5>Lisää päivän hiilihydraattimäärät:</h5>
             <label>
                 <input type="number" id="GHH" name="GHH" min="0" step="any">
                 <label for="title">g HH</label>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="input-group">
-            <h5> <span style="font-size: 40PX;">&#128692;</span>LISÄÄ PÄIVÄN LIIKUNTASUORITUS:</h5>
+            <h5>Lisää päivän liikuntasuoritus:</h5>
             <label>
                 <input type="radio" name="sport" value="Pieni">
                 <span>Pieni</span>
@@ -48,7 +48,7 @@
                 <span>Kohtalainen</span>
             </label>
             <label>
-                <input type="radio" name="sport" value=":Suuri">
+                <input type="radio" name="sport" value="Suuri">
                 <span>Suuri</span>
             </label>
             <label>
@@ -65,8 +65,8 @@
         </div>
 
         <div>
-            <input type="submit" value="Save" class="btn">
-            <a href="/mittaustulokset" class="btn orange">Cancel</a>
+            <input type="submit" value="Tallenna" class="btn">
+            <a href="/mittaustulokset" class="btn orange">Peruuta</a>
         </div>
     </form>
 </div>
