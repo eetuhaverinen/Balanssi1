@@ -180,7 +180,7 @@ header a img {
   display: none; /* initially hidden */
 }
 
-@keyframes
+/* @keyframes
 
 @keyframes spin {
   0% {
@@ -189,7 +189,7 @@ header a img {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 .form button {
   font-family: "Roboto", sans-serif;
@@ -318,10 +318,11 @@ header a img {
   margin-left: 15px;
   margin-bottom: 50px;
   width: 100%; 
-  overflow-x: auto; /
+  overflow-x: auto; 
   align-items: center;
   justify-content: center;
 }
+
 .dark .row {
   display: flex;
   flex-wrap: wrap;
