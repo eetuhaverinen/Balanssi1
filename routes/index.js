@@ -140,6 +140,16 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
   }
 });
 
+router.get('/kayttoehdot', (req, res) => {
+  res.render('kayttoehdot');
+});
+router.get('/tietosuojakaytanto', (req, res) => {
+  res.render('tietosuojakaytanto');
+});
+router.get('/evasteidenkaytto', (req, res) => {
+  res.render('evasteidenkaytto');
+});
+
 
 // router.get('/main', ensureAuth, async (req, res) => {
 //   try {

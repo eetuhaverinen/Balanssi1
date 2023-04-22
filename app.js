@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'development') {
 const options = {
   layoutsDir: 'views/layouts/',
   defaultLayout: 'main',
-  partialsDir: 'views/partials/',
+  partialsDir: ['views/partials/'],
   helpers: require('./helpers/hbs'),
   extname: '.hbs',
 };

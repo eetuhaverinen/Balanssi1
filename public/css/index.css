@@ -180,7 +180,7 @@ header a img {
   display: none; /* initially hidden */
 }
 
-/* @keyframes
+@keyframes
 
 @keyframes spin {
   0% {
@@ -189,7 +189,7 @@ header a img {
   100% {
     transform: rotate(360deg);
   }
-} */
+}
 
 .form button {
   font-family: "Roboto", sans-serif;
@@ -318,18 +318,19 @@ header a img {
   margin-left: 15px;
   margin-bottom: 50px;
   width: 100%; 
-  overflow-x: auto; 
+  overflow-x: auto; /
   align-items: center;
+  border: 1px solid #000;
   justify-content: center;
 }
-
 .dark .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-right: -15px;
   margin-left: -15px;
   background-color: var(--table-color);
   color: #fff;
+  
 }
 
 .col {
@@ -529,6 +530,66 @@ h3 {
   .container {
     max-width: 540px;
   }
+  .container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .login-page {
+    width: 100%;
+    padding: 5% 0 0;
+  }
+  .element {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  body {
+    padding-bottom: 60px;
+  }
+  .row {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .containerE {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer {
+    background-color: var(--bg-nav);
+    color: var(--text);
+    text-align: center;
+    padding: 10px;
+    position: auto;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+}
+  
+  @media only screen and (max-width: 600px) {
+    .containerE {
+      flex-direction: column;
+    }
+  }
+
+  .footer {
+    background-color: var(--bg-nav);
+    color: var(--text);
+    text-align: center;
+    padding: 10px;
+    position: auto;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+.footer p {
+font-size: 0.75rem;
+color: #888;
+}
+
+footer-logo {
+max-width: 150px; 
 }
 
 @media screen and (th: 576px) {
@@ -749,7 +810,8 @@ h3 {
     color: var(--text);
     text-align: center;
     padding: 10px;
-    position: auto;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     padding-bottom: 20px;
   }
@@ -759,44 +821,6 @@ font-size: 0.75rem;
 color: #888;
 }
 
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  border-radius: 4px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%; /* Position the tooltip above the icon */
-  left: 50%;
-  margin-left: -100px; /* Use half of the tooltip width to center it */
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Show tooltip text when hovering */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+footer-logo {
+  max-width: 150px; 
 }
