@@ -190,48 +190,26 @@ router.get('/search/:query', ensureAuth, async (req, res) => {
 
 // @desc    Show patient list
 // @route   GET /potilaslista
-// @desc    Show patient list
-// @route   GET /potilaslista
+
 router.get('/potilaslista', ensureAuth, async (req, res) => {
   try {
     if (req.user.role !== 'nurse') {
       return res.redirect('/stories');
     }
 
-    const patients = await User.find({ role: 'patient' }).lean();
-    const stories = await Story.find().populate('user').lean();
+    const patients = await User.find({ role: 'patient' }).lean(); // Fetch patients
+    const stories = await Story.find().populate('user').lean(); // Fetch stories
 
-    router.get('/potilaslista', ensureAuth, async (req, res) => {
-      try {
-        if (req.user.role !== 'nurse') {
-          return res.redirect('/stories');
-        }
-        
-        const patients = await User.find({ role: 'patient' }).lean(); // Fetch patients
-        const stories = await Story.find().populate('user').lean(); // Fetch stories
-    
-        res.render('patients/index', {
-          patients,
-          stories,
-        });
-      } catch (err) {
-        console.error(err);
-        res.render('error/500');
-      }
+    res.render('potilaslista', {
+      patients: patients,
+      stories: JSON.stringify(stories),
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
-const hbs = require('handlebars');
-module.exports = {
-  // ... other helpers
 
-  json: function (context) {
-    return JSON.stringify(context);
-  },
-};
 
 
 module.exports = router;
