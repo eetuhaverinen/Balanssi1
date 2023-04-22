@@ -120,6 +120,9 @@ router.post('/loginH', async (req, res) => {
     if (!isMatch) {
       throw Error('Invalid password');
     }
+    if (user.role !== 'nurse') {
+      throw Error('Unauthorized access');
+    }
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
     res.redirect('/etusivuH');
