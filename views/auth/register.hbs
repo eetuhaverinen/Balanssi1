@@ -127,9 +127,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const hoitajanKoodi = prompt('Please enter the hoitajan koodi:');
       console.log(hoitajanKoodi);
       hoitajanKoodiInput.value = hoitajanKoodi;
-    } else {
-      hoitajanKoodiInput.value = '';
+     if (hoitajanKoodi !== 'abc123') {
+      alert('Invalid hoitajan koodi');
+      return;
     }
+  } else {
+    hoitajanKoodiInput.value = '';
+  }
 
     patientFields.forEach(field => {
       field.style.display = selectedRole === 'patient' ? 'block' : 'none';

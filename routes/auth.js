@@ -59,16 +59,11 @@ router.post('/register', async (req, res, next) => {
   console.log('Register route called');
   console.log(req.body);
   
-  // Add 'hoitajanKoodi' to the destructured request body
-  const { email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c, hoitajanKoodi } = req.body;
+  
+  const { email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c,  } = req.body;
 
-  // Check if the user is signing up as a nurse and validate the 'hoitajan koodi'
-  if (role === 'nurse' && hoitajanKoodi !== 'abc123') {
-    res.send(
-      `<p>Invalid hoitajan koodi.</p><p>Error. <a href="/">Go back home.</a></p>`
-    );
-    return;
-  }
+ 
+ 
 
   try {
     const user = await User.signup(email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c);
