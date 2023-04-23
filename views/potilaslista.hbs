@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 {{#if patients}}
 <div class="container">
   <div class="row">
@@ -29,10 +31,17 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th class="text-center">Measurement</th>
+                        <th>Aika</th>
+                        <th>mmol/l</th>
+                        <th>Tuntemus</th>
+                        <th>G HH</th>
+                        <th>Liikunta</th>
+                        <th>Kommentti</th>
+                        <th>Toiminnot</th>
             </tr>
           </thead>
           <tbody id="measurementTable">
+            <table class="table table-striped measurement-table"></table>
           </tbody>
         </table>
       </div>
