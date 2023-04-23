@@ -213,8 +213,16 @@ router.get('/potilaslista', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
-
-
+//hrv
+router.get('/hrv-data', async (req, res) => {
+  try {
+    const data = await HRVData.find({});
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 router.get('/kayttoehdot', (req, res) => {
   res.render('kayttoehdot');

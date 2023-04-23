@@ -13,6 +13,28 @@
     </form>
   </div>
 
-  <script src="/js/chart.js"></script>
+  <script>
+    // Fetch HRV data
+    fetch('/hrv-data')
+      .then(response => response.json())
+      .then(data => {
+        // Set up the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'HRV',
+              data: data.values,
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          }
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
 </body>
 </html>
