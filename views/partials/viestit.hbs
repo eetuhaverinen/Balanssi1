@@ -23,20 +23,19 @@
   </div>
    <h2>Saapuneet viestit</h2>
   <div class="messages-box">
-   {{#each messages}}
-<div class="message">
-  <p>From: {{this.fromEmail}}</p>
-  <p>Subject: {{subject}}</p>
-  <p>Message: {{message}}</p>
-  {{#if attachment}}
-  <p>
-    Attachment: <a href="{{attachment}}" target="_blank">View</a>
-  </p>
-  {{/if}}
-  <hr />
-</div>
-{{/each}}
-
+    {{#each messages}}
+    <div class="message">
+      <p>From: {{from.email}}</p>
+      <p>Subject: {{subject}}</p>
+      <p>Message: {{message}}</p>
+      {{#if attachment}}
+      <p>
+        Attachment: <a href="{{attachment}}" target="_blank">View</a>
+      </p>
+      {{/if}}
+      <hr />
+    </div>
+    {{/each}}
   </div>
 </div>
 </body>

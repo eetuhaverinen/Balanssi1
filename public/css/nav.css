@@ -105,8 +105,11 @@ img {
 
 /*=============== LAYOUT ===============*/
 .container {
-  width: 100%;
-
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /*=============== HEADER ===============*/
@@ -121,18 +124,20 @@ img {
 }
 
 /*=============== NAV ===============*/
-.nav {
+.navbar {
   height: var(--header-height);
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  top: 0;
+  z-index: 100;
 }
 
 .has-dropdown {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 
@@ -180,10 +185,7 @@ img {
 }
 
 
-.nav__link {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .nav__link {
   flex-direction: column;
@@ -468,4 +470,19 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* custom-bootstrap.css */
+
+.bx {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+.navbar .nav-item {
+  margin-left: 1rem;
 }

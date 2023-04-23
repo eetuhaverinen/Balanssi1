@@ -1,5 +1,5 @@
 const moment = require('moment');
-
+const handlebars = require('handlebars');
 module.exports = {
   formatDate: function (date, format) {
     return moment(date).utc().format(format);
@@ -57,3 +57,10 @@ module.exports = {
     return JSON.stringify(context);
   },
 };
+
+handlebars.registerHelper('radioCheck', function(value, currentValue) {
+  if (value === currentValue) {
+      return 'checked';
+  }
+  return '';
+});

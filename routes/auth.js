@@ -117,7 +117,7 @@ router.post('/loginH', async (req, res) => {
       throw Error('Invalid password');
     }
     if (user.role !== 'nurse') {
-      throw Error('Unauthorized access');
+      return res.render('error/401');
     }
     const token = createToken(user._id);
     res.cookie('cookieToken', token, { httpOnly: true });
