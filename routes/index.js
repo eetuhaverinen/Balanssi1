@@ -63,7 +63,7 @@ router.get('/mittaustulokset', ensureAuth, async (req, res) => {
 // GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    const messages = await Message.find({ recipient: req.user })
+    const messages = await Message.find({ recipient: req.user._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });

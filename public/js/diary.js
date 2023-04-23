@@ -11,7 +11,7 @@ function addEntryToDom(event) {
         const month = new Array();
         month[0] = 'January';
         month[1] = 'February';
-        month[2] = 'March';
+        month[2] = 'Marh';
         month[3] = 'April';
         month[4] = 'May';
         month[5] = 'June';
