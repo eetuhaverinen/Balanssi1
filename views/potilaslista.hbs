@@ -1,33 +1,48 @@
-<!-- potilaslista.hbs -->
 {{#if patients}}
-<div class="row">
-    <div class="col">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="text-center">Patient Name</th> <!-- Add class for text center -->
-                    </tr>
-                </thead>
-                <tbody>
-                  {{#each patients}}
-                    {{#if nimi}} 
-                      <tr>
-                          <td class="text-center"> 
-                            <a href="#" class="patient-name" data-patient-id="{{_id}}">{{nimi}}</a>
-                          </td>
-                      </tr>
-                    {{/if}}
-                  {{/each}}
-                </tbody>
-            </table>
-            <div class="measurement-container"></div>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" id="searchBar" placeholder="Search for patient" />
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Patient Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each patients}}
+            {{#if nimi}}
+            <tr>
+              <td class="text-center">
+                <a href="#" class="patient-name" data-patient-id="{{_id}}">{{nimi}}</a>
+              </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Measurement</th>
+            </tr>
+          </thead>
+          <tbody id="measurementTable">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 {{else}}
 <p>Potilaita ei löydy</p>
 {{/if}}
 
+<script id="stories-data" type="application/json">{{stories}}</script>
 
 <script src="/js/patients.js"></script>

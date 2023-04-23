@@ -1,61 +1,55 @@
+$(document).ready(function () {
+  const searchInput = $("#searchBar");
+  const patientRows = $(".patient-name").parent().parent();
 
-   const patientNames = document.querySelectorAll('.patient-name');
-  const stories = {{{stories}}}
+  // Search functionality
+  searchInput.on("keyup", function () {
+      const searchTerm = searchInput.val().toLowerCase();
 
-
-  patientNames.forEach(patientName => {
-    patientName.addEventListener('click', (event) => {
-      event.preventDefault();
-      const patientId = patientName.dataset.patientId;
-
-      const filteredStories = stories.filter(story => story.user._id === patientId);
-
-      let measurementTable = `<tr><td colspan="8"><table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Nimi</th>
-                                        <th>Aika</th>
-                                        <th>mmol/l</th>
-                                        <th>Tuntemus</th>
-                                        <th>G HH</th>
-                                        <th>Liikunta</th>
-                                        <th>Kommentti</th>
-                                        <th>Toiminnot</th>
-                                    </tr>
-                                </thead>
-                                <tbody>`;
-
-      filteredStories.forEach(story => {
-        measurementTable += `
-          <tr>
-            <td>${patientName.innerHTML}</td>
-            <td>${new Date(story.createdAt).toLocaleString()}</td>
-            <td>${story.mmolPerL}</td>
-            <td>${story.feeling}</td>
-            <td>${story.GHH}</td>
-            <td>${story.sport} ${story.sportDuration} min</td>
-            <td>${story.body}</td>
-            <td>
-              <a href="/stories/edit/${story._id}" class="btn btn-primary btn-sm btn-edit" data-story-id="${story._id}">muokkaa</a>
-              <button type="button" class="btn btn-danger btn-sm btnDel" data-story-id="${story._id}">Poista</button>
-            </td>
-          </tr>`;
+      patientRows.each(function () {
+          const name = $(this).find(".patient-name").text().toLowerCase();
+          if (name.includes(searchTerm)) {
+              $(this).show();
+          } else {
+              $(this).hide();
+          }
       });
-
-      measurementTable += `</tbody></table></td></tr>`;
-
-      // Remove any existing measurement table
-      const existingMeasurementTable = document.querySelector('.measurement-row');
-      if (existingMeasurementTable) {
-        existingMeasurementTable.remove();
-      }
-
-      // Insert the new measurement table after the clicked patient row
-      const newRow = document.createElement('tr');
-      newRow.classList.add('measurement-row');
-      newRow.innerHTML = measurementTable;
-      const parentRow = patientName.closest('tr');
-      parentRow.parentNode.insertBefore(newRow, parentRow.nextSibling);
-    });
   });
 
+  // Handle click event on patient name
+  $('.patient-name').on('click', function (e) {
+      e.preventDefault();
+
+      // Get patient ID and name from the clicked link
+      const patientId = $(this).data('patient-id');
+      const patientName = $(this).text();
+
+      // Update the patient name above the measurement table
+      $('#patientName').text(patientName);
+
+      // Fetch patient measurements data
+      fetchPatientStories(patientId).then((stories) => {
+          // Populate the measurement table with the fetched data
+          const table = $('.measurementTable');
+          table.empty(); // Clear the table
+
+          // Add table headers and populate the table with the stories data
+          // Adapt the header names and data properties based on your specific data structure
+          table.append('<thead><tr><th>Date</th><th>mmolPerL</th><th>GHH</th><th>Sport Duration</th></tr></thead>');
+          const tbody = $('<tbody></tbody>');
+          stories.forEach((story) => {
+              const createdAt = moment(story.createdAt).format('MMM D, YYYY, h:mm:ss a');
+              tbody.append(`<tr><td>${createdAt}</td><td>${story.mmolPerL}</td><td>${story.GHH}</td><td>${story.sportDuration}</td></tr>`);
+          });
+          table.append(tbody);
+      });
+  });
+
+  // Function to fetch patient stories data (replace with your API endpoint)
+  async function fetchPatientStories(patientId) {
+      // Replace with the actual API URL and parameters as needed
+      const response = await fetch(`/api/stories?patientId=${patientId}`);
+      const data = await response.json();
+      return data;
+  }
+});

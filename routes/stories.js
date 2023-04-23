@@ -210,6 +210,18 @@ router.get('/potilaslista', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc    Show stories for a specific patient
+// @route   GET /api/stories
+router.get('/stories', ensureAuth, async (req, res) => {
+  try {
+    const patientId = req.query.patientId;
+    const stories = await Story.find({ user: patientId }).sort({ createdAt: 'asc' }).lean();
+    res.json(stories);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while fetching stories.' });
+  }
+});
 
 
 module.exports = router;
