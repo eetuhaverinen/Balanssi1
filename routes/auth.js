@@ -3,7 +3,8 @@ const bcryptjs = require('bcryptjs');
 const express = require('express');
 
 const router = express.Router();
-const { ensureGuest } = require('../middleware/auth');
+const ensureGuest  = require('../middleware/ensureGuest');
+console.log('ensureGuest imported:', ensureGuest);
 const User = require('../models/userModel');
 
 const createToken = (_id) => {

@@ -11,12 +11,12 @@ const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-
 mongoose.set('strictQuery', true);
 
 const app = express();
-
+app.use(require('./routes/hrv'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -69,7 +69,7 @@ function cb(req, res) {
 }
 
 app.use('/', require('./routes/index'));
-app.use('/auth', require('./routes/auth'));
+app.use('/auth', authRoutes);
 app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);

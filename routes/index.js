@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const { ensureAuth, ensureGuest } = require('../middleware/auth');
+const ensureAuth= require('../middleware/ensureAuth');
+const ensureGuest = require('../middleware/ensureGuest');
 const Message = require('../models/MessageModel');
 const Story = require('../models/StoryModel');
 const User = require('../models/userModel');
@@ -63,10 +64,12 @@ router.get('/mittaustulokset', ensureAuth, async (req, res) => {
 // GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    const messages = await Message.find({ recipient: req.user._id})
+    console.log('req.user._id:', req.User._id);
+    const messages = await Message.find({ recipient: req.User._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
+    console.log('messages:', messages);
 
     res.render('message', {
       user: req.user,
@@ -77,6 +80,7 @@ router.get('/viestit', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+
 
 
 router.get('/viestitH', ensureAuth, async (req, res) => {
