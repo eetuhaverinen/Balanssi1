@@ -1,29 +1,41 @@
 <body>
-    <div class="msg"></body>
-    <h3>Lähetä viesti</h3>
-    <form class="col s12">
-      <div class="input-group">
-        <label for="recipient">Vastaanottaja:</label>
-        <input type="text" id="recipient" name="recipient" required>
-      </div>
-      <div class="input-group">
-        <label for="subject">Aihe:</label>
-        <input type="text" id="subject" name="subject" required>
-      </div>
-      <div class="input-group">
-        <label for="message">Viesti:</label>
-        <input type="text" id="message" name="message" rows="4"></textarea>
-      </div>
-      <div class="input-group">
-        <label for="attachment">Lisää kuva:</label>
-        <input type="file" id="attachment" name="attachment">
-
-      <button type="submit">Lähetä viesti</button>
-    </form>
+  <div class="msg"></div>
+  <h3>Lähetä viesti</h3>
+  <form id="messageForm" class="col s12" method="POST" action="/viestit" enctype="multipart/form-data">
+    <div class="input-group">
+      <label for="recipient">Vastaanottaja:</label>
+      <input type="text" id="recipient" name="recipient" required>
     </div>
-     <h2>Saapuneet viestit</h2>
-    <div class="messages-box">
-      <!-- Messages will be displayed here -->
+    <div class="input-group">
+      <label for="subject">Aihe:</label>
+      <input type="text" id="subject" name="subject" required>
     </div>
+    <div class="input-group">
+      <label for="message">Viesti:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </div>
+    <div class="input-group">
+      <label for="attachment">Lisää kuva:</label>
+      <input type="file" id="attachment" name="attachment">
+    </div>
+    <button type="submit">Lähetä viesti</button>
+  </form>
   </div>
+   <h2>Saapuneet viestit</h2>
+  <div class="messages-box">
+    {{#each messages}}
+    <div class="message">
+      <p>From: {{from.email}}</p>
+      <p>Subject: {{subject}}</p>
+      <p>Message: {{message}}</p>
+      {{#if attachment}}
+      <p>
+        Attachment: <a href="{{attachment}}" target="_blank">View</a>
+      </p>
+      {{/if}}
+      <hr />
+    </div>
+    {{/each}}
+  </div>
+</div>
 </body>

@@ -2,9 +2,19 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { ensureAuth, ensureGuest } = require('../middleware/auth');
-
+const Message = require('../models/MessageModel');
 const Story = require('../models/StoryModel');
 const User = require('../models/userModel');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
 
 // @desc    Landing page
 // @route   GET /
@@ -50,21 +60,24 @@ router.get('/mittaustulokset', ensureAuth, async (req, res) => {
 });
 
 
-//GET viestit
+// GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const stories = await Story.find({ user: decoded._id }).lean();
-    // const stories = await Story.find({}).lean();
+    const messages = await Message.find({ recipient: req.user })
+      .populate('sender', 'displayName email')
+      .populate('recipient', 'displayName email')
+      .sort({ createdAt: 'desc' });
+
     res.render('message', {
-      // username: decoded.username,
-      stories,
+      user: req.user,
+      messages,
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
 
 router.get('/viestitH', ensureAuth, async (req, res) => {
   try {
@@ -82,6 +95,36 @@ router.get('/viestitH', ensureAuth, async (req, res) => {
   }
 });
 
+// @desc    Send a message
+// @route   POST /viestit
+router.post('/viestit', upload.single('attachment'), ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const sender = await User.findById(decoded._id).lean();
+    const recipient = await User.findOne({ email: req.body.recipient }).lean();
+
+    if (!recipient) {
+      throw Error('Recipient not found');
+    }
+
+    const newMessage = new Message({
+      subject: req.body.subject,
+      message: req.body.message,
+      sender: sender._id, 
+      recipient: recipient._id, 
+      ...(req.file && { attachment: req.file.path.replace(/\\/g, '/') }),
+    });
+
+    await newMessage.save();
+    res.status(200).json({ success: true });
+  } catch (err) {
+    console.warn(err);
+    res.status(500).json({ success: false, errorMessage: err.message });
+  }
+});
+
+
+//GET profiili
 router.get('/profiili', ensureAuth, async (req, res, next) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
