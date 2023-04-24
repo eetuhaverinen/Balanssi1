@@ -4,18 +4,18 @@
 
   <form action="/auth/login" method="POST">
 
-    <label class="labeL"> Email
+    <label class="labeL"> Sähköposti
       <input type="email" name="email" placeholder="matti@matti.com" />
     </label>
 
-    <label class="labeL">Password
+    <label class="labeL">Salasana
       <input type="password" name="password" placeholder="********" />
     </label>
   <span></span>
       <span></span>
       <span></span>
       <span></span>
-    <button type="submit">Login</button>
+    <button type="submit">Kirjaudu</button>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>

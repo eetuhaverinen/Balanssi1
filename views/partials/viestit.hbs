@@ -35,12 +35,12 @@
       <div class="messages-box">
         {{#each messages}}
         <div class="message">
-          <p>From: {{from.email}}</p>
+          <p>From: {{sender.email}}</p>
           <p>Subject: {{subject}}</p>
           <p>Message: {{message}}</p>
           {{#if attachment}}
           <p>
-            Attachment: <a href="{{attachment}}" target="_blank">View</a>
+            Liite: <a href="{{attachment}}" target="_blank">Katso</a>
           </p>
           {{/if}}
           <hr />

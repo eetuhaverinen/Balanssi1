@@ -1,10 +1,11 @@
 require('dotenv').config();
-
+const { engine: exphbs } = require('express-handlebars');
+const handlebars = require('handlebars');
 const express = require('express');
 const spawn = require('child_process').spawn;
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { engine } = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 const path = require('path');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -14,6 +15,8 @@ const workoutRoutes = require('./routes/api/workouts');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 mongoose.set('strictQuery', true);
+
+
 
 const app = express();
 app.use(require('./routes/hrv'));
@@ -51,8 +54,16 @@ const options = {
   extname: '.hbs',
 };
 
-app.engine('.hbs', engine(options));
+app.engine(
+  '.hbs',
+  exphbs({
+    ...options,
+    handlebars: allowInsecurePrototypeAccess(handlebars),
+  })
+);
 app.set('view engine', '.hbs');
+
+
 app.set('views', './views');
 
 
