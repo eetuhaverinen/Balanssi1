@@ -314,11 +314,11 @@ img {
 
  /* Dropdown menu */
  .has-dropdown:hover .dropdown {
-  display: block;
+  display: flex;
 }
 
 .dropdown {
-  display: flex;
+  display: none;
   position: absolute;
   top: 100%;
   right: 10;
@@ -344,7 +344,7 @@ img {
 }
 
  .nav__item.has-dropdown .dropdown {
-    left: -50%;
+    right: 0;
   }
 
   .nav__item.has-dropdown {

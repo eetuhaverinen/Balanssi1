@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const ensureAuth= require('../middleware/ensureAuth');
@@ -34,7 +35,7 @@ router.get('/etusivu', ensureAuth, async (req, res) => {
     const user = await User.findById(decoded._id).lean();
     // const stories = await Story.find({}).lean();
     res.render('etusivu', {
-      // username: decoded.username,
+      user,
       stories,
     });
   } catch (err) {
