@@ -25,9 +25,10 @@
                         <td>{{body}}</td>
                         <td>
                             <a href="/stories/edit/{{_id}}" class="btn btn-primary btn-sm mr-2" data-story-id="{{_id}}"><i class="fas fa-edit"></i> Muokkaa</a>
-
-                            <button type="button" class="btn btn-danger btn-sm btnDel" data-story-id="{{_id}}"><i class="fas fa-trash"></i> Poista</button>
-
+                                 <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                                 <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger btn-sm btnDel" data-story-id="{{_id}}"><i class="fas fa-trash"></i> Poista</button>
+                                </form>
                         </td>
                     </tr>
                     {{/each}}
