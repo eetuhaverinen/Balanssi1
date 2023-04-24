@@ -11,9 +11,18 @@ router.get('/hrv-data', (req, res) => {
   });
 
   process.on('close', () => {
-    const jsonData = JSON.parse(result);
-    res.json(jsonData);
+    try {
+      const jsonData = JSON.parse(result);
+      res.json(jsonData);
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      res.status(500).send('Error parsing JSON data');
+    }
   });
+  // process.on('close', () => {
+  //   const jsonData = JSON.parse(result);
+  //   res.json(jsonData);
+  // });
 });
 
 module.exports = router;

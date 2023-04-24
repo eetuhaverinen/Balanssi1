@@ -180,7 +180,7 @@ header a img {
   display: none; /* initially hidden */
 }
 
-@keyframes
+/* @keyframes
 
 @keyframes spin {
   0% {
@@ -189,7 +189,7 @@ header a img {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 .form button {
   font-family: "Roboto", sans-serif;
@@ -308,9 +308,6 @@ header a img {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
-.table-striped tbody tr:nth-child(even) td {
-  background-color: #f2f2f2;
-}
 
 .table-container {
   overflow-x: auto;
@@ -323,11 +320,12 @@ header a img {
   margin-left: 15px;
   margin-bottom: 50px;
   width: 100%; 
-  overflow-x: auto; /
+  overflow-x: auto; 
   align-items: center;
   border: 1px solid #000;
   justify-content: center;
 }
+
 .dark .row {
   display: flex;
   flex-wrap: nowrap;
@@ -837,8 +835,7 @@ footer-logo {
 }
 
  
-  max-width: 100%;
-  overflow-x: auto;
+
 
 
 .measurementTable {
