@@ -4,7 +4,6 @@ const handlebars = require('handlebars');
 const express = require('express');
 const spawn = require('child_process').spawn;
 const mongoose = require('mongoose');
-const mongoDBUri = process.env.MONGODB_URI;
 const cors = require('cors');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 const path = require('path');
@@ -86,18 +85,17 @@ app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 
-if (!mongoDBUri) {
-  console.error('Error: MONGODB_URI is not defined');
-  process.exit(1);
-}
 
-// ... (all previous code remains the same)
 
-mongoose.connect(mongoDBUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('connected to database');
+
     app.listen(process.env.PORT, () => {
       console.log('listening for requests on port', process.env.PORT || 3000);
     });
   })
-  .catch(err => console.error('Error connecting to MongoDB', err));
+  .catch((err) => {
+    console.log(err);
+  });
