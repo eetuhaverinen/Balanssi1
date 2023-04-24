@@ -214,6 +214,7 @@ header a img {
   margin: 15px 0 0;
   color: var(--text);
   font-size: 12px;
+  border: 2px solid var(--text);
 }
 
 .form .message a {
@@ -530,27 +531,16 @@ h3 {
 
   .footer {
     background-color: var(--bg-nav);
-    color: var(--text);
+    color: grey;
     text-align: center;
     padding: 10px;
     position: absolute;
     bottom: 0;
     width: 100%;
     padding-bottom: 20px;
+    z-index: 1000;
   }
 
-
-
-  .footer {
-    background-color: var(--bg-nav);
-    color: var(--text);
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 20px;
-  }
 
 .footer p {
 font-size: 0.75rem;
@@ -683,7 +673,7 @@ max-width: 150px;
   max-width: 600px;
   margin-bottom: 20px;
   padding: 20px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--text);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -691,7 +681,7 @@ max-width: 150px;
 .messages-box {
   min-height: 200px;
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--text); 
   border-radius: 5px;
   overflow-y: auto;
 }
@@ -797,7 +787,9 @@ footer-logo {
 }
 
  
-
+.content {
+  padding-bottom: 50px; // Added space for the footer
+}
 
 
 .measurementTable {

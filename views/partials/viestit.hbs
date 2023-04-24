@@ -1,41 +1,52 @@
+
 <body>
-  <div class="msg"></div>
-  <h3>Lähetä viesti</h3>
-  <form id="messageForm" class="col s12" method="POST" action="/viestit" enctype="multipart/form-data">
-    <div class="input-group">
-      <label for="recipient">Vastaanottaja:</label>
-      <input type="text" id="recipient" name="recipient" required>
+  <div class="container mt-3">
+    <div class="border p-3">
+      <div class="msg"></div>
+      <h3>Lähetä viesti</h3>
+      <form id="messageForm" class="col s12" method="POST" action="/viestit" enctype="multipart/form-data">
+        <div class="form-group row">
+          <label for="recipient" class="col-sm-2 col-form-label">Vastaanottaja:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="recipient" name="recipient" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="subject" class="col-sm-2 col-form-label">Aihe:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="subject" name="subject" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="message" class="col-sm-2 col-form-label">Viesti:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="attachment" class="col-sm-2 col-form-label">Lisää kuva:</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control-file" id="attachment" name="attachment">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Lähetä viesti</button>
+      </form>
+      <h2>Saapuneet viestit</h2>
+      <div class="messages-box">
+        {{#each messages}}
+        <div class="message">
+          <p>From: {{from.email}}</p>
+          <p>Subject: {{subject}}</p>
+          <p>Message: {{message}}</p>
+          {{#if attachment}}
+          <p>
+            Attachment: <a href="{{attachment}}" target="_blank">View</a>
+          </p>
+          {{/if}}
+          <hr />
+        </div>
+        {{/each}}
+      </div>
     </div>
-    <div class="input-group">
-      <label for="subject">Aihe:</label>
-      <input type="text" id="subject" name="subject" required>
-    </div>
-    <div class="input-group">
-      <label for="message">Viesti:</label>
-      <textarea id="message" name="message" rows="4"></textarea>
-    </div>
-    <div class="input-group">
-      <label for="attachment">Lisää kuva:</label>
-      <input type="file" id="attachment" name="attachment">
-    </div>
-    <button type="submit">Lähetä viesti</button>
-  </form>
   </div>
-   <h2>Saapuneet viestit</h2>
-  <div class="messages-box">
-    {{#each messages}}
-    <div class="message">
-      <p>From: {{from.email}}</p>
-      <p>Subject: {{subject}}</p>
-      <p>Message: {{message}}</p>
-      {{#if attachment}}
-      <p>
-        Attachment: <a href="{{attachment}}" target="_blank">View</a>
-      </p>
-      {{/if}}
-      <hr />
-    </div>
-    {{/each}}
-  </div>
-</div>
-</body>
+

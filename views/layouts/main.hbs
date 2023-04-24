@@ -13,9 +13,6 @@
   <link rel="manifest" href="\manifest.webmanifest">
   <script type="text/javascript" src="sw.js"></script>
 
-  {{#if showLoader}}
-  <link rel="stylesheet" href="/css/loader.css">
-  {{/if}}
 
   <title>Balanssi</title>
 </head>
@@ -24,16 +21,11 @@
   <div class="container_body">
     {{>_header}}
     {{{body}}}
-  <div class="footer">
-          
-      <p>
-    © 2023 Balanssi Oy. Kaikki oikeudet pidätetään. 
-    <a href="/kayttoehdot">Käyttöehdot</a> | 
-    <a href="/tietosuojakaytanto">Tietosuojakäytäntö</a> | 
-    <a href="/evasteidenkaytto">Evästeiden käyttö</a>
-  </p>
 
-  </div>
+          
+     {{>footer}}
+
+  
   </div>
  
   <script>
