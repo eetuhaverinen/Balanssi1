@@ -1,20 +1,20 @@
 {{!-- views/auth/signup.hbs --}}
 </head>
-<title>Signup</title>
+<title>Rekisteröidy</title>
 
 <body>
   {{!-- Role selection pop-up --}}
 <!-- Role selection pop-up -->
 <div id="role-popup" class="popup">
   <div class="popup-content">
-    <h2>Select your role:</h2>
+    <h2>Valitse rooli:</h2>
     <label>
       <input type="radio" name="role-popup" value="patient" checked>
-      Patient
+      Asiakas
     </label>
     <label>
       <input type="radio" name="role-popup" value="nurse">
-      Nurse
+      Hoitohenkilökunta
     </label>
     <button id="role-popup-submit" type="button">Submit</button>
 <input type="hidden" name="hoitajanKoodi" id="hoitajanKoodi" value="" />
@@ -25,7 +25,7 @@
   {{!-- Signup form --}}
  <div class="login-box">
 <div id="form">
-  <h2>Signup</h2>
+  <h2>Rekisteröidy</h2>
   <form action="/auth/register" method="POST">
   {{!-- Patient fields --}}
    <label> Nimi
@@ -81,11 +81,11 @@
 
           </label> 
  </div>
-    <label> Email
+    <label> Sähköposti
       <input type="email" name="email" placeholder="matti@matti.com" />
     </label>
 
-    <label> Password
+    <label> Salasana
       <input type="password" name="password" placeholder="********" />
     </label>
 
@@ -93,7 +93,7 @@
 
 
 
-    <button type="submit">Create account</button>
+    <button type="submit">Luo käyttäjä</button>
 
     {{!-- error message will be added here --}}
 
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     roleInput.value = selectedRole;
 
     if (selectedRole === 'nurse') {
-      const hoitajanKoodi = prompt('Please enter the hoitajan koodi:');
+      const hoitajanKoodi = prompt('Syötä hoitajan koodi:');
       console.log(hoitajanKoodi);
       hoitajanKoodiInput.value = hoitajanKoodi;
      if (hoitajanKoodi !== 'abc123') {

@@ -21,30 +21,14 @@
   --solar8: #0e4966;
   --solar9: #092f49;
   --dark1: #404e5c;
-  --black: #000000;
+  --black1: #202b33;
+  --black2: #1a242b;
+  --black3: #12181c;
+  --green: #1aff1a;
 }
 
   
   .light {
-  --bg: #ffffff;
-  --bg-nav: linear-gradient(to right, #f7f8d0, #5ec72d);
-  --bg-dropdown: var(--gray0);
-  --text: var(--gray6);
-  --border-color: var(--blue);
-  --bg-solar: var(--solar-green);
-  }
-  
-  .dark {
-    --bg: #000;
-    --bg-nav: linear-gradient(to right, #5ec72d, #003d4c);
-    --bg-dropdown: var(--gray6);
-    --text: #fff;
-    --border-color: var(--purple);
-    --bg-solar: var(--blue);
-    --table-color: #0A0D0F; 
-  }
-  
-  .solar {
     --bg: var(--solar1);
     --bg-nav: linear-gradient(to right, var(--solar3), var(--solar8));
     --bg-dropdown: var(--solar2);
@@ -53,7 +37,34 @@
     --bg-solar: var(--solar4);
     --table-color: var (--solar5); 
     --text: #000000;
+    --msg: #f7f8d0;
   }
+  
+  .dark {
+    background: linear-gradient(#000000, #243b55);
+    --bg-nav: linear-gradient(to right, #1aff1a, #b300b3);
+    --bg-dropdown: #1c1c1c;
+    --text: #fff;
+    --border-color: #1aff1a;
+    --bg-solar: #1aff1a;
+    --table-color: #000;
+    --msg: #000;
+  }
+  
+    
+  
+  
+    .solar {
+      --bg: #f7df1e;
+      --bg-nav: linear-gradient(to right, #f79f24, #f7df1e);
+      --bg-dropdown: #f79f24;
+      --text: #333333;
+      --border-color: #ff2b2b;
+      --bg-solar: #ff2b2b;
+      --table-color: #ffd000;
+      --msg: #ffd000;
+    }
+    
   
   body {
   background-color: var(--bg);
@@ -353,6 +364,8 @@ header a img {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-primary {
@@ -815,4 +828,41 @@ footer-logo {
 
 .patient-list div {
   text-align: center;
+}
+
+.light .message,
+.dark .message,
+.solar .message {
+  color: var(--text);
+
+}
+
+.light .form .message a,
+.dark .form .message a,
+.solar .form .message a {
+  color: var(--border-color);
+}
+
+.light .form .message button,
+.dark .form .message button,
+.solar .form .message button {
+  background-color: var(--bg-nav);
+  color: var(--text);
+}
+
+.light .form .message button:hover,
+.light .form .message button:active,
+.dark .form .message button:hover,
+.dark .form .message button:active,
+.solar .form .message button:hover,
+.solar .form .message button:active {
+  background-color: var(--bg-solar);
+  color: #fff;
+}
+
+.container.mt-3 {
+  background-color: var(--msg);
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 20px;
 }
