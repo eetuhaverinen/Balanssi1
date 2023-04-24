@@ -225,13 +225,6 @@ header a img {
   display: none;
 }
 
-.container {
-  max-width: 100%;
-  overflow-x: auto;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
 
 .container:before, .container:after {
   content: "";
@@ -277,7 +270,7 @@ header a img {
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  padding-top: 5%;
+  padding-top: 5rem;
   flex-grow: 1;
 }
 
@@ -324,6 +317,8 @@ header a img {
   align-items: center;
   border: 1px solid #000;
   justify-content: center;
+  box-shadow:0 4px;
+  border-radius: 1.5%;
 }
 
 .dark .row {
@@ -340,8 +335,8 @@ header a img {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
 }
 
 .btn {
@@ -516,23 +511,6 @@ h3 {
 
 /* ... other styles ... */
 
-/* Media queries for responsiveness */
-@media screen and (max-width: 1200px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    max-width: 540px;
-  }
   .container {
     max-width: 100%;
     padding-left: 15px;
@@ -549,16 +527,7 @@ h3 {
   body {
     padding-bottom: 60px;
   }
-  .row {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  .containerE {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+
   .footer {
     background-color: var(--bg-nav);
     color: var(--text);
@@ -569,13 +538,8 @@ h3 {
     width: 100%;
     padding-bottom: 20px;
   }
-}
-  
-  @media only screen and (max-width: 600px) {
-    .containerE {
-      flex-direction: column;
-    }
-  }
+
+
 
   .footer {
     background-color: var(--bg-nav);
@@ -614,10 +578,6 @@ max-width: 150px;
   body {
     padding-bottom: 60px;
   }
-  .row {
-    max-width: 100%;
-    overflow-x: auto;
-  }
   .containerE {
     display: flex;
     flex-direction: row;
@@ -625,19 +585,7 @@ max-width: 150px;
     justify-content: center;
   }
   
-  @media only screen and (max-width: 600px) {
-    .containerE {
-      flex-direction: column;
-    }
-  }
 }
-
-
-
-
-
-
-
 
 * {
   box-sizing: border-box;
@@ -685,11 +633,27 @@ max-width: 150px;
   .wrapper {
     flex-direction: column;
   }
+  .containerE{
+    flex-direction: column;
+  }
   
   .element {
     padding: 10px;
   }
+  .row{
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+  }
 }
+
+@media screen and (min-width: 768px) {
+  .container_body{
+    padding-top: 10rem;
+  }
+}
+
+
 
 
 .verensokeriAdd, .chart {
@@ -708,9 +672,7 @@ max-width: 150px;
 
 .containerE {
   display: flex;
-  flex-direction: row;
   width: 100%;
-  align-items: center;
   margin: 5 10%;
 }
 

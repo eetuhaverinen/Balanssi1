@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balanssi</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
 </head>
 <body>
 
   <h2 class="text-center">Tervetuloa Balanssiin {{user.nimi}}</h2>
 
-  <div class="container">
+  <div class="containerE">
     {{>verensokeriAdd}}
-
-    <div class="row">
       {{>chart}}
     </div>
   </div>
@@ -21,9 +19,6 @@
   <style>
     /* stack elements vertically on screens smaller than 768px */
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
 
       .row {
         flex-direction: column;
