@@ -244,6 +244,11 @@ header a img {
   clear: both;
 }
 
+.infolinkit a{
+  color: red;
+
+}
+
 .container .info {
   margin: 50px auto;
   text-align: center;
@@ -420,6 +425,7 @@ h3 {
   text-align: left;
   color: #333;
 }
+
 
 /* input-group styling */
 .input-group {
@@ -774,6 +780,7 @@ max-width: 150px;
   visibility: visible;
   opacity: 1;
   }
+
   
   .footer {
     background-color: var(--bg-nav);
@@ -784,10 +791,11 @@ max-width: 150px;
     bottom: 0;
     width: 100%;
     padding-bottom: 20px;
+    font-size: 1rem;
   }
   
   .footer p {
-font-size: 0.75rem;
+font-size: 1.2rem;
 color: #888;
 }
 
