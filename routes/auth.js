@@ -29,7 +29,8 @@ router.post('/login', async (req, res) => {
     const user = await User.login(email, password);
     // create a token
     const token = createToken(user._id);
-    res.cookie('cookieToken', token, { httpOnly: true });
+    res.cookie('cookieToken', token, { httpOnly: true,
+      secure: process.env.NODE_ENV === 'development' ? false : true, });
     res.redirect('/etusivu');
   } catch (error) {
     res.send(
