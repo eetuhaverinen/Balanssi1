@@ -111,10 +111,10 @@ const login = async () => {
   const cookie = 'keyboardCatRandom';
   const myHeaders = {Cookie: `XSRF-TOKEN=${cookie}`, 'User-Agent': userAgent};
   const myBody = new URLSearchParams();
-  myBody.set('client_id', '74571pdhuc7vvak4tl45uts8u8');
+  myBody.set('client_id', process.env.CLIENT_ID);
   myBody.set('redirect_uri', 'https://analysis.kubioscloud.com/v1/portal/login');
-  myBody.set('username', 'kaisa.koski@metropolia.fi');
-  myBody.set('password', 'Balanssi123');
+  myBody.set('username', process.env.KUBIOS_USERNAME);
+  myBody.set('password', process.env.PASSWORD);
   myBody.set('response_type', 'token');
   myBody.set('access_type', 'openid');
   myBody.set('_csrf', cookie);
