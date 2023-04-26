@@ -548,27 +548,6 @@ h3 {
     padding-bottom: 60px;
   }
 
-  .footer {
-    background-color: var(--bg-nav);
-    color: grey;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 20px;
-    z-index: 1000;
-  }
-
-
-.footer p {
-font-size: 0.75rem;
-color: #888;
-}
-
-footer-logo {
-max-width: 150px; 
-}
 
 @media screen and (th: 576px) {
   .container {
@@ -592,6 +571,7 @@ max-width: 150px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: auto;
   }
   
 }
@@ -790,7 +770,7 @@ max-width: 150px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     font-size: 1rem;
   }
   
