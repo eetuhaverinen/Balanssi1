@@ -40,27 +40,3 @@
     "node": ">=18"
   }
 }
-
-{
-  "name": "kubios",
-  "version": "1.0.0",
-  "description": "Test Kubios Cloud API",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.metropolia.fi:hyte2022/kubios.git"
-  },
-  "keywords": [
-    "Kubios"
-  ],
-  "author": "Patrick Ausderau",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "node-fetch": "^2.6.9"
-  }
-} 
-/*Lisätty kubios koodi rivitlä 44 alkaen.
