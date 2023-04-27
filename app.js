@@ -1,12 +1,7 @@
 require('dotenv').config();
-const { engine: exphbs } = require('express-handlebars');
-const { arvio } = require('./arvio');
-const handlebars = require('handlebars');
 const express = require('express');
-const spawn = require('child_process').spawn;
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 const path = require('path');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -15,10 +10,24 @@ const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const hbs = require('./helpers/hbs');
+const { engine: exphbs } = require('express-handlebars');
+const Handlebars = require('handlebars');
 mongoose.set('strictQuery', true);
 
+function allowInsecurePrototypeAccess(HandlebarsInstance) {
+  const originalCompile = HandlebarsInstance.compile;
 
+  function newCompile(template, options) {
+    options = options || {};
+    options.__allowProtoMethodsByDefault = true;
+    options.__allowProtoPropertiesByDefault = true;
+
+    return originalCompile(template, options);
+  }
+
+  HandlebarsInstance.compile = newCompile;
+  return HandlebarsInstance;
+}
 
 const app = express();
 app.use(require('./routes/hrv'));
@@ -52,47 +61,29 @@ const options = {
   layoutsDir: 'views/layouts/',
   defaultLayout: 'main',
   partialsDir: ['views/partials/'],
-  helpers: require('./helpers/hbs'),
   extname: '.hbs',
+  helpers: require('./helpers/hbs'),
 };
+
 app.set('views', './views');
 
 app.engine(
-  'handlebars',
+  '.hbs',
   exphbs({
     ...options,
-    handlebars: allowInsecurePrototypeAccess(handlebars),
-    helpers: hbs,
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
-app.set('view engine', 'handlebars');
 
-
-
-
-
-
-
-
+app.set('view engine', '.hbs');
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/python', cb);
-function cb(req, res) {
-  const process = spawn('python', ['./scripts/python_test.py']);
-
-  process.stdout.on('data', function (data) {
-    res.send(data.toString());
-  });
-}
 
 app.use('/', require('./routes/index'));
 app.use('/auth', authRoutes);
 app.use('/stories', require('./routes/stories'));
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
-
-
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -106,6 +97,7 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
 
 /*
 

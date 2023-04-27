@@ -40,22 +40,22 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Arvio</h5>
+                <h5 class="card-title">Arvio viimeismmästä mittaustuloksesta</h5>
             </div>
             <div class="card-body">
                 {{#each stories}}
                 <p>
                     {{#if mmolPerL}}
-                    Verensokeriarvot: {{#if (isGoodBloodSugar mmolPerL)}}hyvät{{else}}huonot{{/if}}
+                    Verensokeriarvot: {{#if (isGoodBloodSugar mmolPerL)}}Hyvät verensokeriarvot{{else}}jotain jotain{{/if}}
                     {{/if}}
                     {{#if feeling}}
-                    | Tuntemus: {{feeling}}, {{#if (isGoodFeeling feeling)}}tässä ehdotuksia: lorem ipsum{{else}}tässä ehdotuksia: lirem lorum{{/if}}
+                    | Tuntemus: {{feeling}}, {{#if (isGoodFeeling feeling)}}Tuntemuksesi on hyvä. Loistavaa!{{else}}{{/if}}
                     {{/if}}
                     {{#if GHH}}
-                    | Hiilihydraatit: {{#if (isGoodCarbs GHH)}}hyvät{{else}}liikaa{{/if}}
+                    | Hiilihydraatit: {{#if (isGoodCarbs GHH)}}Hyvä määrä hiilihydraatteja.{{else}}Tarkkaile hiilihydraattimääriäsi{{/if}}
                     {{/if}}
                     {{#if sport}}
-                    | Liikunta: {{#if (isGoodSport sportDuration)}}hyvä{{else}}huono{{/if}}
+                    | Liikunta: {{#if (isGoodSport sportDuration)}}Hyvä, jatka samaan malliin liikunnan kanssa!{{else}}Muista liikkua muina päivinä{{/if}}
                     {{/if}}
                 </p>
                 {{/each}}
