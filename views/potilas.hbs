@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col">
+    <h2>{{patient.nimi}} - profiili</h2>
+    <p>Email: {{patient.email}}</p>
+    <p>Syntymäaika: {{formatDate patient.syntymaAika 'MMMM Do YYYY'}}</p>
+    <p>Pituus: {{patient.pituus}} cm</p>
+    <p>Paino: {{patient.paino}} kg</p>
+    <p>Sukupuoli: {{patient.sukupuoli}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h3>{{patient.nimi}} - mittaustulokset</h3>
+    {{#if stories}}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Aika</th>
+            <th>mmol/l</th>
+            <th>Tuntemus</th>
+            <th>G HH</th>
+            <th>Liikunta</th>
+            <th>Kommentti</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each stories}}
+          <tr>
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+            <td>{{mmolPerL}} </td>
+            <td>{{feeling}}</td>
+            <td>{{GHH}}</td>
+            <td>{{sport}} {{sportDuration}} min</td>
+            <td>{{body}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <div class="alert alert-warning" role="alert">
+      Mittaustuloksia ei löydy
+    </div>
+    {{/if}}
+  </div>
+</div>

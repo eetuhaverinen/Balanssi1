@@ -8,6 +8,7 @@ const User = require('../models/userModel');
 const Story = require('../models/StoryModel');
 
 
+
 // @desc    Show add page
 // @route   GET /stories/add
 router.get('/add', ensureAuth, (req, res) => {
@@ -28,39 +29,24 @@ router.post('/', ensureAuth, async (req, res) => {
     res.redirect('/mittaustulokset');
   } catch (err) {
     console.error(err);
-    res.render('error/500');
+    res.status(500).json({ error: 'An error occurred while saving the story.' });
   }
 });
 
-// @desc    Show all stories
-// @route   GET /stories
-// @desc    Show all stories
-// @route   GET /stories
-router.get('/', ensureAuth, async (req, res) => {
+
+
+// @route   GET /mittaustulokset
+router.get('/mittaustulokset', ensureAuth, async (req, res) => {
   try {
-    let verensokerit;
-
-    // If the logged-in user is a nurse, show all stories
-    if (req.user.role === 'nurse') {
-      verensokerit = await Story.find().sort({ createdAt: 'asc' }).lean();
-    } else {
-      // Show only the current user's stories
-      verensokerit = await Story.find({ user: req.user.id }).sort({ createdAt: 'asc' }).lean();
-    }
-
-    const labels = verensokerit.map(sokeri => moment(sokeri.createdAt).format('MMM D, YYYY, h:mm:ss a'));
-    const data = verensokerit.map(sokeri => sokeri.mmolPerL);
-
-    res.render('stories/index', {
-      labels,
-      data,
-      stories: verensokerit
-    });
+    const stories = await Story.find({ user: req.user._id }).populate('user', 'nimi').lean();
+    res.render('mittaustulokset', { stories });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
+
 
 
 // @desc    Show single story
@@ -98,30 +84,6 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
     res.render('stories/edit', {
       story,
     });
-  } catch (err) {
-    console.error(err);
-    return res.render('error/500');
-  }
-});
-
-router.put('/:id', ensureAuth, async (req, res) => {
-  try {
-    let story = await Story.findById(req.params.id).lean();
-
-    if (!story) {
-      return res.render('error/404');
-    }
-
-    if (story.user != req.user.id) {
-      res.redirect('/mittaustulokset');
-    } else {
-      story = await Story.findOneAndUpdate({ _id: req.params.id }, req.body, {
-        new: true,
-        runValidators: true,
-      });
-
-      res.redirect('/mittaustulokset');
-    }
   } catch (err) {
     console.error(err);
     return res.render('error/500');
@@ -170,22 +132,6 @@ router.delete('/:id', ensureAuth, async (req, res) => {
   }
 });
 
-//@desc Search stories by title
-//@route GET /stories/search/:query
-router.get('/search/:query', ensureAuth, async (req, res) => {
-  try {
-    const stories = await Story.find({
-      title: new RegExp(req.query.query, 'i'),
-      status: 'public',
-    })
-      .sort({ createdAt: 'desc' })
-      .lean();
-    res.render('stories/index', { stories });
-  } catch (err) {
-    console.log(err);
-    res.render('error/404');
-  }
-});
 
 
 // @desc    Show patient list
@@ -193,35 +139,40 @@ router.get('/search/:query', ensureAuth, async (req, res) => {
 
 router.get('/potilaslista', ensureAuth, async (req, res) => {
   try {
-    if (req.user.role !== 'nurse') {
-      return res.redirect('/stories');
-    }
-
-    const patients = await User.find({ role: 'patient' }).lean(); // Fetch patients
-    const stories = await Story.find().populate('user').lean(); // Fetch stories
-
-    res.render('potilaslista', {
-      patients: patients,
-      stories: JSON.stringify(stories),
-    });
+    const patients = await User.find({ role: 'patient' }).populate('stories').lean();
+    console.log(patients);
+    res.render('potilaslista', { patients });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
 
-// @desc    Show stories for a specific patient
+
+
+
+
+
+
+
+
+
 // @route   GET /api/stories
 router.get('/stories', ensureAuth, async (req, res) => {
   try {
     const patientId = req.query.patientId;
     const stories = await Story.find({ user: patientId }).sort({ createdAt: 'asc' }).lean();
+    
+    console.log('Fetched stories for patient:', patientId, stories);
+
     res.json(stories);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error occurred while fetching stories.' });
   }
 });
+
+
 
 
 module.exports = router;

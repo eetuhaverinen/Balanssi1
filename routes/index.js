@@ -33,7 +33,7 @@ router.get('/etusivu', ensureAuth, async (req, res) => {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     const stories = await Story.find({ user: decoded._id }).lean();
     const user = await User.findById(decoded._id).lean();
-    // const stories = await Story.find({}).lean();
+    
     res.render('etusivu', {
       user,
       stories,
@@ -53,6 +53,24 @@ router.get('/mittaustulokset', ensureAuth, async (req, res) => {
     // const stories = await Story.find({}).lean();
     res.render('mittaustulokset', {
       // username: decoded.username,
+      stories,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+// @desc    View patient profile
+// @route   GET /potilas/:id
+router.get('/potilas/:_id', ensureAuth, async (req, res) => {
+  try {
+    const patient = await User.findById(req.params._id).lean();
+    const stories = await Story.find({ user: req.params._id }).lean();
+
+    res.render('potilas', {
+      layout: 'mainH',
+      patient,
       stories,
     });
   } catch (err) {
@@ -84,21 +102,24 @@ router.get('/viestit', ensureAuth, async (req, res) => {
 
 
 
+// GET viestitH
 router.get('/viestitH', ensureAuth, async (req, res) => {
   try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const stories = await Story.find({ user: decoded._id }).lean();
-    // const stories = await Story.find({}).lean();
+    const messages = await Message.find({ recipient: req.user._id })
+      .populate('sender', 'displayName email')
+      .populate('recipient', 'displayName email')
+      .sort({ createdAt: 'desc' });
+
     res.render('messageH', {
-      layout: 'mainH',
-      // username: decoded.username,
-      stories,
+      user: req.user,
+      messages,
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
 
 // @desc    Send a message
 // @route   POST /viestit
@@ -205,8 +226,8 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
 });
 router.get('/potilaslista', ensureAuth, async (req, res) => {
   try {
-    // Fetch all patients from the database
-    const patients = await User.find({}).lean();
+    // Fetch all patients with role "patient" from the database
+    const patients = await User.find({ role: 'patient' }).lean();
 
     // Render the potilaslista view with the patients data
     res.render('potilaslista', {
@@ -218,6 +239,7 @@ router.get('/potilaslista', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+
 //hrv
 router.get('/hrv-data', async (req, res) => {
   try {
