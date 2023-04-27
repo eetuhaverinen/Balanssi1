@@ -100,7 +100,7 @@ mongoose
     console.log(err);
   });
 
-  'use strict';
+/*
 
 require('dotenv').config();
 const fetch = require('node-fetch');
