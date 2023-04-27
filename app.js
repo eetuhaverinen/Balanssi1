@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { engine: exphbs } = require('express-handlebars');
+const { arvio } = require('./arvio');
 const handlebars = require('handlebars');
 const express = require('express');
 const spawn = require('child_process').spawn;
@@ -14,6 +15,7 @@ const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const hbs = require('./helpers/hbs');
 mongoose.set('strictQuery', true);
 
 
@@ -53,18 +55,23 @@ const options = {
   helpers: require('./helpers/hbs'),
   extname: '.hbs',
 };
+app.set('views', './views');
 
 app.engine(
-  '.hbs',
+  'handlebars',
   exphbs({
     ...options,
     handlebars: allowInsecurePrototypeAccess(handlebars),
+    helpers: hbs,
   })
 );
-app.set('view engine', '.hbs');
+app.set('view engine', 'handlebars');
 
 
-app.set('views', './views');
+
+
+
+
 
 
 

@@ -1,3 +1,4 @@
+{{!-- verensokeriarvot--}}
 {{#if stories}}
 <div class="row">
     <div class="col">
@@ -34,7 +35,36 @@
                     {{/each}}
                 </tbody>
             </table>
-            
+            {{#if stories}}
+<div class="row mt-4">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Arvio</h5>
+            </div>
+            <div class="card-body">
+                {{#each stories}}
+                <p>
+                    {{#if mmolPerL}}
+                    Verensokeriarvot: {{#if (isGoodBloodSugar mmolPerL)}}hyvät{{else}}huonot{{/if}}
+                    {{/if}}
+                    {{#if feeling}}
+                    | Tuntemus: {{feeling}}, {{#if (isGoodFeeling feeling)}}tässä ehdotuksia: lorem ipsum{{else}}tässä ehdotuksia: lirem lorum{{/if}}
+                    {{/if}}
+                    {{#if GHH}}
+                    | Hiilihydraatit: {{#if (isGoodCarbs GHH)}}hyvät{{else}}liikaa{{/if}}
+                    {{/if}}
+                    {{#if sport}}
+                    | Liikunta: {{#if (isGoodSport sportDuration)}}hyvä{{else}}huono{{/if}}
+                    {{/if}}
+                </p>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
         </div>
     </div>
 </div>
@@ -59,7 +89,7 @@
   </div>
 
 
-
+<script> src="/arvio.js"</script>
 
 
 <script>
