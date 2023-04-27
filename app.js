@@ -10,7 +10,10 @@ const methodOverride = require('method-override');
 const workoutRoutes = require('./routes/api/workouts');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+
 const { engine: exphbs } = require('express-handlebars');
+
+
 const Handlebars = require('handlebars');
 mongoose.set('strictQuery', true);
 

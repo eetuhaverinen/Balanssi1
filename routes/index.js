@@ -84,21 +84,33 @@ router.get('/potilas/:_id', ensureAuth, async (req, res) => {
 // GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    console.log('req.user:', req.user); // log the req.user object
-    const messages = await Message.find({ recipient: req.user._id})
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    console.log('Decoded JWT:', decoded);
+
+    const user = await User.findById(decoded._id).lean();
+    console.log('User:', user);
+
+    const messages = await Message.find({ recipient: user._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
 
+    console.log('Messages:', messages);
+
     res.render('message', {
-      user: req.user,
+      user: user,
       messages,
+      allowProtoMethodsByDefault: true,
+      allowProtoPropertiesByDefault: true,
     });
+    
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
+
 
 
 
