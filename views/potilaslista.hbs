@@ -1,40 +1,65 @@
+<div class="row mb-3">
+  <div class="col-md-6 offset-md-3">
+    <form>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Etsi potilasta...">
+        <button class="btn btn-outline-secondary btn-sm search-btn" type="button"><i class="bi bi-search"></i></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.search-btn {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+</style>
+
+
 {{#if patients}}
 <div class="row">
-    <div class="col">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nimi</th>
-                        <th>Sähköposti</th>
-                        <th>Syntymäaika</th>
-                        <th>Pituus</th>
-                        <th>Paino</th>
-                        <th>Sukupuoli</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each patients}}
-                    {{#if this.nimi}}
-                    <tr>
-                        <td><a href="/potilas/{{this._id}}">{{this.nimi}}</a></td>
-                        <td>{{this.email}}</td>
-                        <td>{{formatDate this.syntymaAika 'MMMM Do YYYY'}}</td>
-                        <td>{{this.pituus}} cm</td>
-                        <td>{{this.paino}} kg</td>
-                        <td>{{this.sukupuoli}}</td>
-                    </tr>
-                    {{/if}}
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
+  <div class="col">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nimi</th>
+            <th>Sähköposti</th>
+            <th>Syntymäaika</th>
+            <th>Pituus</th>
+            <th>Paino</th>
+            <th>Sukupuoli</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each patients}}
+          {{#if this.nimi}}
+          <tr>
+            <td><a href="/potilas/{{this._id}}">{{this.nimi}}</a></td>
+            <td>{{this.email}}</td>
+            <td>{{formatDate this.syntymaAika 'MMMM Do YYYY'}}</td>
+            <td>{{this.pituus}} cm</td>
+            <td>{{this.paino}} kg</td>
+            <td>{{this.sukupuoli}}</td>
+          </tr>
+          {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 {{else}}
 <div class="alert alert-warning" role="alert">
-    Potilaita ei löydy
+  Potilaita ei löydy
 </div>
 {{/if}}
 
-<script> src= "/js/patients.js"</script>
+<script src="/js/patients.js"></script>
+
+<style>
+  .table-responsive {
+    overflow-x: auto;
+  }
+</style>

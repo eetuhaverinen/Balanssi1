@@ -80,15 +80,15 @@ router.get('/potilas/:_id', ensureAuth, async (req, res) => {
 });
 
 
+
 // GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    console.log('req.user._id:', req.User._id);
-    const messages = await Message.find({ recipient: req.User._id})
+    console.log('req.user:', req.user); // log the req.user object
+    const messages = await Message.find({ recipient: req.user._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
-    console.log('messages:', messages);
 
     res.render('message', {
       user: req.user,
@@ -99,6 +99,7 @@ router.get('/viestit', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
+
 
 
 

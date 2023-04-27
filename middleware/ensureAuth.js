@@ -15,7 +15,7 @@ const ensureAuth = (req, res, next) => {
 
     try {
       const user = await User.findById(decodedToken._id); // <-- Change this line
-      req.User = user;
+      req.user = user;
       next();
     } catch (error) {
       res.status(500).send('Server error');
