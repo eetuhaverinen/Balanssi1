@@ -24,7 +24,7 @@
                         <td>{{GHH}}</td>
                         <td>{{sport}} {{sportDuration}} min</td>
                         <td>{{body}}</td>
-                        <td>
+                        <td id="tableButtons">
                             <a href="/stories/edit/{{_id}}" class="btn btn-primary btn-sm mr-2" data-story-id="{{_id}}"><i class="fas fa-edit"></i> Muokkaa</a>
                                  <form action="/stories/{{_id}}" method="POST" id="delete-form">
                                  <input type="hidden" name="_method" value="DELETE">
@@ -36,7 +36,7 @@
                 </tbody>
             </table>
             {{#if stories}}
-<div class="row mt-4">
+<div class="rowMittaustulos">
     <div class="col">
         <div class="card">
             <div class="card-header">

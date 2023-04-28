@@ -308,6 +308,8 @@ header a img {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
+  border-right: 1px solid rgba(60, 60, 60, 0.33);
+  border-left: 1px solid rgba(60, 60, 60, 0.33);
 }
 
 .table thead th {
@@ -330,6 +332,19 @@ header a img {
   margin-left: 15px;
   margin-bottom: 50px;
   width: 100%; 
+  overflow-x: auto; 
+  align-items: center;
+  border: 1px solid #000;
+  justify-content: center;
+  box-shadow:0 4px;
+  border-radius: 1.5%;
+}
+.rowMittaustulos{
+  display: flex;
+  flex-wrap: nowrap; 
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 50px; 
   overflow-x: auto; 
   align-items: center;
   border: 1px solid #000;
@@ -617,31 +632,6 @@ h3 {
   text-align: center;
 }
 
-/* Media queries for responsiveness */
-@media screen and (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-  }
-  .containerE{
-    flex-direction: column;
-  }
-  
-  .element {
-    padding: 10px;
-  }
-  .row{
-    margin-right: 0;
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .container_body{
-    padding-top: 10rem;
-  }
-}
-
 
 
 
@@ -853,4 +843,63 @@ footer-logo {
   color: #333;
   border: 1px solid #ddd;
   padding: 20px;
+}
+
+#tableButtons {
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .containerE{
+    flex-direction: column;
+  }
+  
+  .element {
+    padding: 10px;
+  }
+  .row{
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+  .table td {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  #tableButtons{
+    flex-direction: column;
+  }
+  .btn-sm {
+    width:  100%;
+  }
+  .table th{
+    padding-left:0.25rem;
+    padding-right: 0.25rem;
+  }
+  .table th:nth-child(3),
+  .table td:nth-child(3)
+   {
+    display: none;
+  }
+  .table th:nth-child(6),
+  .table td:nth-child(6)
+   {
+    display: none;
+  }
+  .col{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container_body{
+    padding-top: 10rem;
+  }
 }
