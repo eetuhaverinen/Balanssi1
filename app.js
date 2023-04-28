@@ -22,8 +22,8 @@ function allowInsecurePrototypeAccess(HandlebarsInstance) {
 
   function newCompile(template, options) {
     options = options || {};
-    options.__allowProtoMethodsByDefault = true;
-    options.__allowProtoPropertiesByDefault = true;
+    options.allowProtoMethodsByDefault = true;
+    options.allowProtoPropertiesByDefault = true;
 
     return originalCompile(template, options);
   }
@@ -31,6 +31,7 @@ function allowInsecurePrototypeAccess(HandlebarsInstance) {
   HandlebarsInstance.compile = newCompile;
   return HandlebarsInstance;
 }
+
 
 const app = express();
 app.use(require('./routes/hrv'));
@@ -70,13 +71,19 @@ const options = {
 
 app.set('views', './views');
 
+
 app.engine(
   '.hbs',
   exphbs({
     ...options,
     handlebars: allowInsecurePrototypeAccess(Handlebars),
+    runtimeOptions: {
+      allowProtoMethodsByDefault: true,
+      allowProtoPropertiesByDefault: true,
+    },
   })
 );
+
 
 app.set('view engine', '.hbs');
 

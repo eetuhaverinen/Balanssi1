@@ -100,9 +100,12 @@ router.get('/viestit', ensureAuth, async (req, res) => {
     res.render('message', {
       user: user,
       messages,
-      allowProtoMethodsByDefault: true,
-      allowProtoPropertiesByDefault: true,
+      options: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true,
+      },
     });
+    
     
   } catch (err) {
     console.error(err);
@@ -118,21 +121,35 @@ router.get('/viestit', ensureAuth, async (req, res) => {
 // GET viestitH
 router.get('/viestitH', ensureAuth, async (req, res) => {
   try {
-    const messages = await Message.find({ recipient: req.user._id })
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    console.log('Decoded JWT:', decoded);
+
+    const user = await User.findById(decoded._id).lean();
+    console.log('User:', user);
+
+    const messages = await Message.find({ recipient: user._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
 
+    console.log('Messages:', messages);
+
     res.render('messageH', {
-      user: req.user,
+      layout: 'mainH',
+      user: user,
       messages,
+      options: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true,
+      },
     });
+    
+    
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
-
 
 // @desc    Send a message
 // @route   POST /viestit
@@ -161,6 +178,7 @@ router.post('/viestit', upload.single('attachment'), ensureAuth, async (req, res
     res.status(500).json({ success: false, errorMessage: err.message });
   }
 });
+
 
 
 //GET profiili
