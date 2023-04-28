@@ -331,7 +331,20 @@ header a img {
   margin-right: 15px;
   margin-left: 15px;
   margin-bottom: 50px;
-  max-width: 100%; 
+  width: 100%; 
+  overflow-x: auto; 
+  align-items: center;
+  border: 1px solid #000;
+  justify-content: center;
+  box-shadow:0 4px;
+  border-radius: 1.5%;
+}
+.rowMittaustulos{
+  display: flex;
+  flex-wrap: nowrap; 
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 50px; 
   overflow-x: auto; 
   align-items: center;
   border: 1px solid #000;
