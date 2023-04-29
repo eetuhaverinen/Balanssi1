@@ -61,12 +61,10 @@ router.get('/hrvdata', ensureAuth, async (req, res) => {
 
     const email = user.kubiosEmail;
     const password = user.kubiosPassword;
-    console.log('kubios email: ', email);
-    console.log('kubios pw : ', password);
     const hrvDataResult = await gethrvData(email, password);
     // console.log(hrvDataResult);
-    console.log(hrvDataResult.results[0].result, null, 2);
-    console.log(hrvDataResult.results[0].result.freq_domain.LF_HF_power);
+    // console.log(hrvDataResult.results[0].result, null, 2);
+    // console.log(hrvDataResult.results[0].result.freq_domain.LF_HF_power);
 
     const labels = [];
     const dataReadiness = [];
@@ -92,9 +90,9 @@ router.get('/hrvdata', ensureAuth, async (req, res) => {
     // });
 
 
-    console.log(labels);
-    console.log(dataReadiness);
-    console.log(dataLfHf);
+    // console.log(labels);
+    // console.log(dataReadiness);
+    // console.log(dataLfHf);
     // console.log(dataBloodSugar);
 
     res.json({
