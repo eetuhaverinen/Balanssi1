@@ -77,6 +77,12 @@ const userSchema = new Schema({
   BHbA1c: {
     type: Number,
   },
+  kubiosEmail: {
+    type: String
+  },
+  kubiosPassword: {
+    type: String
+  }
 });
 
 // static signup method
