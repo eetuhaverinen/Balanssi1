@@ -1,9 +1,27 @@
-
-
-
 const fetch = require('node-fetch');
-
 const userAgent = 'Test Kubios 0.1';
+
+
+async function getBloodSugarValues(userId) {
+  const stories = await Story.find({ user: userId });
+
+  const bloodSugarValues = stories.map(story => {
+    return {
+      date: story.createdAt,
+      bloodSugar: story.mmolPerL
+    };
+  });
+
+  return bloodSugarValues;
+}
+
+const getUserKubiosCredentials = async (userId) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return { email: user.kubiosEmail, password: user.kubiosPassword };
+};
 
 const login = async (email, password) => {
   const cookie = 'keyboardCatRandom';
@@ -41,7 +59,7 @@ perso();
 const hrvData = async (email,password) => {
   const token = await login(email, password);
   const myHeaders = { Authorization: 'Bearer ' + token, 'User-Agent': userAgent };
-  const response = await fetch('https://analysis.kubioscloud.com/v2/result/self?types=readiness&daily=yes&from=2023-01-24T00%3A00%3A00%2B00%3A00&to=2023-02-04T23%3A59%3A59%2B00%3A00', { headers: myHeaders });
+  const response = await fetch('https://analysis.kubioscloud.com/v2/result/self?types=readiness&daily=yes&from=2023-02-10T00%3A00%3A00%2B00%3A00&to=2023-02-24T23%3A59%3A59%2B00%3A00', { headers: myHeaders });
   const json = await response.json();
   console.log('json', json);
   };
@@ -49,5 +67,7 @@ const hrvData = async (email,password) => {
   hrvData(); 
 
   module.exports = {
-    hrvData
+    hrvData,
+    getUserKubiosCredentials,
+    getBloodSugarValues
   };
