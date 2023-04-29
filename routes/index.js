@@ -2,11 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const ensureAuth= require('../middleware/ensureAuth');
-const ensureGuest = require('../middleware/ensureGuest');
+const ensureAuth = require('../middleware/ensureAuth');
+const ensureGuest  = require('../middleware/ensureGuest');
 const Message = require('../models/MessageModel');
 const Story = require('../models/StoryModel');
 const User = require('../models/userModel');
+const { gethrvData } = require('./api/hrv_functions.js');
+console.log(gethrvData);
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -34,9 +36,20 @@ router.get('/etusivu', ensureAuth, async (req, res) => {
     const stories = await Story.find({ user: decoded._id }).lean();
     const user = await User.findById(decoded._id).lean();
     
+    const email = user.kubiosEmail;
+    const password = user.kubiosPassword;
+    console.log('kubios email: ', email);
+    console.log('kubios pw : ', password);
+    const hrvDataResult = await gethrvData(email, password);
+    console.log(hrvDataResult);
+    // const labels = data.map((item) => item.date);
+    // const readinessData = data.map((item) => item.readiness);
+
     res.render('etusivu', {
       user,
       stories,
+      // labels,
+      // readinessData
     });
   } catch (err) {
     console.error(err);
@@ -84,36 +97,21 @@ router.get('/potilas/:_id', ensureAuth, async (req, res) => {
 // GET viestit
 router.get('/viestit', ensureAuth, async (req, res) => {
   try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    console.log('Decoded JWT:', decoded);
-
-    const user = await User.findById(decoded._id).lean();
-    console.log('User:', user);
-
-    const messages = await Message.find({ recipient: user._id})
+    console.log('req.user:', req.user); // log the req.user object
+    const messages = await Message.find({ recipient: req.user._id})
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
 
-    console.log('Messages:', messages);
-
     res.render('message', {
-      user: user,
+      user: req.user,
       messages,
-      options: {
-        allowProtoMethodsByDefault: true,
-        allowProtoPropertiesByDefault: true,
-      },
     });
-    
-    
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
-
-
 
 
 
@@ -121,35 +119,21 @@ router.get('/viestit', ensureAuth, async (req, res) => {
 // GET viestitH
 router.get('/viestitH', ensureAuth, async (req, res) => {
   try {
-    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    console.log('Decoded JWT:', decoded);
-
-    const user = await User.findById(decoded._id).lean();
-    console.log('User:', user);
-
-    const messages = await Message.find({ recipient: user._id})
+    const messages = await Message.find({ recipient: req.user._id })
       .populate('sender', 'displayName email')
       .populate('recipient', 'displayName email')
       .sort({ createdAt: 'desc' });
 
-    console.log('Messages:', messages);
-
     res.render('messageH', {
-      layout: 'mainH',
-      user: user,
+      user: req.user,
       messages,
-      options: {
-        allowProtoMethodsByDefault: true,
-        allowProtoPropertiesByDefault: true,
-      },
     });
-    
-    
   } catch (err) {
     console.error(err);
     res.render('error/500');
   }
 });
+
 
 // @desc    Send a message
 // @route   POST /viestit
@@ -180,7 +164,6 @@ router.post('/viestit', upload.single('attachment'), ensureAuth, async (req, res
 });
 
 
-
 //GET profiili
 router.get('/profiili', ensureAuth, async (req, res, next) => {
   try {
@@ -198,7 +181,7 @@ router.get('/profiili', ensureAuth, async (req, res, next) => {
 });
 
 router.post('/profiili', ensureAuth, async (req, res) => {
-  const {nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c} = req.body;
+  const {nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c, kubiosEmail, kubiosPassword} = req.body;
 
   try {
     // Validointi?
@@ -214,7 +197,9 @@ router.post('/profiili', ensureAuth, async (req, res) => {
       sukupuoli,
       leposyke,
       maksimisyke,
-      BHbA1c
+      BHbA1c,
+      kubiosEmail,
+      kubiosPassword
     }, {new: true});
     await user.save();
 
@@ -240,7 +225,7 @@ router.get('/faq', (req, res) => {
 
 // @desc    Hoitaja dashboard
 // @route   GET /etusivuH
-router.get('/etusivuH', ensureAuth, async (req, res) => {
+router.get('/etusivuH', ensureAuth, async (req, res, next) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     // Fetch data specific to the Hoitaja dashboard (if necessary)
@@ -255,7 +240,7 @@ router.get('/etusivuH', ensureAuth, async (req, res) => {
     res.render('error/500');
   }
 });
-router.get('/potilaslista', ensureAuth, async (req, res) => {
+router.get('/potilaslista', ensureAuth, async (req, res, next) => {
   try {
     // Fetch all patients with role "patient" from the database
     const patients = await User.find({ role: 'patient' }).lean();
