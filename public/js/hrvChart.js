@@ -42,12 +42,12 @@ function toggleDatasetVisibility() {
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderColor: "rgba(255, 99, 132, 1)",
             borderWidth: 1,
-            yAxisID: "yLfHf",
+            yAxisID: "yBloodSugar",
             fill: false,
             hidden: true,
           },
           {
-            label: "Verensokeri (mmol/L)",
+            label: "Verensokeri",
             data: dataBloodSugar,
             backgroundColor: "rgba(153, 102, 255, 0.2)",
             borderColor: "rgba(153, 102, 255, 1)",
@@ -79,22 +79,13 @@ function toggleDatasetVisibility() {
               text: "Readiness",
             },
           },
-          yLfHf: {
-            type: "linear",
-            position: "right",
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: "LF/HF",
-            },
-          },
           yBloodSugar: {
             type: "linear",
             position: "right",
             beginAtZero: true,
             title: {
               display: true,
-              text: "Verensokeri (mmol/L)",
+              text: "Verensokeri (mmol/L), LF/HF",
             },
           },
         },

@@ -153,7 +153,8 @@ header a img {
   position: relative;
   z-index: 1;
   background-color: var(--bg);
-  max-width: 360px;
+  max-width: 600px;
+  width: 100%;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -287,7 +288,7 @@ header a img {
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  padding-top: 5rem;
+  padding-top: 2rem;
   flex-grow: 1;
 }
 
@@ -339,6 +340,41 @@ header a img {
   box-shadow:0 4px;
   border-radius: 1.5%;
 }
+.rowP {  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap; 
+  margin-bottom: 50px;
+  width: 100%;
+  margin-right: 2em;
+  overflow-x: auto; 
+  align-items: center;
+  border: 1px solid #000;
+  align-items: center;
+  justify-content: center;
+  box-shadow:0 4px;
+  border-radius: 1.5%;
+}
+.rowHrv{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap; 
+  margin-bottom: 50px;
+  margin-left: 2em;
+  width: 100%; 
+  overflow-x: auto; 
+  align-items: center;
+  border: 1px solid #000;
+  justify-content: center;
+  box-shadow:0 4px;
+  border-radius: 1.5%;
+}
+
+#hrvChart{
+  width: 100%;
+  height: 100%;
+}
+
 .rowMittaustulos{
   display: flex;
   flex-wrap: nowrap; 
@@ -351,6 +387,12 @@ header a img {
   justify-content: center;
   box-shadow:0 4px;
   border-radius: 1.5%;
+}
+
+#check{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .dark .row {
@@ -504,6 +546,14 @@ h3 {
   margin-bottom: 30px;
   width: 100%;
 }
+input[type="submit"],
+.btn {
+  margin: 0.5rem;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
 
 .login-box button {
   width: 100%;
@@ -651,7 +701,7 @@ h3 {
 
 .containerE {
   display: flex;
-  width: 100%;
+  width: 90%;
   margin: 5 10%;
 }
 
@@ -676,7 +726,7 @@ h3 {
 }
 
 .profile-form {
-  margin: 50px auto;
+  margin: 20px auto;
   max-width: 500px;
   padding: 20px;
   background-color: var(--table-color);
@@ -858,6 +908,7 @@ footer-logo {
   }
   .containerE{
     flex-direction: column;
+    width: 97%;
   }
   
   .element {
@@ -867,6 +918,12 @@ footer-logo {
     margin-right: 0;
     margin-left: 0;
     width: 100%;
+  }
+  .rowHrv{
+    margin: 0;
+  }
+  #hrvChart{
+    height: 600px;
   }
   .table td {
     padding-left: 0.25rem;
@@ -900,6 +957,6 @@ footer-logo {
 
 @media screen and (min-width: 768px) {
   .container_body{
-    padding-top: 10rem;
+    padding-top: 5rem;
   }
 }
