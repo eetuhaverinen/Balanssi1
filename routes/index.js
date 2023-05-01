@@ -10,6 +10,8 @@ const User = require('../models/userModel');
 const { gethrvData } = require('./api/hrv_functions.js');
 console.log(gethrvData);
 const multer = require('multer');
+const moment = require('moment');
+const { getBloodSugarValues } = require('../public/js/hrv_functions');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/');
@@ -18,6 +20,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + '-' + file.originalname);
   },
 });
+
 const upload = multer({ storage: storage });
 
 // @desc    Landing page
@@ -33,27 +36,97 @@ router.get('/', ensureGuest, (req, res) => {
 router.get('/etusivu', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
-    const stories = await Story.find({ user: decoded._id }).lean();
     const user = await User.findById(decoded._id).lean();
-    
-    const email = user.kubiosEmail;
-    const password = user.kubiosPassword;
-    console.log('kubios email: ', email);
-    console.log('kubios pw : ', password);
-    const hrvDataResult = await gethrvData(email, password);
-    console.log(hrvDataResult);
-    // const labels = data.map((item) => item.date);
-    // const readinessData = data.map((item) => item.readiness);
+    const stories = await Story.find({ user: decoded._id }).lean();
 
     res.render('etusivu', {
       user,
       stories,
-      // labels,
-      // readinessData
     });
   } catch (err) {
     console.error(err);
     res.render('error/500');
+  }
+});
+
+//GET HRV data from kubios
+router.get('/hrvdata', ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const user = await User.findById(decoded._id).lean();
+    const stories = await Story.find({ user: req.user._id }).lean();
+
+    // const bloodSugarValues = await getBloodSugarValues(user);
+    // console.log(bloodSugarValues);
+
+    const email = user.kubiosEmail;
+    const password = user.kubiosPassword;
+    const hrvDataResult = await gethrvData(email, password);
+    // console.log(hrvDataResult);
+    // console.log(hrvDataResult.results[0].result, null, 2);
+    // console.log(hrvDataResult.results[0].result.freq_domain.LF_HF_power);
+
+    const labels = [];
+    const dataReadiness = [];
+    const dataLfHf = [];
+    const dataBloodSugar = [];
+
+
+    for( i=0; i < hrvDataResult.results.length; i++ ){
+      labels.push(hrvDataResult.results[i].create_timestamp);
+      dataReadiness.push(hrvDataResult.results[i].result.readiness);
+      dataLfHf.push(hrvDataResult.results[i].result.freq_domain.LF_HF_power);
+    }
+    stories.forEach((story) => {
+      labels.push(story.createdAt);
+      dataBloodSugar.push(story.mmolPerL);
+    });
+
+    // stories.forEach((story) => {
+    //   const localDate = new Date(story.createdAt);
+    //   localDate.setMinutes(localDate.getMinutes() - localDate.getTimezoneOffset());
+    //   labels.push(localDate.toISOString());
+    //   dataBloodSugar.push(story.mmolPerL);
+    // });
+
+
+    // console.log(labels);
+    // console.log(dataReadiness);
+    // console.log(dataLfHf);
+    // console.log(dataBloodSugar);
+
+    res.json({
+      labels,
+      dataReadiness,
+      dataLfHf,
+      dataBloodSugar,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+// @route   GET /bloodsugar
+router.get('/bloodsugar', ensureAuth, async (req, res) => {
+  try {
+    const stories = await Story.find({ user: req.user._id }).lean();
+    const bloodSugarLabels = [];
+    const dataBloodSugar = [];
+
+    stories.forEach((story) => {
+      const localDate = moment(story.createdAt).format();
+      bloodSugarLabels.push(localDate);
+      dataBloodSugar.push(story.mmolPerL);
+    });
+
+    res.json({
+      bloodSugarLabels,
+      dataBloodSugar,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

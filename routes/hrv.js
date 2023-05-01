@@ -1,28 +1,30 @@
 const express = require('express');
+
 const router = express.Router();
-const spawn = require('child_process').spawn;
+const jwt = require('jsonwebtoken');
+const ensureAuth = require('../middleware/ensureAuth');
+const ensureGuest  = require('../middleware/ensureGuest');
+const Message = require('../models/MessageModel');
+const Story = require('../models/StoryModel');
+const User = require('../models/userModel');
+const { gethrvData } = require('./api/hrv_functions.js');
+console.log(gethrvData);
+const multer = require('multer');
 
-router.get('/hrv-data', (req, res) => {
-  const process = spawn('python', ['./scripts/python_test.py']);
-  let result = '';
+router.get('/joku', ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const stories = await Story.find({ user: decoded._id }).lean();
+    const user = await User.findById(decoded._id).lean();
 
-  process.stdout.on('data', (data) => {
-    result += data.toString();
-  });
-
-  process.on('close', () => {
-    try {
-      const jsonData = JSON.parse(result);
-      res.json(jsonData);
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
-      res.status(500).send('Error parsing JSON data');
-    }
-  });
-  // process.on('close', () => {
-  //   const jsonData = JSON.parse(result);
-  //   res.json(jsonData);
-  // });
+    res.render('etusivu', {
+      user,
+      stories,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
 });
 
 module.exports = router;
