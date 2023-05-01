@@ -31,7 +31,9 @@ function allowInsecurePrototypeAccess(HandlebarsInstance) {
   HandlebarsInstance.compile = newCompile;
   return HandlebarsInstance;
 }
-
+Handlebars.registerHelper('reverse', function(arr) {
+  return arr.reverse();
+});
 
 const app = express();
 app.use(require('./routes/hrv'));
