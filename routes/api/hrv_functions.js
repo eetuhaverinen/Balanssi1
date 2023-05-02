@@ -3,14 +3,6 @@ const userAgent = 'Test Kubios 0.1';
 const User = require('../../models/userModel');
 
 
-// const getUserKubiosCredentials = async (userId) => {
-//   const user = await User.findById(userId);
-//   if (!user) {
-//     throw new Error('User not found');
-//   }
-//   return { email: user.kubiosEmail, password: user.kubiosPassword };
-// };
-
 const login = async (email, password) => {
   const cookie = 'keyboardCatRandom';
   const myHeaders = {Cookie: `XSRF-TOKEN=${cookie}`, 'User-Agent': userAgent};
@@ -54,8 +46,6 @@ const gethrvData = async (email,password) => {
   };
   
   
-
   module.exports = {
     gethrvData,
-    // getUserKubiosCredentials
   };

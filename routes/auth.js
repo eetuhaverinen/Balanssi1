@@ -62,13 +62,13 @@ router.post('/register', async (req, res, next) => {
   console.log(req.body);
   
   
-  const { email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c, kubiosEmail, kubiosPassword  } = req.body;
+  const { email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c  } = req.body;
 
  
  
 
   try {
-    const user = await User.signup(email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c, kubiosEmail, kubiosPassword);
+    const user = await User.signup(email, password, role, nimi, syntymaAika, pituus, paino, sukupuoli, leposyke, maksimisyke, BHbA1c);
 
     // create a token
     const token = createToken(user._id);
