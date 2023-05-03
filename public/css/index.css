@@ -340,6 +340,8 @@ header a img {
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
+
+
 .rowP {  
   display: flex;
   flex-direction: column;
@@ -401,8 +403,7 @@ header a img {
 .rowMittaustulos{
   display: flex;
   flex-wrap: nowrap; 
-  margin-right: 15px;
-  margin-left: 15px;
+  
   margin-bottom: 50px; 
   overflow-x: auto; 
   align-items: center;
@@ -911,9 +912,9 @@ footer-logo {
 }
 
 .container.mt-3 {
-  background-color: var(--msg);
-  color: #333;
-  border: 1px solid #ddd;
+  background-color: var(--table-color);
+  border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
 }
 
@@ -955,7 +956,7 @@ footer-logo {
     flex-direction: column;
   }
   .btn-sm {
-    width:  100%;
+    width:  80%;
   }
   .table th{
     padding-left:0.25rem;
@@ -974,6 +975,9 @@ footer-logo {
   .col{
     padding-left: 0.5em;
     padding-right: 0.5em;
+  }
+  .form-group {
+    flex-direction: column;
   }
 }
 
