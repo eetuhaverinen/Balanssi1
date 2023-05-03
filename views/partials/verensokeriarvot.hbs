@@ -18,7 +18,7 @@
                 <tbody>
                     {{#each stories}}
                     <tr>
-                        <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}</td>
+                        <td>{{formatDate createdAt 'DD MM YYYY, hh:mm'}}</td>
                         <td>{{mmolPerL}} </td>
                         <td>{{feeling}}</td>
                         <td>{{GHH}}</td>
@@ -40,12 +40,12 @@
     
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Arvio viimeismmästä mittaustuloksesta</h5>
+                <h5 class="card-title">Arvio mittaustuloksista</h5>
             </div>
             <div class="card-body">
                 {{#each stories}}
                 <p>
-                    {{formatDate createdAt 'MMMM Do YYYY, h:mm a'}}:
+                    {{formatDate createdAt 'DD MM YYYY, hh:mm'}}:
                     {{#if mmolPerL}}
                     <br><strong>Verensokeriarvot:</strong> {{#if (isGoodBloodSugar mmolPerL)}}Hyvät verensokeriarvot{{else}}Huonot verensokerit{{/if}}
                     {{/if}}
