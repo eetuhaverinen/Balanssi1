@@ -162,8 +162,8 @@ img {
     align-content: center;
     border-radius: 1.25rem 1.25rem 0 0;
     transition: .4s;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
   
 }
