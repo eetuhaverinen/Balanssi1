@@ -35,6 +35,7 @@ function toggleDatasetVisibility() {
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
             yAxisID: "yReadiness",
+            hidden: false,
           },
           {
             label: "LF/HF",

@@ -828,6 +828,10 @@ input[type="submit"]:hover {
   opacity: 1;
   }
 
+  .card{
+    width: 100%;
+  }
+
   
   .footer {
     background-color: var(--bg-nav);
