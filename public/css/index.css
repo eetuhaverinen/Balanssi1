@@ -335,10 +335,10 @@ header a img {
   width: 100%; 
   overflow-x: auto; 
   align-items: center;
-  border: 1px solid #000;
   justify-content: center;
-  box-shadow:0 4px;
-  border-radius: 1.5%;
+  background-color: var(--table-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 .rowP {  
   display: flex;
@@ -349,11 +349,11 @@ header a img {
   margin-right: 2em;
   overflow-x: auto; 
   align-items: center;
-  border: 1px solid #000;
   align-items: center;
   justify-content: center;
-  box-shadow:0 4px;
-  border-radius: 1.5%;
+  background-color: var(--table-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 .rowHrv{
   display: flex;
@@ -364,10 +364,33 @@ header a img {
   width: 100%; 
   overflow-x: auto; 
   align-items: center;
-  border: 1px solid #000;
   justify-content: center;
-  box-shadow:0 4px;
-  border-radius: 1.5%;
+  background-color: var(--table-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.rowF{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  margin-bottom: 50px;
+  max-width: 700px;
+  width: 100%;
+  overflow-x: auto; 
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--table-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.rowF h2,
+.rowF h3 {
+  margin: 1em;
+}
+
+.rowF p{
+  margin: 1em;
 }
 
 #hrvChart{
@@ -807,7 +830,6 @@ input[type="submit"]:hover {
     color: var(--text);
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     width: 100%;
     padding-bottom: 0px;
