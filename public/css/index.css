@@ -446,7 +446,7 @@ header a img {
 
 .btn {
   display: inline-block;
-  font-weight: 400;
+  font-weight: bold;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -885,6 +885,11 @@ footer-logo {
   background-color: yellow;
 }
 
+a.btn.orange {
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 0.505);
+}
+
 .patient-list {
   display: flex;
   justify-content: center;
@@ -973,6 +978,8 @@ footer-logo {
   }
   .btn-sm {
     width:  80%;
+    margin: 2px;
+    font-size: 10px;
   }
   .table th{
     padding-left:0.25rem;
@@ -997,6 +1004,10 @@ footer-logo {
   }
   .chartCheck{
     font-size: 10px;
+  }
+  .table th,
+  .table td{
+    font-size: 12px;
   }
 }
 
