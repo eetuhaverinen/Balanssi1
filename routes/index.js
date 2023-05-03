@@ -313,12 +313,25 @@ router.post('/profiili', ensureAuth, async (req, res) => {
   }
 });
 
-// @desc    FAQ
+
 // @route   GET /faq
 // GET FAQ page
 router.get('/faq', (req, res) => {
   try {
     res.render('partials/faq');
+  } catch (err) {
+    console.error(err);
+    res.render('error/500');
+  }
+});
+
+// @route   GET /faqH
+// GET FAQH page
+router.get('/faqH', (req, res) => {
+  try {
+    res.render('faqH', {
+      layout: 'mainH',
+    });
   } catch (err) {
     console.error(err);
     res.render('error/500');
