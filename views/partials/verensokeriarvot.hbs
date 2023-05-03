@@ -18,7 +18,7 @@
                 <tbody>
                     {{#each stories}}
                     <tr>
-                        <td>{{formatDate createdAt 'DD MM YYYY, hh:mm'}}</td>
+                        <td>{{formatDate createdAt 'DD.MM.YYYY, hh:mm'}}</td>
                         <td>{{mmolPerL}} </td>
                         <td>{{feeling}}</td>
                         <td>{{GHH}}</td>
@@ -40,7 +40,7 @@
     
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Arvio mittaustuloksista</h5>
+                <h5 class="card-title">Arvio päiväkirjamerkinnöistä</h5>
             </div>
             <div class="card-body">
                 {{#each stories}}
