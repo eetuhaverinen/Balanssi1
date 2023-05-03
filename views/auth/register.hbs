@@ -1,6 +1,7 @@
 {{!-- views/auth/signup.hbs --}}
-</head>
-<title>Rekisteröidy</title>
+
+
+
 
 <body>
   {{!-- Role selection pop-up --}}
@@ -39,14 +40,17 @@
       </div>
     <div id="patient-fields">
   <div class="patient-field">
+    
    <label> pituus (cm)
       <input type="number" name="pituus" min="50" step="any" max="230" placeholder="172" />
     </label>
     
     
+    
     <label> paino (kg)
       <input type="number" name="paino" min="30" step="any" max="230" placeholder="65" />
     </label>
+    
 
     <fieldset name="sukupuoli" required>
   <legend>sukupuoli</legend>
@@ -64,25 +68,31 @@
   </label>
 </fieldset>
 
-      <label> leposyke
+      <label> 
+        <div>
+          leposyke <img src="/kuvat/question.png" alt="kysymysmerkki" title="Leposyke on sydämesi lyöntien määrä minuutissa, kun olet täysin levossa.">
+          </div>
       <input type="number" name="leposyke" min="30" step="any" max="100" placeholder="55" />
-      <img src="/kuvat/question.png" alt="kysymysmerkki" title="Leposyke on sydämesi lyöntien määrä minuutissa, kun olet täysin levossa.">
-
+     
     </label>
 
-    <label> maksimisyke
+    <label>
+      <div>
+       maksimisyke <img src="/kuvat/question.png" alt="kysymysmerkki" title="Maksimisyke on korkein sydämen lyöntien määrä minuutissa, jonka voit saavuttaa fyysisen rasituksen aikana.">
+      </div>
       <input type="number" name="maksimisyke" min="120" step="any" max="220" placeholder="195" />
-      <img src="/kuvat/question.png" alt="kysymysmerkki" title="Maksimisyke on korkein sydämen lyöntien määrä minuutissa, jonka voit saavuttaa fyysisen rasituksen aikana.">
-
+      
     </label>
 
        <label>
+        <div>
             B-HbA1c:
-            <input type="number" name="BHbA1c" min="20" step="any" max="100" placeholder="35">
             <img src="/kuvat/question.png" alt="kysymysmerkki" title="B-HbA1c (glykoitunut hemoglobiini) on verikoe, joka kertoo verensokerin keskiarvon viimeisten 2-3 kuukauden ajalta.">
-
+            </div>
+            <input type="number" name="BHbA1c" min="20" step="any" max="100" placeholder="35">
           </label> 
- </div>
+          </div>
+ 
     <label> Sähköposti
       <input type="email" name="email" placeholder="matti@matti.com" />
     </label>

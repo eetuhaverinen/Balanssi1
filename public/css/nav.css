@@ -162,6 +162,8 @@ img {
     align-content: center;
     border-radius: 1.25rem 1.25rem 0 0;
     transition: .4s;
+    padding-bottom: 5px;
+    padding-top: 5px;
   }
   
 }
@@ -170,6 +172,12 @@ img {
 .nav__link {
   display: flex;
   box-sizing: border-box;
+}
+
+#loginLogo{
+  display: flex;
+  align-items: center;
+  
 }
 
 .nav__link {
@@ -351,7 +359,8 @@ img {
     position: fixed;
     top: 0;
     right: 0;
-    margin: 1rem;
+    margin-top: 0.7rem;
+    margin-right: 0.2rem;
   }
 
 .has-dropdown {
