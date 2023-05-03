@@ -748,6 +748,9 @@ input[type="submit"]:hover {
   border-radius: 5px;
   overflow-y: auto;
 }
+.chartCheck{
+  font-size: 16px;
+}
 
 .profile-form {
   margin: 20px auto;
@@ -979,6 +982,9 @@ footer-logo {
   .form-group {
     flex-direction: column;
   }
+  .chartCheck{
+    font-size: 10px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -986,3 +992,4 @@ footer-logo {
     padding-top: 5rem;
   }
 }
+
