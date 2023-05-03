@@ -385,12 +385,21 @@ header a img {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 .rowF h2,
-.rowF h3 {
+.rowF h3,
+.rowF h5 {
   margin: 1em;
 }
 
 .rowF p{
   margin: 1em;
+}
+.rowF ol{
+  margin-left: 1em;
+  list-style-type: decimal;
+}
+
+.rowF ol li {
+  margin: 1em 1em 0 1em;
 }
 
 #hrvChart{
@@ -843,7 +852,7 @@ input[type="submit"]:hover {
     padding-bottom: 0px;
     font-size: 1rem;
   }
-  
+
   .footer p {
 font-size: 1.2rem;
 color: #888;

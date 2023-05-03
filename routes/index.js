@@ -378,6 +378,9 @@ router.get('/tietosuojakaytanto', (req, res) => {
 router.get('/evasteidenkaytto', (req, res) => {
   res.render('evasteidenkaytto');
 });
+router.get('/sovellus', (req, res) => {
+  res.render('sovellus');
+});
 
 // router.get('/main', ensureAuth, async (req, res) => {
 //   try {
