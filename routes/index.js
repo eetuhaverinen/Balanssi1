@@ -198,6 +198,7 @@ router.get('/viestitH', ensureAuth, async (req, res) => {
       .sort({ createdAt: 'desc' });
 
     res.render('messageH', {
+      layout: 'mainH',
       user: req.user,
       messages,
     });
@@ -211,6 +212,34 @@ router.get('/viestitH', ensureAuth, async (req, res) => {
 // @desc    Send a message
 // @route   POST /viestit
 router.post('/viestit', upload.single('attachment'), ensureAuth, async (req, res) => {
+  try {
+    const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
+    const sender = await User.findById(decoded._id).lean();
+    const recipient = await User.findOne({ email: req.body.recipient }).lean();
+
+    if (!recipient) {
+      throw Error('Recipient not found');
+    }
+
+    const newMessage = new Message({
+      subject: req.body.subject,
+      message: req.body.message,
+      sender: sender._id, 
+      recipient: recipient._id, 
+      ...(req.file && { attachment: req.file.path.replace(/\\/g, '/') }),
+    });
+
+    await newMessage.save();
+    res.status(200).json({ success: true });
+  } catch (err) {
+    console.warn(err);
+    res.status(500).json({ success: false, errorMessage: err.message });
+  }
+});
+
+// @desc    Send a message
+// @route   POST /viestit
+router.post('/viestitH', upload.single('attachment'), ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
     const sender = await User.findById(decoded._id).lean();
