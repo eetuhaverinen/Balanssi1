@@ -3,6 +3,7 @@ const userAgent = 'Test Kubios 0.1';
 const User = require('../../models/userModel');
 
 
+// Kirjaudu sisään ja palauta saatu token
 const login = async (email, password) => {
   const cookie = 'keyboardCatRandom';
   const myHeaders = {Cookie: `XSRF-TOKEN=${cookie}`, 'User-Agent': userAgent};
@@ -20,6 +21,7 @@ const login = async (email, password) => {
     redirect: 'manual',
     body: myBody,
   };
+  // Suorita POST-pyyntö kirjautumiseen ja tallenna saatu token
   const response = await fetch('https://kubioscloud.auth.eu-west-1.amazoncognito.com/login', option);
   const location = response.headers.raw().location[0];
   const token = location.substring(location.indexOf('=') + 1, location.indexOf('&'));
@@ -36,6 +38,7 @@ const myHeaders = {Authorization: 'Bearer ' + token, 'User-Agent': userAgent};
 
 perso();
 
+// Hae HRV-data käyttäen annettua sähköpostia ja salasanaa
 const gethrvData = async (email,password) => {
   const token = await login(email, password);
   const myHeaders = { Authorization: 'Bearer ' + token, 'User-Agent': userAgent };

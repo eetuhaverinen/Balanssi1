@@ -11,6 +11,8 @@ const { gethrvData } = require('./api/hrv_functions.js');
 console.log(gethrvData);
 const multer = require('multer');
 
+
+//ei käytössä
 router.get('/joku', ensureAuth, async (req, res) => {
   try {
     const decoded = jwt.verify(req.cookies.cookieToken, process.env.SECRET);
