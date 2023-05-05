@@ -1,3 +1,6 @@
+//Loader koodi ei käytössä.
+
+
 // function showLoading() {
 //   const loadingOverlay = document.querySelector('.loading-overlay');
 //   if (loadingOverlay) {
