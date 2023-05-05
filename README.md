@@ -9,6 +9,6 @@ https://balanssiapp.onrender.com/
 
 
 Kehittäjät:
-Eetu Haverinen
-Otto Kahilainen
-Kaisa Koski
+Eetu Haverinen  
+Otto Kahilainen  
+Kaisa Koski  
