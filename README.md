@@ -6,9 +6,9 @@ Sovellus sisältää kaksi käyttöliittymää: potilaan ja hoitajan käyttölii
 
 Sovellus kokeiltavissa:
 https://balanssiapp.onrender.com/
-
-
-Kehittäjät:
-Eetu Haverinen  
+  
+  
+Kehittäjät:  
+Eetu Haverinen    
 Otto Kahilainen  
 Kaisa Koski  
